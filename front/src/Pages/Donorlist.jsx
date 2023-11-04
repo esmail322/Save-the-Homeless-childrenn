@@ -8,7 +8,7 @@ function Donorlist() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log("poooolice", data);
+  console.log("police", data);
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
