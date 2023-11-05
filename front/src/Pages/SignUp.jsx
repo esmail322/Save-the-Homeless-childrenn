@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
@@ -7,12 +7,15 @@ import { useTranslation } from "react-i18next";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { object } from "zod";
 
 function SignUp() {
   /////
   const [donar, donarLog] = useState(false);
   const [page, setPage] = useState(0);
-  // Teachr function code
+  const [formerrors, setformerrors] = useState({});
+  const [issubmit, setissubmit] = useState(false);
+  // Teacher function code
   const [teacherField, setTeacherField] = useState({
     fullname: "",
     email: "",
@@ -26,6 +29,8 @@ function SignUp() {
   });
   const handleTeacherFormSubmit = async (event) => {
     event.preventDefault(event);
+    setformerrors(validate(teacherField));
+    setissubmit(true);
     try {
       const result = await axios.post(
         "http://localhost:8080/teacher",
@@ -62,6 +67,8 @@ function SignUp() {
   });
   const handleStudentFormSubmit = async (event) => {
     event.preventDefault(event);
+    setformerrors(validate(studentField));
+    setissubmit(true);
     try {
       const result = await axios.post(
         "http://localhost:8080/student",
@@ -113,7 +120,66 @@ function SignUp() {
     } catch (err) {
       console.log("something went wrong");
     }
+    setformerrors(validate(donarField));
+    setissubmit(true);
   };
+  useEffect(() => {
+    console.log(formerrors);
+    if (Object.keys(formerrors).length === 0 && issubmit) {
+      console.log(donarField);
+    }
+  }, [formerrors]);
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^[^\s@+]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const regex1 = new RegExp("^7\\d{8}$");
+    const numberRegex = /^-?\d+(\.\d+)?$/;
+    if (!values.fullname) {
+      errors.fullname = "fullname is required!";
+    }
+    if (!values.email) {
+      errors.email = "email is required!";
+    } else if (!regex.test(values.email)) {
+      errors.email = "This is not a valid email format";
+    }
+    if (!values.password) {
+      errors.password = "password is required!";
+    } else if (values.password.length < 4) {
+      errors.password = "Passwrod must be greater than 4 characters";
+    } else if (values.password.length > 10) {
+      errors.password = "Password connot exceed more than 10 characters";
+    }
+    if (!values.contact_number) {
+      errors.contact_number = "number is required!";
+    } else if (values.contact_number.length > 9) {
+      errors.contact_number =
+        "the number must not be greater than 10 character";
+    } else if (values.contact_number.length < 9) {
+      errors.contact_number = "the number should be less than 10 characters";
+    } else if (!regex1.test(values.contact_number)) {
+      errors.contact_number = "the contact_number must be start with 7";
+    }
+    if (!values.province) {
+      errors.province = "Province should be selected";
+    }
+    if (!values.Zip_code) {
+      errors.Zip_code = "Zip_code is required";
+    } else if (!numberRegex.test(values.Zip_code)) {
+      errors.Zip_code = "Zip code must be number";
+    }
+    if (!values.Country) {
+      errors.Country = "select a country";
+    }
+    if (!values.typeOfassist) {
+      errors.typeOfassist = "select a type of assist";
+    }
+    if (!values.typeOfteach) {
+      errors.typeOfteach = "select a subject";
+    }
+
+    return errors;
+  };
+
   if (loading) {
     return <Donorlist />;
   }
@@ -210,8 +276,14 @@ function SignUp() {
           </div>
         </div>
         <div className="flex justify-center pt-4 mb-16  ">
+          {Object.keys(formerrors).length === 0 && issubmit ? (
+            <div className="ui message success">Sign in successfully</div>
+          ) : (
+            ""
+          )}
           {page == 1 && (
             // donrafrom
+
             <form className=" w-96 bg-backgorund">
               <input
                 type="text"
@@ -220,6 +292,9 @@ function SignUp() {
                 placeholder={`${t("fullname")}`}
                 onChange={(e) => ChangeDonarhandler(e)}
               />
+              {formerrors.fullname && (
+                <span className="text-red-600">{formerrors.fullname}</span>
+              )}
               <input
                 type="email"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
@@ -227,6 +302,9 @@ function SignUp() {
                 placeholder={`${t("email1")}`}
                 onChange={(e) => ChangeDonarhandler(e)}
               />
+              {formerrors.email && (
+                <span className="text-red-600">{formerrors.email}</span>
+              )}
               <input
                 type="password"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
@@ -234,6 +312,9 @@ function SignUp() {
                 placeholder={`${t("password1")}`}
                 onChange={(e) => ChangeDonarhandler(e)}
               />
+              {formerrors.password && (
+                <span className="text-red-600">{formerrors.password}</span>
+              )}
               <input
                 type="password"
                 className="block border bg-backgorund border-black w-full p-3  rounded mb-10"
@@ -279,6 +360,9 @@ function SignUp() {
                   })
                 }
               />
+              {formerrors.fullname && (
+                <span className="text-red-600">{formerrors.fullname}</span>
+              )}
               {/* {errors.firstName && (
                 <span className="text-red-600">{errors.firstName.message}</span>
               )} */}
@@ -296,6 +380,9 @@ function SignUp() {
                 }
                 placeholder={`${t("email1")}`}
               />
+              {formerrors.email && (
+                <span className="text-red-600">{formerrors.email}</span>
+              )}
               {/* {errors.emails && (
                 <span className="text-red-600">{errors.emails.message}</span>
               )} */}
@@ -313,6 +400,9 @@ function SignUp() {
                   })
                 }
               />
+              {formerrors.password && (
+                <span className="text-red-600">{formerrors.password}</span>
+              )}
               {/* {errors.password && (
                 <span className="text-red-600">
                   {errors.confirmPassword.message}
@@ -350,6 +440,11 @@ function SignUp() {
                   }
                 />
               </div>
+              {formerrors.contact_number && (
+                <span className="text-red-600">
+                  {formerrors.contact_number}
+                </span>
+              )}
               <input
                 type="text"
                 className=" border  bg-backgorund w-full font-semibold border-black  p-3  rounded mb-1"
@@ -382,6 +477,7 @@ function SignUp() {
                   <option value="Kunduz">{t("kunduz")}</option>
                   <option value="Herat">{t("herat")}</option>
                 </select>
+
                 <input
                   type="password"
                   className="block border h-12 bg-backgorund border-black  p-3  rounded mb-1"
@@ -396,6 +492,12 @@ function SignUp() {
                   }
                 />
               </div>{" "}
+              {formerrors.province && (
+                <span className="text-red-600 m-2">{formerrors.province}</span>
+              )}
+              {formerrors.Zip_code && (
+                <span className="text-red-600">{formerrors.Zip_code}</span>
+              )}
               <div className="flex flex-row mb-1 ">
                 <select
                   className=" bg-secondary w-96 h-12 p-3 block rounded border border-black"
@@ -415,6 +517,9 @@ function SignUp() {
                   <option value="Pakistan">{t("pakistan")}</option>
                 </select>
               </div>
+              {formerrors.Country && (
+                <span className="text-red-600">{formerrors.Country}</span>
+              )}
               <div className="flex flex-row mb-8 ">
                 <select
                   className=" bg-backgorund p-3  w-96 h-12 block rounded border border-black"
@@ -433,8 +538,11 @@ function SignUp() {
                   <option value="Help">{t("help")}</option>
                 </select>
               </div>
-              <Link to="">
-                {" "}
+              {formerrors.typeOfassist && (
+                <span className="text-red-600">{formerrors.typeOfassist}</span>
+              )}
+              <Link to="/student">
+                {/* {" "} */}
                 <button
                   type="submit"
                   onClick={handleStudentFormSubmit}
@@ -461,6 +569,9 @@ function SignUp() {
                   })
                 }
               />
+              {formerrors.fullname && (
+                <span className="text-red-600">{formerrors.fullname}</span>
+              )}
               <input
                 type="text"
                 className="block border bg-backgorund border-black   w-full p-3 rounded mb-1"
@@ -474,6 +585,9 @@ function SignUp() {
                   })
                 }
               />
+              {formerrors.email && (
+                <span className="text-red-600">{formerrors.email}</span>
+              )}
               <input
                 type="password"
                 className="block border border-black bg-backgorund w-full p-3 rounded mb-1"
@@ -487,6 +601,9 @@ function SignUp() {
                   })
                 }
               />
+              {formerrors.password && (
+                <span className="text-red-600">{formerrors.password}</span>
+              )}
               <input
                 type="password"
                 className="block border  border-black bg-backgorund w-full p-3  rounded mb-8"
@@ -518,6 +635,11 @@ function SignUp() {
                   }
                 />
               </div>
+              {formerrors.contact_number && (
+                <span className="text-red-600">
+                  {formerrors.contact_number}
+                </span>
+              )}
               <input
                 type="text"
                 className=" border  bg-backgorund w-full font-semibold border-black  p-3  rounded mb-1"
@@ -563,6 +685,12 @@ function SignUp() {
                   }
                 />
               </div>{" "}
+              {formerrors.province && (
+                <span className="text-red-600 m-2">{formerrors.province}</span>
+              )}
+              {formerrors.Zip_code && (
+                <span className="text-red-600">{formerrors.Zip_code}</span>
+              )}
               <div className="flex flex-row mb-1 ">
                 <select
                   className=" bg-backgorund p-3  w-96 h-12 block rounded border border-black"
@@ -582,6 +710,9 @@ function SignUp() {
                   <option value="Painting">{t("paint")}</option>
                 </select>
               </div>
+              {formerrors.typeOfteach && (
+                <span className="text-red-600">{formerrors.typeOfteach}</span>
+              )}
               <div className="flex flex-row mb-8 ">
                 <select
                   className=" bg-secondary w-96 h-12  p-3 rounded border border-black"
@@ -601,6 +732,9 @@ function SignUp() {
                   <option value="Pakistan">{t("pakistan")}</option>
                 </select>
               </div>
+              {formerrors.Country && (
+                <span className="text-red-600">{formerrors.Country}</span>
+              )}
               <Link
                 to="/pending
               "
