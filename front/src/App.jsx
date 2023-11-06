@@ -24,15 +24,19 @@ import Editstudent from "./Pages/Editstudent";
 import TeacherList from "./Pages/TeacherList";
 import EditTeacher from "./Pages/EditTeacher";
 import ViewTeacher from "./Pages/ViewTeacher";
+import Dashboard from "./Pages/Dashboard";
+
 
 export default function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<MainMenu />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="creditC" element={<CreditCardD />} />
         <Route path="/bank" element={<Bank />} />
         {/* <LoginPage path="/login" element={<LoginPage />} /> */}
+
         <Route path="bloglist" element={<Bloglist />} />
         <Route path="bloglist" element={<Bloglist />} />
         <Route path="/signup" element={<SignUp />} />
