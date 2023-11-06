@@ -14,7 +14,6 @@ function Bank() {
   const [page, setPage] = useState(1);
 
   const [Payment, setPayment] = useState();
-  
 
   return (
     <div className="relative bg-backgorund">
