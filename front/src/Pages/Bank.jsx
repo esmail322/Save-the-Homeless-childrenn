@@ -144,7 +144,7 @@ function Bank() {
                 </div>
                 <div className="flex justify-center ">
                   <select
-                    className="  bg-secondary w-13 h-11 m-1 border border-black  border-r-0  "
+                    className="  bg-secondary w-[56px] h-11 m-1 border border-black  border-r-0  "
                     name="typeofmoney"
                     id=""
                   >
@@ -163,7 +163,7 @@ function Bank() {
                 <div className=" flex justify-center space-x-2 mb-5">
                   <select
                     name=""
-                    className="border border-black  w-32 h-11"
+                    className="border border-black rounded  w-28 h-11"
                     id=""
                   >
                     <option value="">{t("expire")}</option>
@@ -181,7 +181,7 @@ function Bank() {
                     <input
                       type="date"
                       name="year"
-                      className="  w-29 h-11 border border-black pl-4 font-semibold"
+                      className="  w-32 h-11 border rounded border-black pl-4 font-semibold"
                       placeholder="Date"
                       id=""
                     />
@@ -202,7 +202,7 @@ function Bank() {
                   <input
                     type="number"
                     name=""
-                    className="  w-28 border border-black pl-3 font-semibold"
+                    className="  w-32 border border-black pl-3 font-semibold"
                     placeholder="CVC"
                     id=""
                   />
