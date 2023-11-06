@@ -94,7 +94,7 @@ function MainMenu() {
       </div>
       <div className="flex flex-wrap  w-screen  lg:h-[450px] md:h-[700px] relative bg-accent-1 mb-12">
         <div className="md:mx-auto lg:mx-0">
-          <h1 className=" text-3xl w-64 font-semibold  md:ml-[240px] text-white   mt-8 lg:ml-[60px]">
+          <h1 className=" text-3xl w-64 font-semibold md:mb-8 lg:mb-0  md:ml-[240px] text-white   mt-8 lg:ml-[60px]">
             {t("des3")}{" "}
           </h1>
           <p className="text-white lg:font-semibold  opacity-95  w-[600px] lg:my-4 pl-[60px]">
@@ -106,12 +106,12 @@ function MainMenu() {
             </button>
           </Link>
         </div>
-        <div className="  md:flex md:flex-row md:gap-14 md:items-center md:justify-center md:w-screen   lg:absolute lg:right-[60px] lg:left-[400px] lg:flex lg:flex-col lg:gap-2    lg:top-2">
-          <div className="w-72   mb-4  h-48 bg-backgorund ">
+        <div className="  md:flex md:flex-row md:gap-14 md:items-center  md:justify-center md:w-screen   lg:absolute lg:right-[60px] lg:left-[400px] lg:flex lg:flex-col lg:gap-2    lg:top-2">
+          <div className="w-72 md:ml-14 lg:ml-0  lg:mb-4  h-48 bg-backgorund ">
             {" "}
             <img
               src="Telegram/coin-heart.svg"
-              className=" ml-16 pt-4 "
+              className=" ml-16 pt-4  "
               alt=""
             />
             <h1 className="text-center text-3xl  md:text-xl md:pr-6 font-bold">
@@ -137,12 +137,12 @@ function MainMenu() {
         <h1 className=" justify-center  flex lg:text-3xl md:text-xl mb-5 font-semibold">
           {t("des5")}{" "}
         </h1>
-        <p className="lg:flex justify-center font-semibold mx-auto md:w-[500px] text-center md:mb-10 w-[770px] lg:mb-12">
+        <p className="lg:flex justify-center font-semibold mx-auto md:w-[500px] text-center  w-[770px] ">
           {t("des4")}
         </p>
       </div>
       <div
-        className=" lg:flex lg:space-x-6 lg:justify-center lg:ml-0 lg:mr-16 lg:relative  lg:first-letter: lg:mb-2 "
+        className=" lg:flex lg:space-x-6 lg:justify-center  lg:ml-0 lg:mr-16   lg:first-letter: lg:mb-2 "
         id="here"
       >
         <Doantate

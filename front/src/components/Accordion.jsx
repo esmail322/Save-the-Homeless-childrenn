@@ -97,7 +97,7 @@ const AccordionItem = ({ header, text }) => {
     setActive(!active);
   };
   return (
-    <div className="single-faq mb-8 w-full rounded-lg border border-black bg-backgorund  p-4 sm:p-8 lg:px-6 xl:px-8">
+    <div className="single-faq mb-8 w-full  rounded-lg border  border-black bg-backgorund  p-1 sm:p-1 lg:px-2 xl:px-8">
       <button
         className={`faq-btn flex w-full text-left`}
         onClick={() => handleToggle()}
