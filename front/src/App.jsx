@@ -24,6 +24,7 @@ import Editstudent from "./Pages/Editstudent";
 import TeacherList from "./Pages/TeacherList";
 import EditTeacher from "./Pages/EditTeacher";
 import ViewTeacher from "./Pages/ViewTeacher";
+
 export default function App() {
   return (
     <>
