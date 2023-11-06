@@ -142,6 +142,24 @@ function Bank() {
                     placeholder={`${t("cardnumber")}`}
                   />{" "}
                 </div>
+                <div className="flex justify-center ">
+                  <select
+                    className="  bg-secondary w-13 h-11 m-1 border border-black  border-r-0  "
+                    name="typeofmoney"
+                    id=""
+                  >
+                    <option value="">USD</option>
+                    <option value="">Afg</option>
+                    <option value="">Eur</option>
+                    <option value="">Pound</option>
+                  </select>
+                  <input
+                    type="number"
+                    className="block pl-3  border border-b-greay border-black w-80 m-1 h-11 rounded "
+                    name="amount"
+                    placeholder={`${t("amount of pay")}`}
+                  />{" "}
+                </div>
                 <div className=" flex justify-center space-x-2 mb-5">
                   <select
                     name=""
@@ -150,14 +168,37 @@ function Bank() {
                   >
                     <option value="">{t("expire")}</option>
                   </select>
-                  <select
+                  {/* <select
                     className="border border-black w-32 h-11"
                     name=""
                     id=""
                   >
                     <option value="">{t("year")}</option>
-                  </select>
+                    <option value=""> </option>
+                  </select> */}
 
+                  <div>
+                    <input
+                      type="date"
+                      name="year"
+                      className="  w-29 h-11 border border-black pl-4 font-semibold"
+                      placeholder="Date"
+                      id=""
+                    />
+                    <svg
+                      class="absolute left-3 top-3 h-5 w-5 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 12h14M12 5l7 7-7 7"
+                      ></path>
+                    </svg>
+                  </div>
                   <input
                     type="number"
                     name=""

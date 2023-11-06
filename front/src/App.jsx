@@ -26,6 +26,7 @@ import EditTeacher from "./Pages/EditTeacher";
 import ViewTeacher from "./Pages/ViewTeacher";
 import Dashboard from "./Pages/Dashboard";
 
+
 export default function App() {
   return (
     <>
