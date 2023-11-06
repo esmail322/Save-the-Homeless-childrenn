@@ -18,9 +18,9 @@ function Header() {
     }
   });
 
-  console.log("====================================");
-  console.log(language);
-  console.log("====================================");
+  // console.log("====================================");
+  // console.log(language);
+  // console.log("====================================");
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -141,6 +141,16 @@ function Header() {
                     className="block py-2 pr-4 pl-3 text-black font-semibold rounded hover:bg-accent-2   lg:bg-transparent  lg:p-0"
                   >
                     {t("Be_A_Volunteer")}
+                  </p>
+                </Link>
+              </li>
+              <li>
+                <Link to="/loginform">
+                  <p
+                    to="#"
+                    className="block py-2 pr-4 pl-3 text-black font-semibold rounded hover:bg-accent-2   lg:bg-transparent  lg:p-0"
+                  >
+                    {t("Dashboard")}
                   </p>
                 </Link>
               </li>

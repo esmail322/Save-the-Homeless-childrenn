@@ -3,6 +3,7 @@ const Student = require("../models/student.model");
 const Teacher = require("../models/teacher.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const User = require("../models/user.model");
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;
@@ -50,4 +51,19 @@ const login = async (req, res, next) => {
   }
 };
 
-module.exports = login;
+const authLogin = async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email, password });
+  if (!user) {
+    return res.status(400).send({ message: "you are not admin" });
+  }
+  const token = jwt.sign({ email, password }, "mySecret", {
+    algorithm: "HS256",
+  });
+  return res.status(200).json({ user, token });
+};
+
+module.exports = {
+  login,
+  authLogin,
+};

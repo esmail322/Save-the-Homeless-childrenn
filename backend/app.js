@@ -5,7 +5,7 @@ const donarRoutes = require("./routes/donar.route");
 const studentRoutes = require("./routes/student.route");
 const teacherRoutes = require("./routes/teacher.route");
 const paymentRoutes = require("./routes/payment.route");
-const login = require("./controller/auth.controller");
+const { login, authLogin } = require("./controller/auth.controller");
 const auth = require("./middlewares/auth");
 
 const app = express();
@@ -19,6 +19,7 @@ app.use("/student", studentRoutes);
 app.use("/teacher", teacherRoutes);
 app.use("/payment", paymentRoutes);
 app.post("/login", login);
+app.post("/auth/login", authLogin);
 
 app.post("/pay", auth, (req, res, next) => {
   return res.status(200).send({ message: "Login Success" });

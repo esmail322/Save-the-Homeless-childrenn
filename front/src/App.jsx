@@ -26,6 +26,7 @@ import EditTeacher from "./Pages/EditTeacher";
 import ViewTeacher from "./Pages/ViewTeacher";
 import Dashboard from "./Pages/Dashboard";
 import Paymentlist from "./Pages/Paymentlist";
+import LoginForm from "./Pages/LoginForm";
 
 export default function App() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="creditC" element={<CreditCardD />} />
         <Route path="/bank" element={<Bank />} />
         <Route path="/payment" element={<Paymentlist />} />
+        <Route path="/loginform" element={<LoginForm />} />
 
         {/* <LoginPage path="/login" element={<LoginPage />} /> */}
 
