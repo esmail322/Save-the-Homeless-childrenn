@@ -6,7 +6,6 @@ import Footer from "./Footer";
 function Bloglist() {
   return (
     <div className=" bg-backgorund ">
-      <Header />
       <div className="flex gap-3 py-2 px-16">
         <div className="w-1/2   border-[0.5px] border-[#020403] rounded-sm   flex h-80">
           <img
@@ -103,7 +102,7 @@ function Bloglist() {
           </div>
         </div>
       </div>
-      <Footer />
+
     </div>
   );
 }
