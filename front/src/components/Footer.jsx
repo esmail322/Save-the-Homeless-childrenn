@@ -7,7 +7,7 @@ function Footer() {
 
   return (
     <div className=" relative">
-      <div className="h-110 bg-cyan-700 w-full h-56  pt-6 grid grid-cols-5  sticky bottom-0 left-0    text-yellow-50 ">
+      <div className="h-110 bg-cyan-700 w-full md:pl-2  pt-6 grid lg:grid-cols-5 md:grid-cols-3 h-full  sticky bottom-0 left-0    text-yellow-50 ">
         <div className="text-yellow-50 pl-[60px]  ">
           <p className="text-yellow-50  text-0.5xl">
             SAVE THE <br /> HOMELESS
@@ -40,7 +40,7 @@ function Footer() {
           </div>
         </div>
         <div>
-          <div>
+          <div className="md:pl-14 md:pt-6 lg:pl-0 lg:pt-0">
             <span className="text-xl">{t("involved")}</span>
             <br />
             <div className="pt-4 ml-0 pl-0">
@@ -54,7 +54,7 @@ function Footer() {
           </div>
         </div>
         <div className="ml-6 pl-4">
-          <div className="h-44 w-44 bg-slate-50 mt-2 pt-4 pl-7 pr-4 mb-4 pb-8">
+          <div className="h-44 w-44 bg-slate-50 mt-2 pt-4 pl-7 md:justify-end  pr-4 mb-4 pb-8">
             <p className="text-black mt-4 font-bold text-xs">
               {t("together")}{" "}
             </p>

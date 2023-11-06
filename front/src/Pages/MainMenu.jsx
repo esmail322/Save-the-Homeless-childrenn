@@ -30,12 +30,16 @@ function MainMenu() {
         <section className=" mb-36 flex relative  ">
           <div className=" flex   flex-col mr-32    ">
             <img
-              className=" ml-72 mt-20 w-80 md:ml-40"
+              className=" ml-72 mt-20 lg:w-80 md:w-60 md:ml-40"
               src="Telegram/Hand-with-coin.svg"
               alt=""
             />
             r
-            <img className=" w-80 mt-32" src="Telegram/Hand.svg" alt="" />
+            <img
+              className=" lg:w-80 md:w-60  mt-32"
+              src="Telegram/Hand.svg"
+              alt=""
+            />
           </div>
           <div className="">
             <img
