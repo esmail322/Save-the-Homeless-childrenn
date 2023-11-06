@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import BankSlip from "./BankSlip";
 import { useTranslation } from "react-i18next";
@@ -9,12 +10,77 @@ function Bank() {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
-
-  const [donar, donarLog] = useState(false);
+  const [formerrors, setformerrors] = useState({});
+  const [issubmit, setissubmit] = useState(false);
   const [page, setPage] = useState(1);
 
-  const [Payment, setPayment] = useState();
-  
+  const [Payment, setPayment] = useState({
+    card_name: "",
+    card_number: "",
+    amount: "",
+    expire_date: "",
+    cvc: "",
+  });
+  const Changepaymetnhandler = (e) => {
+    setPayment({
+      ...Payment,
+      [e.target.name]: e.target.value,
+    });
+    console.log(Payment);
+  };
+  const [loading, setLoading] = useState();
+  const onSubmitchange = async (e) => {
+    e.preventDefault(e);
+
+    console.log(Payment);
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8080/payment",
+        Payment
+      );
+      console.log(response);
+    } catch (err) {
+      console.log("something went wrong");
+    }
+    setformerrors(validate(Payment));
+    setissubmit(true);
+  };
+  useEffect(() => {
+    console.log(formerrors);
+    if (Object.keys(formerrors).length === 0 && issubmit) {
+      console.log(Payment);
+    }
+  }, [formerrors]);
+  const validate = (values) => {
+    const errors = {};
+    const numberRegex = /^-?\d+(\.\d+)?$/;
+    const regexdate = /^\d{4}-\d{2}-\d{2}$/;
+    if (!values.card_name) {
+      errors.card_name = "card name is required";
+    }
+    if (!values.card_number) {
+      errors.card_number = "card number is required";
+    } else if (values.card_number.length < 5) {
+      errors.card_number = "card number must greater than 5 character";
+    } else if (values.card_number.length > 15) {
+      errors.card_number = "card number must be less than 15 character";
+    }
+    if (!values.expire_date) {
+      errors.expire_date = "select a date";
+    } else if (!regexdate.test(values.expire_date)) {
+      errors.expire_date = "expire data must have date format";
+    }
+    if (!values.cvc) {
+      errors.cvc = "cvc is required";
+    } else if (!numberRegex.test(values.cvc)) {
+      errors.cvc = "cvc must be number";
+    } else if (values.cvc.length < 2) {
+      errors.cvc = "cvc must be greater than 2 character";
+    } else if (values.cvc.length > 7) {
+      errors.cvc = "cvc must be less than 7 character";
+    }
+    return errors;
+  };
 
   return (
     <div className="relative bg-backgorund">
@@ -133,18 +199,26 @@ function Bank() {
                   <input
                     type="text"
                     className="block pl-3   border border-black w-96  h-11 rounded mt-6"
-                    name="Name of Card"
+                    name="card_name"
                     placeholder={`${t("cardname")}`}
+                    onChange={(e) => Changepaymetnhandler(e)}
                   />{" "}
                 </div>
+                {formerrors.card_name && (
+                  <span className="text-red-600">{formerrors.card_name}</span>
+                )}
                 <div className="flex justify-center ">
                   <input
                     type="text"
                     className="block pl-3  border border-b-greay border-black w-96 m-1 h-11 rounded "
-                    name="Name of Card"
+                    name="card_number"
                     placeholder={`${t("cardnumber")}`}
+                    onChange={(e) => Changepaymetnhandler(e)}
                   />{" "}
                 </div>
+                {formerrors.card_number && (
+                  <span className="text-red-600">{formerrors.card_number}</span>
+                )}
                 <div className="flex justify-center ">
                   <select
                     className="  bg-secondary w-13 h-11 m-1 border border-black  border-r-0  "
@@ -161,11 +235,15 @@ function Bank() {
                     className="block pl-3  border border-b-greay border-black w-80 m-1 h-11 rounded "
                     name="amount"
                     placeholder={`${t("amount of pay")}`}
+                    onChange={(e) => Changepaymetnhandler(e)}
                   />{" "}
                 </div>
+                {formerrors.amount && (
+                  <span className="text-red-600">{formerrors.amount}</span>
+                )}
                 <div className=" flex justify-center space-x-2 mb-5">
                   <select
-                    name=""
+                    name="expire_date"
                     className="border border-black  w-32 h-11"
                     id=""
                   >
@@ -183,10 +261,11 @@ function Bank() {
                   <div>
                     <input
                       type="date"
-                      name="year"
+                      name="expire_date"
                       className="  w-29 h-11 border border-black pl-4 font-semibold"
                       placeholder="Date"
                       id=""
+                      onChange={(e) => Changepaymetnhandler(e)}
                     />
                     <svg
                       class="absolute left-3 top-3 h-5 w-5 text-gray-400"
@@ -202,17 +281,30 @@ function Bank() {
                       ></path>
                     </svg>
                   </div>
+                  {formerrors.expire_date && (
+                    <span className="text-red-600">
+                      {formerrors.expire_date}
+                    </span>
+                  )}
                   <input
                     type="number"
-                    name=""
+                    name="cvc"
                     className="  w-28 border border-black pl-3 font-semibold"
                     placeholder="CVC"
                     id=""
+                    onChange={(e) => Changepaymetnhandler(e)}
                   />
+                  {formerrors.cvc && (
+                    <span className="text-red-600">{formerrors.cvc}</span>
+                  )}
                 </div>
 
                 <div className="flex justify-center">
-                  <button className="  w-96  h-10 text-white hover:bg-sky-700  bg-teal-950  ">
+                  <button
+                    type="submit"
+                    onClick={onSubmitchange}
+                    className="  w-96  h-10 text-white hover:bg-sky-700  bg-teal-950  "
+                  >
                     {t("pay")}
                   </button>{" "}
                 </div>
