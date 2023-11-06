@@ -13,6 +13,9 @@ function Bank() {
   const [donar, donarLog] = useState(false);
   const [page, setPage] = useState(1);
 
+  const [Payment, setPayment] = useState();
+  
+
   return (
     <div className="relative bg-backgorund">
       <Header />
