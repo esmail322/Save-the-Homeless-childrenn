@@ -33,14 +33,13 @@ function Bank() {
             <div
               className={`flex ${
                 page == 1 && ".active"
-              } items-stretch   space-x-10  pt-3  `}
+              }  md:flex-wrap lg:flex-nowrap md:space-y-5 md:ml-28 lg:ml-0  lg:space-x-10  lg:pt-3  `}
             >
               <div
                 onClick={() => setPage(1)}
                 className={`
-                lg:h-40
-              
-                lg:w-96 md:h-32 md:w-72 border-text-color pt-3 ${
+                h-40
+                w-96 border-4 pt-2 mt-5 bg-accent-2 border-amber-50 rounded-xl ${
                   page == 1 && ""
                 } bg-accent-2 rounded-sm`}
               >
