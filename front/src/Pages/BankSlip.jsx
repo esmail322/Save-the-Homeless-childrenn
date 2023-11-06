@@ -24,11 +24,11 @@ function BankSlip() {
         </div>
         <div className=" flex  justify-center">
           <form action="" className=" w-1/3 ">
-            <div className="w-full outline-dashed outline-1 h-48 relative  mb-8 ">
+            <div className="w-full outline-dashed flex lg:justify-center   outline-1 h-48 relative  mb-8 ">
               <input
                 type="file"
                 placeholder="abbb"
-                className=" absolute right-10 top-16 flex justify-center"
+                className=" absolute md:pl-6  top-20 "
               />
             </div>
             <Link to="/pending">

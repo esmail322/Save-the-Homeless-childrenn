@@ -25,19 +25,21 @@ function Bank() {
 
         <div className=" w-4/4 mx-[60px] my-6  h-full border border-collapse border-black">
           <h1 className=" text-2xl pl-10 font-semibold  p-6">{t("local")}</h1>
-          <p className="pl-8 pb-4 font-semibold w-[460px]">{t("pleaseinfo")}</p>
+          <p className="pl-8 pb-4 font-semibold md:w-[640px] lg:w-[460px]">
+            {t("pleaseinfo")}
+          </p>
 
           <div className=" mb-12 mx-8">
             <div
               className={`flex ${
                 page == 1 && ".active"
-              } items-stretch   space-x-10  pt-3  `}
+              }  md:flex-wrap lg:flex-nowrap md:space-y-5 md:ml-28 lg:ml-0  lg:space-x-10  lg:pt-3  `}
             >
               <div
                 onClick={() => setPage(1)}
-                className={`h-40
-              
-                w-96 border-text-color pt-3 ${
+                className={`
+                h-40
+                w-96 border-4 pt-2 mt-5 bg-accent-2 border-amber-50 rounded-xl ${
                   page == 1 && ""
                 } bg-accent-2 rounded-sm`}
               >

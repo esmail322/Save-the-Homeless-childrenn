@@ -13,7 +13,7 @@ function Blog() {
   return (
     <div className="relative bg-backgorund">
       <Header />
-      <section className=" bg-backgorund mt-6">
+      <section className=" bg-backgorund mt-6 ">
         <div className="flex relative flex-row items-stretch justify-center mb-8 pt-12 pb-2 ">
           <div className="  text-3xl font-bold text-true-gray-800">
             <h1>Payment Methode</h1>
@@ -27,14 +27,16 @@ function Blog() {
             alt=""
           />{" "}
           <div className="absolute  right-[140px] pt-20">
-            <p className="text-[20px] font-bold">Top Article</p>
+            <p className="lg:text-[20px] font-bold  md:mt-14 lg:mt-0 ">
+              Top Article
+            </p>
           </div>
           <div className="ml-[25px] mt-[48px]">
             <p className="font-semibold">Aguest 23 2023</p>
             <p className="text-2xl top-14  flex flex-row mb-[28px] mt-[30px] font-bold ">
               10 Ways to Give To Charity Without Your <br /> Budget
             </p>
-            <div className="w-[760px] h-full ">
+            <div className="lg:w-[760px] lg:h-full pb-10 ">
               <p>
                 A poor child refers to a young individual who is living in
                 poverty, facing significant economic hardships and limited

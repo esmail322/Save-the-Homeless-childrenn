@@ -76,7 +76,7 @@ function Header() {
           <div className="sm:flex sm:items-center lg:order-2">
             <Link
               to="#"
-              className="text-gray-800 dark:text-block  hover:bg-backgorund font-medium sm:rounded-lg text-sm sm:px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2"
+              className="text-gray-800 dark:text-block  hover:bg-backgorund font-medium sm:rounded-lg text-sm px-2 py-2 lg:py-2.5 sm:mr-2"
             >
               <select
                 onChange={(e) => changeLanguage(e.target.value)}
@@ -88,21 +88,16 @@ function Header() {
                 <option value="fa">{t("Dari")}</option>
               </select>
             </Link>
-            <Link
-              to="/signup"
-              className="text-black hover:bg-accent-2  sm:font-medium sm:rounded-lg sm:text-sm  lg:px-5 sm:py-2  sm:mr-2 "
-            >
-              {t("Sign")}
-            </Link>{" "}
+
             <Link
               to="/login"
-              className="text-black hover:bg-accent-2  sm:font-medium sm:rounded-lg sm:text-sm sm:px-4 sm:lg:px-5 py-2  mr-2 "
+              className="text-black hover:bg-accent-2  sm:font-medium sm:rounded-lg sm:text-sm sm:px-2 sm:lg:px-2 py-2  mr-2 "
             >
               {t("Login")}
             </Link>
           </div>
           <div
-            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1 md:hidden"
             id="mobile-menu-2"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
