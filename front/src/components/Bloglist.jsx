@@ -3,89 +3,97 @@ import { Link } from "react-router-dom";
 
 function Bloglist() {
   return (
-    <div>
-      <div className="flex flex-row px-16">
-        <div className=" w-1/2   border-[0.5px] border-[#020403] rounded-sm   flex h-80 mb-">
+    <div className="  ">
+      <div className="flex gap-3 py-2 px-16">
+        <div className="w-1/2   border-[0.5px] border-[#020403] rounded-sm   flex h-80">
           <img
             src="Telegram/image.jpg"
-            className="w-76 ml-8 mt-6 h-60"
+            className="lg:w-76 md:w-40 md:ml-4 lg:ml-8 mt-6 h-60"
             alt=""
           />
-          <div className="flex flex-row relative ">
+          <div className="flex relative ">
             {" "}
-            <p className="absolute left-9 top-5 w-32">Ahmad Rashid</p>
+            <p className="absolute lg:left-9 md:left-4 top-5 w-32">
+              Ahmad Rashid
+            </p>
             <br />
-            <p className="text-1x2 w-80 left-8 top-14 absolute flex flex-row font-bold ">
+            <p className=" lg:w-80 md:w-32 md:text-xs lg:left-8 md:left-4 top-14 absolute lg:text-[16px] md:font-bold flex flex-row lg:font-bold ">
               10 Ways to Give To Charity Without Your Budget
             </p>
             <Link
               to="/blog"
-              className="text-1x2 w-80 left-16 top-40 absolute flex flex-row font-bold "
+              className="text-1x2 w-80 lg:left-16 top-40 absolute flex flex-row md:left-5 font-bold "
             >
               More About ...
             </Link>
           </div>
-        </div>{" "}
-        <div className=" w-1/2 flex-row space-x-10 border-[0.5px] border-[#020403] rounded-sm      flex h-80 mb-2 ml-2">
+        </div>
+        <div className="w-1/2   border-[0.5px] border-[#020403] rounded-sm   flex h-80">
           <img
             src="Telegram/image.jpg"
-            className="w-76 ml-8 mt-6 h-60"
+            className="lg:w-76 md:w-40 md:ml-4 lg:ml-8 mt-6 h-60"
             alt=""
           />
-          <div className="flex flex-row relative  ">
+          <div className="flex relative ">
             {" "}
-            <p className="absolute left-2 top-5 w-32">Ahmad Rashid</p>
+            <p className="absolute lg:left-9 md:left-4 top-5 w-32">
+              Ahmad Rashid
+            </p>
             <br />
-            <p className="text-1x2 w-80 top-14 absolute flex flex-row font-bold ">
+            <p className=" lg:w-80 md:w-32 md:text-xs lg:left-8 md:left-4 top-14 absolute lg:text-[16px] md:font-bold flex flex-row lg:font-bold ">
               10 Ways to Give To Charity Without Your Budget
             </p>
             <Link
               to="/blog"
-              className="text-1x2 w-80 left-16 top-40 absolute flex flex-row font-bold "
+              className="text-1x2 w-80 lg:left-16 top-40 absolute flex flex-row md:left-5 font-bold "
             >
               More About ...
             </Link>
           </div>
         </div>
       </div>
-      <div className="flex flex-row px-16">
-        <div className=" w-1/2  space-x-10 border-[0.5px] border-[#020403] rounded-sm      flex h-80 mb-">
+      <div className="flex gap-3 py-2 px-16">
+        <div className="w-1/2   border-[0.5px] border-[#020403] rounded-sm   flex h-80">
           <img
             src="Telegram/image.jpg"
-            className="w-76 ml-8 mt-6 h-60"
+            className="lg:w-76 md:w-40 md:ml-4 lg:ml-8 mt-6 h-60"
             alt=""
           />
-          <div className="flex flex-row relative ">
+          <div className="flex relative ">
             {" "}
-            <p className="absolute left-2 top-5 w-32">Ahmad Rashid</p>
+            <p className="absolute lg:left-9 md:left-4 top-5 w-32">
+              Ahmad Rashid
+            </p>
             <br />
-            <p className="text-1x2 w-80 top-14 absolute flex flex-row font-bold ">
+            <p className=" lg:w-80 md:w-32 md:text-xs lg:left-8 md:left-4 top-14 absolute lg:text-[16px] md:font-bold flex flex-row lg:font-bold ">
               10 Ways to Give To Charity Without Your Budget
             </p>
             <Link
               to="/blog"
-              className="text-1x2 w-80 left-16 top-40 absolute flex flex-row font-bold "
+              className="text-1x2 w-80 lg:left-16 top-40 absolute flex flex-row md:left-5 font-bold "
             >
               More About ...
             </Link>
           </div>
-        </div>{" "}
-        <div className=" w-1/2 flex-row space-x-10 border-[0.5px] border-[#020403] rounded-sm     ml-2 flex h-80 mb-10">
+        </div>
+        <div className="w-1/2   border-[0.5px] border-[#020403] rounded-sm   flex h-80">
           <img
             src="Telegram/image.jpg"
-            className="w-76 ml-8 mt-6 h-60"
+            className="lg:w-76 md:w-40 md:ml-4 lg:ml-8 mt-6 h-60"
             alt=""
           />
-          <div className="flex flex-row relative ">
+          <div className="flex relative ">
             {" "}
-            <p className="absolute left-2 top-5 w-32">Ahmad Rashid</p>
+            <p className="absolute lg:left-9 md:left-4 top-5 w-32">
+              Ahmad Rashid
+            </p>
             <br />
-            <p className="text-1x2 w-80 top-14 absolute flex flex-row font-bold ">
+            <p className=" lg:w-80 md:w-32 md:text-xs lg:left-8 md:left-4 top-14 absolute lg:text-[16px] md:font-bold flex flex-row lg:font-bold ">
               10 Ways to Give To Charity Without Your Budget
             </p>
             <Link
               to="/blog"
-              className="text-1x2 w-80 left-16 top-40 absolute flex flex-row font-bold "
+              className="text-1x2 w-80 lg:left-16 top-40 absolute flex flex-row md:left-5 font-bold "
             >
               More About ...
             </Link>

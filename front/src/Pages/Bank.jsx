@@ -25,7 +25,9 @@ function Bank() {
 
         <div className=" w-4/4 mx-[60px] my-6  h-full border border-collapse border-black">
           <h1 className=" text-2xl pl-10 font-semibold  p-6">{t("local")}</h1>
-          <p className="pl-8 pb-4 font-semibold w-[460px]">{t("pleaseinfo")}</p>
+          <p className="pl-8 pb-4 font-semibold md:w-[640px] lg:w-[460px]">
+            {t("pleaseinfo")}
+          </p>
 
           <div className=" mb-12 mx-8">
             <div
@@ -35,9 +37,10 @@ function Bank() {
             >
               <div
                 onClick={() => setPage(1)}
-                className={`h-40
+                className={`
+                lg:h-40
               
-                w-96 border-text-color pt-3 ${
+                lg:w-96 md:h-32 md:w-72 border-text-color pt-3 ${
                   page == 1 && ""
                 } bg-accent-2 rounded-sm`}
               >
