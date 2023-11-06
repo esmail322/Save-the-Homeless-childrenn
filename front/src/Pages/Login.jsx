@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useTranslation } from "react-i18next";
@@ -7,6 +7,8 @@ import axios from "axios";
 function Login() {
   const [donar, donarLog] = useState(false);
   const [page, setPage] = useState(0);
+  const [formerrors, setformerrors] = useState({});
+  const [issubmit, setissubmit] = useState(false);
   const { t } = useTranslation();
   // Teacher login function
   const [Teacher, setTeacher] = useState({
@@ -17,6 +19,8 @@ function Login() {
   // handle submit
   const handleSubmitteacher = async (event) => {
     event.preventDefault(event);
+    setformerrors(validate(Teacher));
+    setissubmit(true);
 
     console.log("clicked");
 
@@ -36,7 +40,8 @@ function Login() {
   // handle submit
   const handleSubmitstudent = async (event) => {
     event.preventDefault(event);
-
+    setformerrors(validate(Student));
+    setissubmit(true);
     console.log("clicked");
 
     try {
@@ -55,7 +60,8 @@ function Login() {
   // handle submit
   const handleSubmit = async (event) => {
     event.preventDefault(event);
-
+    setformerrors(validate(Donar));
+    setissubmit(true);
     console.log("clicked");
 
     try {
@@ -65,7 +71,30 @@ function Login() {
       console.log(error);
     }
   };
+  useEffect(() => {
+    console.log(formerrors);
+    if (Object.keys(formerrors).length === 0 && issubmit) {
+      console.log(donarField);
+    }
+  }, [formerrors]);
 
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^[^\s@+]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if (!values.email) {
+      errors.email = "email is required!";
+    } else if (!regex.test(values.email)) {
+      errors.email = "invalid email format";
+    }
+    if (!values.password) {
+      errors.password = "password is required";
+    } else if (values.password.length < 4) {
+      errors.password = "Passwrod must be greater than 4 characters";
+    } else if (values.password.length > 10) {
+      errors.password = "Password connot exceed more than 10 characters";
+    }
+    return errors;
+  };
   return (
     <div className="relative bg-backgorund">
       <Header />
@@ -157,6 +186,9 @@ function Login() {
                   setDonar({ ...Donar, email: text.target.value })
                 }
               />
+              {formerrors.email && (
+                <span className="text-red-600">{formerrors.email}</span>
+              )}
               <input
                 type="string"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
@@ -167,6 +199,9 @@ function Login() {
                 }
                 placeholder={`${t("password1")}`}
               />
+              {formerrors.password && (
+                <span className="text-red-600">{formerrors.password}</span>
+              )}
               <button
                 type="submit"
                 className="w-full text-left font-semibold pt-2 pb-6 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1"
@@ -196,6 +231,9 @@ function Login() {
                 }
                 placeholder={`${t("fullname")}`}
               />
+              {formerrors.email && (
+                <span className="text-red-600">{formerrors.email}</span>
+              )}
               <input
                 type="text"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
@@ -206,6 +244,9 @@ function Login() {
                 }
                 placeholder={`${t("password1")}`}
               />
+              {formerrors.password && (
+                <span className="text-red-600">{formerrors.password}</span>
+              )}
               <button
                 type="submit"
                 className="w-full text-left font-semibold pt-2 pb-6 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1"
@@ -235,6 +276,9 @@ function Login() {
                 }
                 placeholder={`${t("email1")}`}
               />
+              {formerrors.email && (
+                <span className="text-red-600">{formerrors.email}</span>
+              )}
               <input
                 type="text"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
@@ -245,6 +289,9 @@ function Login() {
                 }
                 placeholder={`${t("password1")}`}
               />
+              {formerrors.password && (
+                <span className="text-red-600">{formerrors.password}</span>
+              )}
               <button
                 type="submit"
                 className="w-full text-left font-semibold pt-2 pb-6 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1"
