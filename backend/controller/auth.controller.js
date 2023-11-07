@@ -53,10 +53,17 @@ const login = async (req, res, next) => {
 
 const authLogin = async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email, password });
+  const user = await User.findOne({ email });
   if (!user) {
     return res.status(400).send({ message: "you are not admin" });
   }
+
+  const doMatch = await bcrypt.compare(password, user.password);
+  console.log({ doMatch, user });
+  if (!doMatch) {
+    return res.status(400).send({ message: "incorrect email or password" });
+  }
+
   const token = jwt.sign({ email, password }, "mySecret", {
     algorithm: "HS256",
   });
