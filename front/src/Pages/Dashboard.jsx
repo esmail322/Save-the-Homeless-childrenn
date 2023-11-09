@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   AcademicCapIcon,
@@ -18,6 +18,7 @@ import {
   ChevronRightIcon,
   SearchIcon,
 } from "@heroicons/react/solid";
+import { useNavigate } from "react-router-dom";
 
 const navigation = [
   { name: "Home", href: "#", icon: HomeIcon, current: true },
@@ -59,8 +60,24 @@ function classNames(...classes) {
 }
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/loginForm");
+  };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return navigate("/loginForm");
+    } else {
+      setLoading(false);
+    }
+  }, []);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  if (loading) {
+    return <div>Loading..........</div>;
+  }
   return (
     <>
       {/*
@@ -331,6 +348,7 @@ export default function Dashboard() {
                         {({ active }) => (
                           <a
                             href="#"
+                            onClick={logout}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
