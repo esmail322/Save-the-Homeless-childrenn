@@ -53,8 +53,8 @@ function MainMenu() {
             <h1 className=" lg:text-8xl   lg:font-bold lg:pl-10 md:text-5xl md:mx-20 lg:mr-20">
               {t("Fundraising_For_The_People")}
             </h1>
-            <h1 className=" pl- mt-8  text-secondary outline-offset-1 font-semibold">
-              <img className="mx-auto mt-10" src="Telegram/You.svg" alt="" />
+            <h1 className=" pl- mt-8  text-cyan-400 font-bold lg:text-8xl md:text-5xl outline-offset-1 ">
+              You Care{" "}
             </h1>
             <div className="mt-8  text-1xl ">
               <p className="w-96 mx-auto">{t("des1")}</p>

@@ -221,7 +221,7 @@ function Bank() {
                 )}
                 <div className="flex justify-center ">
                   <select
-                    className="  bg-secondary w-13 h-11 m-1 border border-black  border-r-0  "
+                    className="  bg-secondary w-[62px] h-11 m-1 border border-black  rounded border-r-0  "
                     name="typeofmoney"
                     id=""
                   >
@@ -232,7 +232,7 @@ function Bank() {
                   </select>
                   <input
                     type="number"
-                    className="block pl-3  border border-b-greay border-black w-80 m-1 h-11 rounded "
+                    className="block pl-3  border border-b-greay border-black w-[313px] m-1 ml-1 h-11 rounded "
                     name="amount"
                     placeholder={`${t("amount of pay")}`}
                     onChange={(e) => Changepaymetnhandler(e)}
@@ -244,7 +244,7 @@ function Bank() {
                 <div className=" flex justify-center space-x-2 mb-5">
                   <select
                     name="expire_date"
-                    className="border border-black  w-32 h-11"
+                    className="border border-black  w-24 rounded h-11"
                     id=""
                   >
                     <option value="">{t("expire")}</option>
