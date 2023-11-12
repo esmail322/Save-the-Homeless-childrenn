@@ -20,10 +20,10 @@ import {
 } from "@heroicons/react/solid";
 
 const navigation = [
-  { name: "Home", href: "/", icon: HomeIcon, current: true },
+  { name: "home", href: "/dashboard", icon: HomeIcon, current: true },
   {
     name: "Students",
-    href: "dashboard/students",
+    href: "/dashboard/students",
     icon: AcademicCapIcon,
     current: false,
   },

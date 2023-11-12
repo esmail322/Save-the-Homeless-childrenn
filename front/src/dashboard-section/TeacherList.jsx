@@ -92,7 +92,7 @@ export default function Dashboard() {
   const [data, setData] = useState();
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("http://127.0.0.1:8080/student");
+      const { data } = await axios.get("http://127.0.0.1:8080/teacher");
 
       setData(data);
     };
@@ -397,7 +397,7 @@ export default function Dashboard() {
                               Country
                             </th>
                             <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                              TypeofAssist
+                              TypeofTeach
                             </th>
                             <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Action
@@ -416,7 +416,7 @@ export default function Dashboard() {
                               <td>{data?.province}</td>
                               <td>{data?.Zip_code}</td>
                               <td>{data?.Country}</td>
-                              <td>{data?.typeOfassist}</td>
+                              <td>{data?.typeOfteach}</td>
                               <td class="flex space-x-4">
                                 <a href="/viewstudent/:id">
                                   <svg

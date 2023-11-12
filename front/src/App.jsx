@@ -12,7 +12,7 @@ import LoginPage from "./Pages/LoginPage";
 import Login from "./Pages/Login";
 import Doantate from "./components/Doantate";
 import MainMenu from "./Pages/MainMenu";
-import Donorlist from "./Pages/Donorlist";
+import DonarList from './dashboard-section/DonarList'
 import View from "./Pages/View";
 import Edit from "./Pages/Edit";
 import Blog from "./Pages/Blog";
@@ -21,12 +21,12 @@ import Bloglist from "./components/Bloglist";
 import Practice from "./Pages/Practice";
 import Viewstudent from "./Pages/Viewstudent";
 import Editstudent from "./Pages/Editstudent";
-import TeacherList from "./Pages/TeacherList";
 import EditTeacher from "./Pages/EditTeacher";
 import ViewTeacher from "./Pages/ViewTeacher";
 import Dashboard from "./dashboard-section/Dashboard";
 import Paymentlist from "./Pages/Paymentlist";
 import LoginForm from "./Pages/LoginForm";
+import TeacherList from "./dashboard-section/TeacherList";
 // import Sidebar from "./dashboard/Sidebar";
 
 export default function App() {
@@ -51,7 +51,6 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/pending" element={<Pending />} />
         <Route path="/donatate" element={<Doantate />} />
-        <Route path="/donar" element={<Donorlist />} />
         <Route path="/view/:id" element={<View />} />
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/practice" element={<Practice />} />
@@ -62,6 +61,9 @@ export default function App() {
         <Route path="/viewteacher/:id" element={<ViewTeacher />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/students" element={<StudentList />} />
+        <Route path="/dashboard/volunteers" element={<TeacherList />} />
+        <Route path="/dashboard/donar" element={<DonarList />} />
+
 
       </Routes>
 
