@@ -4,7 +4,7 @@ import Pending from "./Pages/Pending";
 import Bank from "./Pages/Bank";
 import "./index.css";
 import BankSlip from "./Pages/BankSlip";
-import StudentList from "./Pages/StudentList";
+import StudentList from "./dashboard-section/StudentList";
 import Alcourse from "./Pages/Alcourse";
 import { Routes, Route } from "react-router-dom";
 import SignUp from "./Pages/SignUp";
@@ -24,20 +24,20 @@ import Editstudent from "./Pages/Editstudent";
 import TeacherList from "./Pages/TeacherList";
 import EditTeacher from "./Pages/EditTeacher";
 import ViewTeacher from "./Pages/ViewTeacher";
-import Dashboard from "./Pages/Dashboard";
+import Dashboard from "./dashboard-section/Dashboard";
 import Paymentlist from "./Pages/Paymentlist";
 import LoginForm from "./Pages/LoginForm";
+// import Sidebar from "./dashboard/Sidebar";
 
 export default function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<MainMenu />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="creditC" element={<CreditCardD />} />
         <Route path="/bank" element={<Bank />} />
         <Route path="/payment" element={<Paymentlist />} />
-        <Route path="/loginform" element={<LoginForm />} />
+        <Route path="/loginf" element={<LoginForm />} />
 
         {/* <LoginPage path="/login" element={<LoginPage />} /> */}
 
@@ -46,7 +46,6 @@ export default function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/accor" element={<Accordion />} />
         <Route path="/bankslip" element={<BankSlip />} />
-        <Route path="/student" element={<StudentList />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/course" element={<Alcourse />} />
         <Route path="/login" element={<Login />} />
@@ -61,7 +60,11 @@ export default function App() {
         <Route path="/teacher" element={<TeacherList />} />
         <Route path="/editteacher/:id" element={<EditTeacher />} />
         <Route path="/viewteacher/:id" element={<ViewTeacher />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/students" element={<StudentList />} />
+
       </Routes>
+
       {/* <Pending /> */}
       {/* <Login /> */}
       {/* <Header /> */}
