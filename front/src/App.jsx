@@ -37,7 +37,7 @@ export default function App() {
         <Route path="creditC" element={<CreditCardD />} />
         <Route path="/bank" element={<Bank />} />
         <Route path="/payment" element={<Paymentlist />} />
-        <Route path="/loginf" element={<LoginForm />} />
+        <Route path="/loginform" element={<LoginForm />} />
 
         {/* <LoginPage path="/login" element={<LoginPage />} /> */}
 
@@ -56,11 +56,11 @@ export default function App() {
         <Route path="/practice" element={<Practice />} />
         <Route path="/viewstudent/:id" element={<Viewstudent />} />
         <Route path="/editstudent/:id" element={<Editstudent />} />
-        <Route path="/teacher" element={<TeacherList />} />
+        {/* <Route path="/teacher" element={<TeacherList />} /> */}
         <Route path="/editteacher/:id" element={<EditTeacher />} />
         <Route path="/viewteacher/:id" element={<ViewTeacher />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/students" element={<StudentList />} />
+        <Route path="/dashboard/students" element={<StudentList/>} />
         <Route path="/dashboard/volunteers" element={<TeacherList />} />
         <Route path="/dashboard/donar" element={<DonarList />} />
 

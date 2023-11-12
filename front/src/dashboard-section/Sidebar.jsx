@@ -29,13 +29,13 @@ const navigation = [
   },
   {
     name: "Volunteers",
-    href: "dashboard/volunteers",
+    href: "/dashboard/volunteers",
     icon: UserIcon,
     current: false,
   },
   {
-    name: "Donors",
-    href: "dashboard/donors",
+    name: "Donar",
+    href: "/dashboard/donar",
     icon: CreditCardIcon,
     current: false,
   },
