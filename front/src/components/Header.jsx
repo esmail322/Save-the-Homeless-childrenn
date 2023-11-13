@@ -86,6 +86,7 @@ function Header() {
               >
                 <option value="en">{t("English")}</option>
                 <option value="fa">{t("Dari")}</option>
+                <option value="pa">{t("pashto")}</option>
               </select>
             </Link>
 

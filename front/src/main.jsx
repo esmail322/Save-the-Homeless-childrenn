@@ -16,6 +16,9 @@ i18next.init({
     fa: {
       translation: await import("./translation/fa/fa.json"),
     },
+    pa: {
+      translation: await import("./translation/pa/pa.json"),
+    },
   },
 });
 
