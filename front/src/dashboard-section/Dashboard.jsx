@@ -42,6 +42,12 @@ const navigation = [
     icon: CreditCardIcon,
     current: false,
   },
+  {
+    name: "Payments",
+    href: "/dashboard/payment",
+    icon: CreditCardIcon,
+    current: false,
+  },
 ];
 const secondaryNavigation = [
   { name: "Settings", href: "/dashboard/setting", icon: CogIcon },
@@ -52,6 +58,7 @@ const cards = [
   { name: "Donated Amount", href: "#", icon: ScaleIcon, amount: "$30,659.45" },
   { name: "Student Amount", href: "#", icon: ScaleIcon, amount: "300" },
   { name: "Volunteer Amount", href: "#", icon: ScaleIcon, amount: "120" },
+  
   // More items...
 ];
 const transactions = [

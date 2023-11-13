@@ -19,6 +19,11 @@ const getPayments = async (req, res) => {
   const payments = await Payment.find();
   return res.send(payments);
 };
+const deletepayment = async (req, res) => {
+  const { _id } = req.params;
+  const result = await Payment.findByIdAndDelete({ _id });
+  return res.send(result);
+};
 
 // const deleteDonar = async (req, res) => {
 //   const { _id } = req.params;
@@ -42,4 +47,5 @@ module.exports = {
   savepayment,
   getPayments,
   getpaid,
+  deletepayment,
 };
