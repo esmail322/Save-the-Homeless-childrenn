@@ -45,8 +45,10 @@ const Edit = () => {
     }
   };
   return (
-    <div>
-      <h1>Edit Form</h1>
+    <div className="mx-auto relative flex justify-center   mt-48">
+      <h1 className="absolute bottom-44 text-4xl font-semibold pr-32 ">
+        Edit Form
+      </h1>
       <form action="" className=" w-96 bg-backgorund">
         <input
           type="text"
@@ -74,7 +76,7 @@ const Edit = () => {
         />
         <button
           type="submit"
-          className="btn btn-primary"
+          className="mb-14 w-40  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1 absolute right-96 mr-[331px] bg-teal-950"
           onClick={(e) => onSubmitchange(e)}
         >
           Update
@@ -82,7 +84,12 @@ const Edit = () => {
       </form>
 
       <div>
-        <button onClick={clicktobackhandler}>back to home</button>
+        <button
+          className=" mb-14 w-52  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1  absolute right-[379px] mr-28 bg-teal-950"
+          onClick={clicktobackhandler}
+        >
+          back to home
+        </button>
       </div>
     </div>
   );

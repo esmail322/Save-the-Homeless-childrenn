@@ -46,8 +46,10 @@ const Editstudent = () => {
     }
   };
   return (
-    <div>
-      <h1>Edit Form</h1>
+    <div className="flex justify-center mt-32 ">
+      <h1 className="absolute  text-4xl font-semibold bottom-96 mb-32 pr-32 ">
+        Edit Form
+      </h1>
       <form action="" className=" bg-backgorund w-96">
         <input
           type="text"
@@ -228,9 +230,7 @@ const Editstudent = () => {
           </button>
         </Link>
       </form>
-      <div>
-        <button onClick={clicktobackhandler}>back to home</button>
-      </div>
+      <div></div>
     </div>
   );
 };
