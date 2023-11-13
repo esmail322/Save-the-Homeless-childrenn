@@ -7,7 +7,7 @@ const Edit = () => {
   const navigate = useNavigate();
 
   const clicktobackhandler = () => {
-    navigate("/");
+    navigate("/dashboard/donar");
   };
 
   const [donarField, setDonarField] = useState({
@@ -39,7 +39,7 @@ const Edit = () => {
     e.preventDefault();
     try {
       await axios.patch("http://127.0.0.1:8080/donar/" + id, donarField);
-      navigate("/donar");
+      navigate("/dashboard/donar");
     } catch (err) {
       console.log("something went wrong");
     }
@@ -76,7 +76,7 @@ const Edit = () => {
         />
         <button
           type="submit"
-          className="mb-14 w-40  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1 absolute right-96 mr-[331px] bg-teal-950"
+          className="mb-14 w-40  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1 absolute right-120 mr-[331px] bg-teal-950"
           onClick={(e) => onSubmitchange(e)}
         >
           Update
@@ -85,7 +85,7 @@ const Edit = () => {
 
       <div>
         <button
-          className=" mb-14 w-52  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1  absolute right-[379px] mr-28 bg-teal-950"
+          className=" mb-14 w-40  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1 absolute right-160 mr-[331px] bg-teal-950"
           onClick={clicktobackhandler}
         >
           back to home

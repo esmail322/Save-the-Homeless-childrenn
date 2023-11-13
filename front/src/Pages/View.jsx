@@ -23,7 +23,7 @@ const View = () => {
     }
   };
   const clickTobackhandler = () => {
-    navigates("/donar");
+    navigates("/dashboard/donar");
   };
   return (
     <div>
@@ -64,7 +64,7 @@ const View = () => {
       </div>
       <div className="container d-flex justify-content-center">
         <div>
-          <button className="btn btn-danger mx-2" onClick={clickTobackhandler}>
+          <button className="mb-14 w-52  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1  absolute right-[379px] mr-28 bg-teal-950" onClick={clickTobackhandler}>
             back to home
           </button>
         </div>
