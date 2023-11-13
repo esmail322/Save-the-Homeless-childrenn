@@ -144,16 +144,6 @@ function Header() {
                   </p>
                 </Link>
               </li>
-              <li>
-                <Link to="/loginform">
-                  <p
-                    to="#"
-                    className="block py-2 pr-4 pl-3 text-black font-semibold rounded hover:bg-accent-2   lg:bg-transparent  lg:p-0"
-                  >
-                    {t("Dashboard")}
-                  </p>
-                </Link>
-              </li>
             </ul>
           </div>
         </div>
