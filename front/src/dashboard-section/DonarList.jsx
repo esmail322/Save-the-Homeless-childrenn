@@ -78,12 +78,12 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("token");
-    navigate("/loginf");
+    navigate("/loginform");
   };
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      return navigate("/loginf");
+      return navigate("/loginform");
     } else {
       setLoading(false);
     }
@@ -240,7 +240,7 @@ export default function Dashboard() {
                             alt=""
                           />
                           <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-                            Good morning, Emilia Birch
+                            Wellcome , Esmail Aryan
                           </h1>
                         </div>
                       </div>

@@ -20,6 +20,8 @@ app.use("/teacher", teacherRoutes);
 app.use("/payment", paymentRoutes);
 app.use(authRoutes);
 
+
+
 app.post("/pay", auth, (req, res, next) => {
   return res.status(200).send({ message: "Login Success" });
 });

@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
+import Student from "./Students";
 import {
   AcademicCapIcon,
   CogIcon,
@@ -49,7 +50,7 @@ const secondaryNavigation = [
 ];
 const cards = [
   { name: "Donated Amount", href: "#", icon: ScaleIcon, amount: "$30,659.45" },
-  { name: "Stdent Amount", href: "#", icon: ScaleIcon, amount: "300" },
+  { name: "Student Amount", href: "#", icon: ScaleIcon, amount: "300" },
   { name: "Volunteer Amount", href: "#", icon: ScaleIcon, amount: "120" },
   // More items...
 ];
@@ -154,7 +155,7 @@ export default function Dashboard() {
                       />
                       <span className="hidden ml-3 text-gray-700 text-sm font-medium lg:block">
                         <span className="sr-only">Open user menu for </span>
-                        Emilia Birch
+                        Esmail Aryan
                       </span>
                       <ChevronDownIcon
                         className="hidden flex-shrink-0 ml-1 h-5 w-5 text-gray-400 lg:block"
@@ -240,7 +241,7 @@ export default function Dashboard() {
                             alt=""
                           />
                           <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-                            Wellcome, Esmail Aryan
+                            Wellcome, Esmail {Student}
                           </h1>
                         </div>
                       </div>
@@ -255,53 +256,10 @@ export default function Dashboard() {
                 <h2 className="text-lg leading-6 font-medium text-gray-900">
                   Overview
                 </h2>
-                <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {/* Card */}
-                  {cards.map((card) => (
-                    <div
-                      key={card.name}
-                      className="bg-white overflow-hidden shadow rounded-lg"
-                    >
-                      <div className="p-5">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0">
-                            <card.icon
-                              className="h-6 w-6 text-gray-400"
-                              aria-hidden="true"
-                            />
-                          </div>
-                          <div className="ml-5 w-0 flex-1">
-                            <dl>
-                              <dt className="text-sm font-medium text-gray-500 truncate">
-                                {card.name}
-                              </dt>
-                              <dd>
-                                <div className="text-lg font-medium text-gray-900">
-                                  {card.amount}
-                                </div>
-                              </dd>
-                            </dl>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="bg-gray-50 px-5 py-3">
-                        <div className="text-sm">
-                          <a
-                            href={card.href}
-                            className="font-medium text-cyan-700 hover:text-cyan-900"
-                          >
-                            View all
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
               </div>
 
-              <h2 className="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8">
-                Recent Donations
-              </h2>
+              <h2 className="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8"></h2>
 
               {/* Activity list (smallest breakpoint only) */}
               <div className="shadow sm:hidden">
