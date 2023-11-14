@@ -16,7 +16,7 @@ useEffect(() => {
 }, []);
   return (
     <h1>
-    {data.length}
+    {data}
     </h1>
   )
 }

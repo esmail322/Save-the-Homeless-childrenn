@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
-import Student from "./Students";
+import Students from "./Students";
 import {
   AcademicCapIcon,
   CogIcon,
@@ -248,7 +248,8 @@ export default function Dashboard() {
                             alt=""
                           />
                           <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-                            Wellcome, Esmail {Student}
+                            Wellcome, Esmail
+
                           </h1>
                         </div>
                       </div>
