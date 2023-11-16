@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
@@ -31,6 +32,7 @@ function SignUp() {
     event.preventDefault(event);
     setformerrors(validate(teacherField));
     setissubmit(true);
+    navigate("/studentlistforteacher");
     try {
       const result = await axios.post(
         "http://localhost:8080/teacher",
@@ -65,10 +67,12 @@ function SignUp() {
     typeOfassist: "",
     confirmPassword: "",
   });
+  const navigate = useNavigate();
   const handleStudentFormSubmit = async (event) => {
     event.preventDefault(event);
     setformerrors(validate(studentField));
     setissubmit(true);
+    navigate("/course");
     try {
       const result = await axios.post(
         "http://localhost:8080/student",
@@ -111,12 +115,18 @@ function SignUp() {
     e.preventDefault(e);
 
     console.log(donarField);
+    navigate("/bank");
     try {
       const response = await axios.post(
         "http://127.0.0.1:8080/donar",
         donarField
       );
       console.log(response);
+      setDonarField({
+        fullname: "",
+        email: "",
+        password: "",
+      });
     } catch (err) {
       console.log("something went wrong");
     }

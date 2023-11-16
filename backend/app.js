@@ -20,14 +20,11 @@ app.use("/teacher", teacherRoutes);
 app.use("/payment", paymentRoutes);
 app.use(authRoutes);
 
-
-
 app.post("/pay", auth, (req, res, next) => {
   return res.status(200).send({ message: "Login Success" });
 });
 
-mongoose.connect("mongodb://127.0.0.1:27017/savethehomeless").then(() => {
-  app.listen(8080, () => {
-    console.log("server is running");
-  });
+mongoose.connect("mongodb://127.0.0.1:27017/savethehomeless").then(() => {});
+app.listen(8080, () => {
+  console.log("server is running");
 });

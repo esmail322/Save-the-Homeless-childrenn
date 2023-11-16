@@ -12,7 +12,7 @@ import LoginPage from "./Pages/LoginPage";
 import Login from "./Pages/Login";
 import Doantate from "./components/Doantate";
 import MainMenu from "./Pages/MainMenu";
-import DonarList from './dashboard-section/DonarList'
+import DonarList from "./dashboard-section/DonarList";
 import View from "./Pages/View";
 import Edit from "./Pages/Edit";
 import Blog from "./Pages/Blog";
@@ -27,6 +27,8 @@ import Dashboard from "./dashboard-section/Dashboard";
 import Paymentlist from "./dashboard-section/Paymentlist";
 import LoginForm from "./Pages/LoginForm";
 import TeacherList from "./dashboard-section/TeacherList";
+import StudentListforteacher from "./Pages/StudentListforteacher";
+import Card from "./dashboard-section/Card";
 // import Sidebar from "./dashboard/Sidebar";
 
 export default function App() {
@@ -60,11 +62,15 @@ export default function App() {
         <Route path="/editteacher/:id" element={<EditTeacher />} />
         <Route path="/viewteacher/:id" element={<ViewTeacher />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/students" element={<StudentList/>} />
+        <Route path="/dashboard/students" element={<StudentList />} />
         <Route path="/dashboard/volunteers" element={<TeacherList />} />
         <Route path="/dashboard/donar" element={<DonarList />} />
+        <Route path="/card" element={<Card />} />
 
-
+        <Route
+          path="/studentlistforteacher"
+          element={<StudentListforteacher />}
+        />
       </Routes>
 
       {/* <Pending /> */}
