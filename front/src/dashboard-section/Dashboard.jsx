@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
-import Students from "./Students";
+
 import {
   AcademicCapIcon,
   CogIcon,
@@ -54,13 +54,7 @@ const secondaryNavigation = [
   { name: "Help", href: "/dashboard/help", icon: QuestionMarkCircleIcon },
   { name: "Privacy", href: "/dashboard/privacy", icon: ShieldCheckIcon },
 ];
-const cards = [
-  { name: "Donated Amount", href: "#", icon: ScaleIcon, amount: "$30,659.45" },
-  { name: "Student Amount", href: "#", icon: ScaleIcon, amount: "300" },
-  { name: "Volunteer Amount", href: "#", icon: ScaleIcon, amount: "120" },
-  
-  // More items...
-];
+
 const transactions = [
   {
     id: 1,
@@ -97,7 +91,7 @@ export default function Dashboard() {
     }
   }, []);
 
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get("http://127.0.0.1:8080/student");
@@ -107,7 +101,40 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
-  console.log(data);
+  const [Ddata, setDData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("http://127.0.0.1:8080/donar");
+
+      setDData(data);
+    };
+    fetchData();
+  }, []);
+
+  const [Tdata, setTData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("http://127.0.0.1:8080/teacher");
+
+      setTData(data);
+    };
+    fetchData();
+  }, []);
+
+  const [payment, setPayment] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("http://127.0.0.1:8080/payment");
+
+      setPayment(data);
+    };
+    fetchData();
+  }, []);
+
+  // let amount = payment.find((el) => {
+  //   amount = el.amount;
+  // });
+  // console.log(amount);
 
   if (loading) {
     return <div>Loading..........</div>;
@@ -249,7 +276,6 @@ export default function Dashboard() {
                           />
                           <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
                             Wellcome, Esmail
-
                           </h1>
                         </div>
                       </div>
@@ -258,15 +284,47 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
+            {/* card for showing student amount */}
 
+            <div className="flex">
+              <a
+                href="#"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Student Amount
+                </h5>
+                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                  {data.length}
+                </p>
+              </a>
+
+              {/* card for showing donar Amount */}
+              <a
+                href="#"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Donar Amount
+                </h5>
+                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                  {Ddata.length}
+                </p>
+              </a>
+              {/* card for showing teacher Amount */}
+              <a
+                href="#"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Teacher Amount
+                </h5>
+                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                  {Tdata.length}
+                </p>
+              </a>
+            </div>
             <div className="mt-8">
-              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-lg leading-6 font-medium text-gray-900">
-                  Overview
-                </h2>
-                <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
-              </div>
-
               <h2 className="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8"></h2>
 
               {/* Activity list (smallest breakpoint only) */}
