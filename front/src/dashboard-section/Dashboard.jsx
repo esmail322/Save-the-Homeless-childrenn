@@ -131,6 +131,17 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
+  const [totalAmount, setTotalAmount] = useState(0);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get("http://127.0.0.1:8080/getTotalPayment");
+      // console.log(totalAmountOfBackend);
+
+      setTotalAmount(result?.data?.totalAmount);
+    };
+    fetchData();
+  }, []);
+
   // let amount = payment.find((el) => {
   //   amount = el.amount;
   // });
@@ -284,9 +295,21 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
-            {/* card for showing student amount */}
-
             <div className="flex">
+              {/* card for showing amount of money*/}
+              <a
+                href="#"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Amount Of money
+                </h5>
+                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                  {totalAmount}
+                </p>
+              </a>
+
+              {/* card for showing student amount */}
               <a
                 href="#"
                 class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
