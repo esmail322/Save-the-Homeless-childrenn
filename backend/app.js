@@ -21,6 +21,7 @@ app.use("/teacher", teacherRoutes);
 app.use("/payment", paymentRoutes);
 app.use(authRoutes);
 
+// amount of pay
 app.get("/getTotalPayment", async (req, res) => {
   try {
     const payments = await Payment.find();

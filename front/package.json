@@ -26,6 +26,7 @@
     "react-hook-form": "^7.47.0",
     "react-i18next": "^13.2.2",
     "react-pagination-js": "^2.0.0",
+    "react-push-notification": "^1.5.3",
     "react-router-dom": "^6.15.0",
     "styled-components": "^5.3.11",
     "zod": "^3.22.4"

@@ -16,6 +16,7 @@ function SignUp() {
   const [page, setPage] = useState(0);
   const [formerrors, setformerrors] = useState({});
   const [issubmit, setissubmit] = useState(false);
+  const navigate = useNavigate();
   // Teacher function code
   const [teacherField, setTeacherField] = useState({
     fullname: "",
@@ -32,7 +33,9 @@ function SignUp() {
     event.preventDefault(event);
     setformerrors(validate(teacherField));
     setissubmit(true);
-    navigate("/studentlistforteacher");
+    if (issubmit) {
+      navigate("/studentlistforteacher");
+    }
     try {
       const result = await axios.post(
         "http://localhost:8080/teacher",
@@ -67,12 +70,13 @@ function SignUp() {
     typeOfassist: "",
     confirmPassword: "",
   });
-  const navigate = useNavigate();
   const handleStudentFormSubmit = async (event) => {
     event.preventDefault(event);
     setformerrors(validate(studentField));
     setissubmit(true);
-    navigate("/course");
+    if (issubmit) {
+      navigate("/course");
+    }
     try {
       const result = await axios.post(
         "http://localhost:8080/student",
@@ -113,9 +117,9 @@ function SignUp() {
   const [loading, setLoading] = useState();
   const onSubmitchange = async (e) => {
     e.preventDefault(e);
-
+    // alert("you have successfully sign in");
     console.log(donarField);
-    navigate("/bank");
+
     try {
       const response = await axios.post(
         "http://127.0.0.1:8080/donar",
@@ -131,7 +135,11 @@ function SignUp() {
       console.log("something went wrong");
     }
     setformerrors(validate(donarField));
+
     setissubmit(true);
+    if (issubmit) {
+      navigate("/bank");
+    }
   };
   useEffect(() => {
     console.log(formerrors);
@@ -294,7 +302,7 @@ function SignUp() {
           {page == 1 && (
             // donrafrom
 
-            <form className=" w-96 bg-backgorund">
+            <form className=" w-96 bg-backgorund" onSubmit={onSubmitchange}>
               <input
                 type="text"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
@@ -331,17 +339,13 @@ function SignUp() {
                 name="confirm_password"
                 placeholder={`${t("password12")}`}
               />
-              <Link
-                to="/pending
-              "
+
+              <button
+                type="submit"
+                className="  mb-14 w-96  h-10 text-white hover:bg-sky-700 rounded-sm bg-teal-950  "
               >
-                <button
-                  className="  mb-14 w-96  h-10 text-white hover:bg-sky-700 rounded-sm bg-teal-950  "
-                  onClick={onSubmitchange}
-                >
-                  {t("Sign")}
-                </button>
-              </Link>
+                {t("Sign")}
+              </button>
               <button
                 type="submit"
                 className="w-full text-center  py-3 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1"
