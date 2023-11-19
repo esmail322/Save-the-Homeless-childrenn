@@ -1,4 +1,4 @@
-const Payment = require("../models/paymeny.model");
+const Payment = require("../models/payment.model");
 
 const savepayment = async (req, res) => {
   const { card_name, card_number, amount, expire_date, cvc } = req.body;
@@ -18,6 +18,11 @@ const savepayment = async (req, res) => {
 const getPayments = async (req, res) => {
   const payments = await Payment.find();
   return res.send(payments);
+};
+const deletepayment = async (req, res) => {
+  const { _id } = req.params;
+  const result = await Payment.findByIdAndDelete({ _id });
+  return res.send(result);
 };
 
 // const deleteDonar = async (req, res) => {
@@ -41,5 +46,6 @@ const getpaid = async (req, res) => {
 module.exports = {
   savepayment,
   getPayments,
+  deletepayment,
   getpaid,
 };

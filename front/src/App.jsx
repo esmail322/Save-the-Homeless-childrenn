@@ -24,10 +24,12 @@ import Editstudent from "./Pages/Editstudent";
 import EditTeacher from "./Pages/EditTeacher";
 import ViewTeacher from "./Pages/ViewTeacher";
 import Dashboard from "./dashboard-section/Dashboard";
-import Paymentlist from "./Pages/Paymentlist";
+import Paymentlist from "./dashboard-section/Paymentlist";
 import LoginForm from "./Pages/LoginForm";
 import TeacherList from "./dashboard-section/TeacherList";
 import Children from "./components/Children";
+import StudentListforteacher from "./Pages/StudentListforteacher";
+import Card from "./dashboard-section/Card";
 // import Sidebar from "./dashboard/Sidebar";
 
 export default function App() {
@@ -37,7 +39,7 @@ export default function App() {
         <Route path="/" element={<MainMenu />} />
         <Route path="creditC" element={<CreditCardD />} />
         <Route path="/bank" element={<Bank />} />
-        <Route path="/payment" element={<Paymentlist />} />
+        <Route path="/dashboard/payment" element={<Paymentlist />} />
         <Route path="/loginform" element={<LoginForm />} />
 
         {/* <LoginPage path="/login" element={<LoginPage />} /> */}
@@ -64,6 +66,13 @@ export default function App() {
         <Route path="/dashboard/students" element={<StudentList />} />
         <Route path="/dashboard/volunteers" element={<TeacherList />} />
         <Route path="/dashboard/donar" element={<DonarList />} />
+
+        <Route path="/card" element={<Card />} />
+
+        <Route
+          path="/studentlistforteacher"
+          element={<StudentListforteacher />}
+        />
       </Routes>
 
       {/* <Pending /> */}

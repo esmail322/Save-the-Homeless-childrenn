@@ -39,6 +39,12 @@ const navigation = [
     icon: CreditCardIcon,
     current: false,
   },
+  {
+    name: "Payment",
+    href: "/dashboard/payment",
+    icon: CreditCardIcon,
+    current: false,
+  },
 ];
 const secondaryNavigation = [
   { name: "Settings", href: "#", icon: CogIcon },

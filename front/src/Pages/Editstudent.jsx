@@ -8,8 +8,8 @@ const Editstudent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const clicktobackhandler = () => {
-    navigate("/student");
+  const clickTobackhandler = () => {
+    navigate("/dashboard/students");
   };
   const { t } = useTranslation();
   const [studentField, setstudentField] = useState({
@@ -40,7 +40,7 @@ const Editstudent = () => {
     e.preventDefault();
     try {
       await axios.patch("http://127.0.0.1:8080/student/" + id, studentField);
-      navigate("/student");
+      navigate("/dashboard/students");
     } catch (err) {
       console.log("something went wrong");
     }
@@ -226,11 +226,17 @@ const Editstudent = () => {
             onClick={handleStudentFormSubmit}
             className="  mb-14 w-96  h-10 text-white hover:bg-sky-700 rounded-sm bg-teal-950  "
           >
-            {t("Sign")}
+            {t("update")}
           </button>
         </Link>
       </form>
-      <div></div>
+      <div className="container d-flex justify-content-center">
+        <div>
+          <button className="mb-14 w-52  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1  absolute right-[379px] mr-28 bg-teal-950" onClick={clickTobackhandler}>
+            back to home
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

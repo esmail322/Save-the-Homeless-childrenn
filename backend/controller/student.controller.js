@@ -54,6 +54,10 @@ const getStudent = async (req, res) => {
   const result = await Student.findOne({ _id });
   return res.send(result);
 };
+const AllStudent = async (req, res) => {
+  const students = await Student.find();
+  return res.send(students.count());
+};
 
 module.exports = {
   saveStudent,
@@ -61,4 +65,5 @@ module.exports = {
   deleteStudent,
   editStudent,
   getStudent,
+  AllStudent,
 };

@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
+
 import {
   AcademicCapIcon,
   CogIcon,
@@ -41,18 +42,19 @@ const navigation = [
     icon: CreditCardIcon,
     current: false,
   },
+  {
+    name: "Payments",
+    href: "/dashboard/payment",
+    icon: CreditCardIcon,
+    current: false,
+  },
 ];
 const secondaryNavigation = [
   { name: "Settings", href: "/dashboard/setting", icon: CogIcon },
   { name: "Help", href: "/dashboard/help", icon: QuestionMarkCircleIcon },
   { name: "Privacy", href: "/dashboard/privacy", icon: ShieldCheckIcon },
 ];
-const cards = [
-  { name: "Donated Amount", href: "#", icon: ScaleIcon, amount: "$30,659.45" },
-  { name: "Stdent Amount", href: "#", icon: ScaleIcon, amount: "300" },
-  { name: "Volunteer Amount", href: "#", icon: ScaleIcon, amount: "120" },
-  // More items...
-];
+
 const transactions = [
   {
     id: 1,
@@ -89,7 +91,7 @@ export default function Dashboard() {
     }
   }, []);
 
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get("http://127.0.0.1:8080/student");
@@ -99,7 +101,51 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
-  console.log(data);
+  const [Ddata, setDData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("http://127.0.0.1:8080/donar");
+
+      setDData(data);
+    };
+    fetchData();
+  }, []);
+
+  const [Tdata, setTData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("http://127.0.0.1:8080/teacher");
+
+      setTData(data);
+    };
+    fetchData();
+  }, []);
+
+  const [payment, setPayment] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("http://127.0.0.1:8080/payment");
+
+      setPayment(data);
+    };
+    fetchData();
+  }, []);
+
+  const [totalAmount, setTotalAmount] = useState(0);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get("http://127.0.0.1:8080/getTotalPayment");
+      // console.log(totalAmountOfBackend);
+
+      setTotalAmount(result?.data?.totalAmount);
+    };
+    fetchData();
+  }, []);
+
+  // let amount = payment.find((el) => {
+  //   amount = el.amount;
+  // });
+  // console.log(amount);
 
   if (loading) {
     return <div>Loading..........</div>;
@@ -154,7 +200,7 @@ export default function Dashboard() {
                       />
                       <span className="hidden ml-3 text-gray-700 text-sm font-medium lg:block">
                         <span className="sr-only">Open user menu for </span>
-                        Emilia Birch
+                        Esmail Aryan
                       </span>
                       <ChevronDownIcon
                         className="hidden flex-shrink-0 ml-1 h-5 w-5 text-gray-400 lg:block"
@@ -240,7 +286,7 @@ export default function Dashboard() {
                             alt=""
                           />
                           <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-                            Wellcome, Esmail Aryan
+                            Wellcome, Esmail
                           </h1>
                         </div>
                       </div>
@@ -249,59 +295,60 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
+            <div className="flex">
+              {/* card for showing amount of money*/}
+              <a
+                href="#"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Amount Of money
+                </h5>
+                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                  {totalAmount}
+                </p>
+              </a>
 
+              {/* card for showing student amount */}
+              <a
+                href="#"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Student Amount
+                </h5>
+                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                  {data.length}
+                </p>
+              </a>
+
+              {/* card for showing donar Amount */}
+              <a
+                href="#"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Donar Amount
+                </h5>
+                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                  {Ddata.length}
+                </p>
+              </a>
+              {/* card for showing teacher Amount */}
+              <a
+                href="#"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Teacher Amount
+                </h5>
+                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                  {Tdata.length}
+                </p>
+              </a>
+            </div>
             <div className="mt-8">
-              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-lg leading-6 font-medium text-gray-900">
-                  Overview
-                </h2>
-                <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {/* Card */}
-                  {cards.map((card) => (
-                    <div
-                      key={card.name}
-                      className="bg-white overflow-hidden shadow rounded-lg"
-                    >
-                      <div className="p-5">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0">
-                            <card.icon
-                              className="h-6 w-6 text-gray-400"
-                              aria-hidden="true"
-                            />
-                          </div>
-                          <div className="ml-5 w-0 flex-1">
-                            <dl>
-                              <dt className="text-sm font-medium text-gray-500 truncate">
-                                {card.name}
-                              </dt>
-                              <dd>
-                                <div className="text-lg font-medium text-gray-900">
-                                  {card.amount}
-                                </div>
-                              </dd>
-                            </dl>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="bg-gray-50 px-5 py-3">
-                        <div className="text-sm">
-                          <a
-                            href={card.href}
-                            className="font-medium text-cyan-700 hover:text-cyan-900"
-                          >
-                            View all
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <h2 className="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8">
-                Recent Donations
-              </h2>
+              <h2 className="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-gray-900 sm:px-6 lg:px-8"></h2>
 
               {/* Activity list (smallest breakpoint only) */}
               <div className="shadow sm:hidden">

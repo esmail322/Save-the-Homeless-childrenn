@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
-function Paymentlist() {
+function StudentListforteacher() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -12,7 +12,7 @@ function Paymentlist() {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const { data } = await axios.get("http://127.0.0.1:8080/payment");
+      const { data } = await axios.get("http://127.0.0.1:8080/student");
 
       setData(data);
       setLoading(true);
@@ -27,7 +27,7 @@ function Paymentlist() {
       <section className="">
         <div className="flex relative flex-row items-stretch justify-center  pt-12 pb-2 ">
           <div className="  text-3xl font-bold text-true-gray-800">
-            Paymnet List
+            Student List
           </div>
           <br />
 
@@ -48,19 +48,31 @@ function Paymentlist() {
                   <thead class="border-b  font-medium dark:border-neutral-500">
                     <tr>
                       <th scope="col" class="px-6 py-4">
-                        D No.
+                        ID No.
                       </th>
                       <th scope="col" class="px-6 py-4">
-                        name of the card
+                        Fullname
                       </th>
                       <th scope="col" class="px-6 py-4">
-                        card number
+                        email
                       </th>
                       <th scope="col" class="px-6 py-4">
-                        amount
+                        Contact_number
                       </th>
                       <th scope="col" class="px-6 py-4">
-                        Expire DATE
+                        Address
+                      </th>
+                      <th scope="col" class="px-6 py-4">
+                        Provice
+                      </th>
+                      <th scope="col" class="px-6 py-4">
+                        Zip_code
+                      </th>
+                      <th scope="col" class="px-6 py-4">
+                        Country
+                      </th>
+                      <th scope="col" class="px-6 py-4">
+                        TypeOfassist
                       </th>
                     </tr>
                   </thead>
@@ -72,18 +84,29 @@ function Paymentlist() {
                             {i + 1}
                           </td>
                           <td class="whitespace-nowrap px-6 font-bold  py-4">
-                            {donor.card_name}
+                            {donor.fullName}
                           </td>
                           <td class="whitespace-nowrap font-bold  px-6 py-4">
-                            {donor.card_number}
+                            {donor.email}
                           </td>
                           <td class="whitespace-nowrap font-bold  px-6 py-4">
-                            {donor.amount}
+                            {donor.Contact_number}
                           </td>
                           <td class="whitespace-nowrap font-bold  px-6 py-4">
-                            {donor.expire_date}
+                            {donor.address}
                           </td>
-                          <td class="whitespace-nowrap font-bold  px-6 py-4"></td>
+                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                            {donor.Provice}
+                          </td>
+                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                            {donor.Zip_code}
+                          </td>
+                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                            {donor.Country}
+                          </td>
+                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                            {donor.typeOfassist}
+                          </td>
                         </tr>
                       );
                     })}
@@ -225,4 +248,4 @@ function Paymentlist() {
   );
 }
 
-export default Paymentlist;
+export default StudentListforteacher;
