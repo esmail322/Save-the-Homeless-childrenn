@@ -18,7 +18,6 @@ function SignUp() {
 
   const [page, setPage] = useState(0);
   const [formerrors, setformerrors] = useState({});
-  const [issubmit, setissubmit] = useState(false);
   const navigate = useNavigate();
   // Teacher function code
 
@@ -35,35 +34,43 @@ function SignUp() {
   });
   const handleTeacherFormSubmit = async (event) => {
     event.preventDefault(event);
-    setformerrors(validate(teacherField));
-    setissubmit(true);
-    if (issubmit) {
-      toast.success("successfuly account created");
-      navigate("/studentlistforteacher");
-    }
     try {
-      const result = await axios.post(
+      const response = await axios.post(
         "http://localhost:8080/teacher",
         teacherField
       );
-      handelNTeacher();
-      console.log(result);
-      setTeacherField({
-        fullname: "",
-        email: "",
-        password: "",
-        contact_number: "",
-        address: "",
-        province: "",
-        Country: "",
-        typeOfteach: "",
-        confirmPassword: "",
-      });
+
+      if (teacherField.password !== teacherField.confirmPassword) {
+        setformerrors((prevErrors) => ({
+          ...prevErrors,
+          confirmPassword: "password don't match",
+        }));
+      }
+      if (
+        response.data &&
+        teacherField.password === teacherField.confirmPassword
+      ) {
+        console.log("teacher form");
+        handelNTeacher();
+        toast.success("successfully account created");
+        navigate("/studentlistforteacher");
+        setTeacherField({
+          fullname: "",
+          email: "",
+          password: "",
+          contact_number: "",
+          address: "",
+          province: "",
+          Country: "",
+          typeOfteach: "",
+          confirmPassword: "",
+        });
+      }
     } catch (error) {
-      console.log(error);
+      toast.error(error?.message);
     }
   };
-  //student function code
+  // //student function code
 
   const [studentField, setstudentField] = useState({
     fullname: "",
@@ -78,141 +85,94 @@ function SignUp() {
   });
   const handleStudentFormSubmit = async (event) => {
     event.preventDefault(event);
-    setformerrors(validate(studentField));
-    setissubmit(true);
-    if (issubmit) {
-      navigate("/course");
-      toast.success("successful student account created");
+
+    if (isSubmit) {
     }
     try {
-      const result = await axios.post(
+      const response = await axios.post(
         "http://localhost:8080/student",
         studentField
       );
-      handelNStudent();
-      console.log(result);
-      setstudentField({
-        fullname: "",
-        email: "",
-        password: "",
-        contact_number: "",
-        address: "",
-        province: "",
-        Country: "",
-        typeOfassist: "",
-        confirmPassword: "",
-      });
+
+      if (studentField.password !== studentField.confirmPassword) {
+        setformerrors((prevErrors) => ({
+          ...prevErrors,
+          confirmPassword: "password don't match",
+        }));
+      }
+      if (
+        response.data &&
+        studentField.password === studentField.confirmPassword
+      ) {
+        handelNStudent();
+        navigate("/course");
+        toast.success("successful student account created");
+        setstudentField({
+          fullname: "",
+          email: "",
+          password: "",
+          contact_number: "",
+          address: "",
+          province: "",
+          Country: "",
+          typeOfassist: "",
+          confirmPassword: "",
+        });
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
   //Donar function code
+
   const [donarField, setDonarField] = useState({
     fullname: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
   const { t } = useTranslation();
 
+  const [isSubmit, setIsSubmit] = useState(false);
   const ChangeDonarhandler = (e) => {
     setDonarField({
       ...donarField,
       [e.target.name]: e.target.value,
     });
-    console.log(donarField);
   };
   const [loading, setLoading] = useState();
-  const onSubmitchange = async (e) => {
-    e.preventDefault(e);
-    // alert("you have successfully sign in");
-    console.log(donarField);
+
+  //donar submit form
+  const onSubmitChange = async (e) => {
+    e.preventDefault();
 
     try {
       const response = await axios.post(
         "http://127.0.0.1:8080/donar",
         donarField
       );
-      // setNotification(response.data);
-      handelNDonar();
-      console.log(response);
-      setDonarField({
-        fullname: "",
-        email: "",
-        password: "",
-      });
+
+      if (donarField.password !== donarField.confirmPassword) {
+        setformerrors((prevErrors) => ({
+          ...prevErrors,
+          confirmPassword: "password don't match",
+        }));
+      }
+      if (response.data && donarField.password === donarField.confirmPassword) {
+        handelNDonar();
+        toast.success("successful account created");
+        navigate("/bank");
+        setDonarField({
+          fullname: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+      }
     } catch (err) {
       console.log("something went wrong");
     }
-    setformerrors(validate(donarField));
-
-    setissubmit(true);
-    if (issubmit) {
-      toast.success("successful account created");
-      navigate("/bank");
-    }
-  };
-  useEffect(() => {
-    if (Object.keys(formerrors).length === 0 && issubmit) {
-      console.log(donarField);
-    }
-  }, [formerrors]);
-  const validate = (values) => {
-    const errors = {};
-    const regex = /^[^\s@+]+@[^\s@]+\.[^\s@]{2,}$/i;
-    const regex1 = new RegExp("^7\\d{8}$");
-    const numberRegex = /^-?\d+(\.\d+)?$/;
-    if (!values.fullname) {
-      errors.fullname = "fullname is required!";
-    }
-    if (!values.email) {
-      errors.email = "email is required!";
-    } else if (!regex.test(values.email)) {
-      errors.email = "This is not a valid email format";
-    }
-    if (!values.password) {
-      errors.password = "password is required!";
-    } else if (values.password.length < 4) {
-      errors.password = "Password must be greater than 4 characters";
-    } else if (values.password.length > 10) {
-      errors.password = "Password cannot exceed more than 10 characters";
-    }
-    if (!values.confirmPassword) {
-      errors.confirmPassword = "confirmPassword is required!";
-    }
-    if (values.password !== values.confirmPassword) {
-      errors.confirmPassword = "password don't match";
-    }
-
-    if (!values.contact_number) {
-      errors.contact_number = "number is required!";
-    } else if (values.contact_number.length > 9) {
-      errors.contact_number =
-        "the number must not be greater than 10 character";
-    } else if (values.contact_number.length < 9) {
-      errors.contact_number = "the number should be less than 10 characters";
-    } else if (!regex1.test(values.contact_number)) {
-      errors.contact_number = "the contact_number must be start with 7";
-    }
-    if (!values.province) {
-      errors.province = "Province should be selected";
-    }
-    if (!values.Zip_code) {
-      errors.Zip_code = "Zip_code is required";
-    } else if (!numberRegex.test(values.Zip_code)) {
-      errors.Zip_code = "Zip code must be number";
-    }
-    if (!values.Country) {
-      errors.Country = "select a country";
-    }
-    if (!values.typeOfassist) {
-      errors.typeOfassist = "select a type of assist";
-    }
-    if (!values.typeOfteach) {
-      errors.typeOfteach = "select a subject";
-    }
-
-    return errors;
   };
 
   if (loading) {
@@ -311,7 +271,7 @@ function SignUp() {
           </div>
         </div>
         <div className="flex justify-center pt-4 mb-16  ">
-          {Object.keys(formerrors).length === 0 && issubmit ? (
+          {Object.keys(formerrors).length === 0 && isSubmit ? (
             <div className="ui message success">Sign in successfully</div>
           ) : (
             ""
@@ -319,41 +279,47 @@ function SignUp() {
           {page == 1 && (
             // donrafrom
 
-            <form className=" w-96 bg-backgorund" onSubmit={onSubmitchange}>
+            <form className=" w-96 bg-backgorund" onSubmit={onSubmitChange}>
               <input
                 type="text"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
                 name="fullname"
+                value={donarField.fullname}
                 placeholder={`${t("fullname")}`}
+                required
                 onChange={(e) => ChangeDonarhandler(e)}
               />
-              {formerrors.fullname && (
-                <span className="text-red-600">{formerrors.fullname}</span>
-              )}
+
               <input
                 type="email"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
                 name="email"
+                required
+                value={donarField.email}
                 placeholder={`${t("email1")}`}
                 onChange={(e) => ChangeDonarhandler(e)}
               />
-              {formerrors.email && (
-                <span className="text-red-600">{formerrors.email}</span>
-              )}
+
               <input
                 type="password"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
                 name="password"
+                required
+                minLength={4}
+                maxLength={10}
+                value={donarField.password}
                 placeholder={`${t("password1")}`}
                 onChange={(e) => ChangeDonarhandler(e)}
               />
-              {formerrors.password && (
-                <span className="text-red-600">{formerrors.password}</span>
-              )}
+
               <input
                 type="password"
                 className="block border bg-backgorund border-black w-full p-3  rounded"
-                name="confirm_password"
+                name="confirmPassword"
+                required
+                minLength={4}
+                maxLength={10}
+                value={donarField.confirmPassword}
                 placeholder={`${t("password12")}`}
                 onChange={(e) => ChangeDonarhandler(e)}
               />
@@ -382,12 +348,17 @@ function SignUp() {
 
           {/* student form */}
           {page == 2 && (
-            <form action="" className=" bg-backgorund w-96">
+            <form
+              action=""
+              onSubmit={handleStudentFormSubmit}
+              className=" bg-backgorund w-96"
+            >
               <input
                 type="text"
                 // {...register("firstName")}
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
                 name="fullname"
+                required
                 value={studentField.fullname}
                 placeholder={`${t("fullname")}`}
                 onChange={(event) =>
@@ -397,9 +368,6 @@ function SignUp() {
                   })
                 }
               />
-              {formerrors.fullname && (
-                <span className="text-red-600">{formerrors.fullname}</span>
-              )}
               {/* {errors.firstName && (
                 <span className="text-red-600">{errors.firstName.message}</span>
               )} */}
@@ -409,6 +377,7 @@ function SignUp() {
                 className="block border bg-backgorund border-black   w-full p-3 rounded mb-1"
                 name="email"
                 value={studentField.email}
+                required
                 onChange={(event) =>
                   setstudentField({
                     ...studentField,
@@ -417,9 +386,6 @@ function SignUp() {
                 }
                 placeholder={`${t("email1")}`}
               />
-              {formerrors.email && (
-                <span className="text-red-600">{formerrors.email}</span>
-              )}
               {/* {errors.emails && (
                 <span className="text-red-600">{errors.emails.message}</span>
               )} */}
@@ -428,6 +394,9 @@ function SignUp() {
                 // {...register("password")}
                 className="block border border-black bg-backgorund w-full p-3 rounded mb-1"
                 name="password"
+                required
+                minLength={4}
+                maxLength={10}
                 placeholder={`${t("password1")}`}
                 value={studentField.password}
                 onChange={(event) =>
@@ -437,21 +406,21 @@ function SignUp() {
                   })
                 }
               />
-              {formerrors.password && (
-                <span className="text-red-600">{formerrors.password}</span>
-              )}
-              {/* {errors.password && (
-                <span className="text-red-600">
-                  {errors.confirmPassword.message}
-                </span>
-              )} */}
               <input
                 type="password"
-                // {...register("confirmPassword")}
                 className="block border  border-black bg-backgorund w-full p-3  rounded "
-                name="confirm_password"
+                name="confirmPassword"
+                value={studentField.confirmPassword}
+                minLength={4}
+                maxLength={10}
                 placeholder={`${t("password12")}`}
-                onChange={(e) => ChangeDonarhandler(e)}
+                required
+                onChange={(event) =>
+                  setstudentField({
+                    ...studentField,
+                    confirmPassword: event.target.value,
+                  })
+                }
               />
               {formerrors.confirmPassword && (
                 <span className="text-red-600">
@@ -471,6 +440,7 @@ function SignUp() {
                 </select>
                 <input
                   type="number"
+                  required
                   className="block border border-black bg-backgorund border-l-0 w-full p-3  h-12 mb-1"
                   name="contact_number"
                   placeholder={`${t("contact")}`}
@@ -483,17 +453,13 @@ function SignUp() {
                   }
                 />
               </div>
-              {formerrors.contact_number && (
-                <span className="text-red-600">
-                  {formerrors.contact_number}
-                </span>
-              )}
               <input
                 type="text"
                 className=" border  bg-backgorund w-full font-semibold border-black  p-3  rounded mb-1"
                 name="address"
                 // {...register("address")}
                 placeholder={`${t("address")}`}
+                required
                 value={studentField.address}
                 onChange={(event) =>
                   setstudentField({
@@ -506,6 +472,7 @@ function SignUp() {
                 <select
                   className=" bg-backgorund p-3  h-12 block rounded  border border-black"
                   name="province"
+                  required
                   value={studentField.province}
                   id=""
                   onChange={(event) =>
@@ -522,9 +489,10 @@ function SignUp() {
                 </select>
 
                 <input
-                  type="password"
+                  type="number"
                   className="block border h-12 bg-backgorund border-black  p-3  rounded mb-1"
                   name="Zip_code"
+                  required
                   placeholder={t("zibcode")}
                   value={studentField.Zip_code}
                   onChange={(event) =>
@@ -535,17 +503,12 @@ function SignUp() {
                   }
                 />
               </div>{" "}
-              {formerrors.province && (
-                <span className="text-red-600 m-2">{formerrors.province}</span>
-              )}
-              {formerrors.Zip_code && (
-                <span className="text-red-600">{formerrors.Zip_code}</span>
-              )}
               <div className="flex flex-row mb-1 ">
                 <select
                   className=" bg-secondary w-96 h-12 p-3 block rounded border border-black"
                   name="Country"
                   id=""
+                  required
                   value={studentField.Country}
                   onChange={(event) =>
                     setstudentField({
@@ -560,9 +523,6 @@ function SignUp() {
                   <option value="Pakistan">{t("pakistan")}</option>
                 </select>
               </div>
-              {formerrors.Country && (
-                <span className="text-red-600">{formerrors.Country}</span>
-              )}
               <div className="flex flex-row mb-8 ">
                 <select
                   className=" bg-backgorund p-3  w-96 h-12 block rounded border border-black"
@@ -581,28 +541,26 @@ function SignUp() {
                   <option value="Help">{t("help")}</option>
                 </select>
               </div>
-              {formerrors.typeOfassist && (
-                <span className="text-red-600">{formerrors.typeOfassist}</span>
-              )}
-              <Link to="/student">
-                {/* {" "} */}
-                <button
-                  type="submit"
-                  onClick={handleStudentFormSubmit}
-                  className="  mb-14 w-96  h-10 text-white hover:bg-sky-700 rounded-sm bg-teal-950  "
-                >
-                  {t("Sign")}
-                </button>
-              </Link>
+              <button
+                type="submit"
+                className="  mb-14 w-96  h-10 text-white hover:bg-sky-700 rounded-sm bg-teal-950  "
+              >
+                {t("Sign")}
+              </button>
             </form>
           )}
           {/* Teacher form */}
           {page == 3 && (
-            <form action="" className=" bg-backgorund w-96">
+            <form
+              action=""
+              className=" bg-backgorund w-96"
+              onSubmit={handleTeacherFormSubmit}
+            >
               <input
                 type="text"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
                 name="fullname"
+                required
                 placeholder={`${t("fullname")}`}
                 value={teacherField.fullname}
                 onChange={(event) =>
@@ -619,6 +577,7 @@ function SignUp() {
                 type="text"
                 className="block border bg-backgorund border-black   w-full p-3 rounded mb-1"
                 name="email"
+                required
                 placeholder={`${t("email1")}`}
                 value={teacherField.email}
                 onChange={(event) =>
@@ -635,6 +594,7 @@ function SignUp() {
                 type="password"
                 className="block border border-black bg-backgorund w-full p-3 rounded mb-1"
                 name="password"
+                required
                 placeholder={`${t("password1")}`}
                 value={teacherField.password}
                 onChange={(event) =>
@@ -650,9 +610,18 @@ function SignUp() {
               <input
                 type="password"
                 className="block border  border-black bg-backgorund w-full p-3  rounded "
-                name="confirm_password"
+                name="confirmPassword"
+                required
+                minLength={4}
+                maxLength={10}
+                value={teacherField.confirmPassword}
                 placeholder={`${t("password12")}`}
-                onChange={(e) => ChangeDonarhandler(e)}
+                onChange={(event) =>
+                  setTeacherField({
+                    ...teacherField,
+                    confirmPassword: event.target.value,
+                  })
+                }
               />
               {formerrors.confirmPassword && (
                 <span className="text-red-600  bg-blue-400">
@@ -675,6 +644,7 @@ function SignUp() {
                   className="block border border-black bg-backgorund border-l-0 w-full p-3  h-12 mb-1"
                   name="contact_number"
                   placeholder={`${t("contact")}`}
+                  required
                   value={teacherField.contact_number}
                   onChange={(event) =>
                     setTeacherField({
@@ -707,6 +677,7 @@ function SignUp() {
                   className=" bg-backgorund p-3  h-12 block rounded  border border-black"
                   name="province"
                   value={teacherField.province}
+                  required
                   onChange={(event) =>
                     setTeacherField({
                       ...teacherField,
@@ -722,6 +693,8 @@ function SignUp() {
                 </select>
                 <input
                   type="number"
+                  rel=""
+                  required
                   className="block border h-12 bg-backgorund border-black  p-3  rounded mb-1"
                   name="Zip_code"
                   placeholder={t("zibcode")}
@@ -744,6 +717,7 @@ function SignUp() {
                 <select
                   className=" bg-backgorund p-3  w-96 h-12 block rounded border border-black"
                   name="typeOfteach"
+                  required
                   value={teacherField.typeOfteach}
                   onChange={(event) =>
                     setTeacherField({
@@ -767,6 +741,7 @@ function SignUp() {
                   className=" bg-secondary w-96 h-12  p-3 rounded border border-black"
                   name="Country"
                   value={teacherField.Country}
+                  required
                   onChange={(event) =>
                     setTeacherField({
                       ...teacherField,
@@ -784,18 +759,12 @@ function SignUp() {
               {formerrors.Country && (
                 <span className="text-red-600">{formerrors.Country}</span>
               )}
-              <Link
-                to="/pending
-              "
+              <button
+                type="submit"
+                className="  mb-14 w-96  h-10 rounded-sm text-white hover:bg-sky-700  bg-teal-950  "
               >
-                <button
-                  type="submit"
-                  onClick={handleTeacherFormSubmit}
-                  className="  mb-14 w-96  h-10 rounded-sm text-white hover:bg-sky-700  bg-teal-950  "
-                >
-                  {t("Sign")}
-                </button>
-              </Link>
+                {t("Sign")}
+              </button>
             </form>
           )}
         </div>

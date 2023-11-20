@@ -100,11 +100,16 @@ export default function Dashboard() {
     fetchData();
   }, []);
   const handleDelete = async (id) => {
-    await axios.delete("http://127.0.0.1:8080/teacher/" + id);
-    const newdonordata = data.filter((item) => {
-      return item._id !== id;
-    });
-    setData(newdonordata);
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this item?"
+    );
+    if (confirmed) {
+      await axios.delete("http://127.0.0.1:8080/teacher/" + id);
+      const newdonordata = data.filter((item) => {
+        return item._id !== id;
+      });
+      setData(newdonordata);
+    }
   };
   console.log(data);
 
@@ -376,7 +381,7 @@ export default function Dashboard() {
                               <td>{data?.Zip_code}</td>
                               <td>{data?.Country}</td>
                               <td>{data?.typeOfteach}</td>
-                              <td class="flex space-x-4">
+                              <td className="flex space-x-4">
                                 <Link to={`/viewteacher/${data._id}`}>
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"

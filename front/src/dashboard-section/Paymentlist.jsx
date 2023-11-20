@@ -376,7 +376,7 @@ export default function Dashboard() {
                               <td>{data?.expire_date}</td>
                               <td>{data?.cvc}</td>
 
-                              <td class="flex space-x-4">
+                              <td className="flex space-x-4">
                                 <button onClick={() => handleDelete(data._id)}>
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"

@@ -96,11 +96,16 @@ export default function Dashboard() {
     fetchData();
   }, []);
   const handleDelete = async (id) => {
-    await axios.delete("http://127.0.0.1:8080/student/" + id);
-    const newdonordata = data.filter((item) => {
-      return item._id !== id;
-    });
-    setData(newdonordata);
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this item?"
+    );
+    if (confirmed) {
+      await axios.delete("http://127.0.0.1:8080/student/" + id);
+      const newdonordata = data.filter((item) => {
+        return item._id !== id;
+      });
+      setData(newdonordata);
+    }
   };
 
   // console.log(data);
@@ -155,7 +160,7 @@ export default function Dashboard() {
                     <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="./Telegram/email.jpg"
+                        src="/Telegram/admin.jpg"
                         alt=""
                       />
                       <span className="hidden ml-3 text-gray-700 text-sm font-medium lg:block">
@@ -235,14 +240,14 @@ export default function Dashboard() {
                     <div className="flex items-center">
                       <img
                         className="hidden h-16 w-16 rounded-full sm:block"
-                        src=""
+                        src="/Telegram/email.jpeg"
                         alt=""
                       />
                       <div>
                         <div className="flex items-center">
                           <img
                             className="h-16 w-16 rounded-full sm:hidden"
-                            src="./Telegram/younus.jpg"
+                            src="/Telegram/email.jpeg"
                             alt=""
                           />
                           <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
@@ -375,7 +380,7 @@ export default function Dashboard() {
                               <td>{data?.Zip_code}</td>
                               <td>{data?.Country}</td>
                               <td>{data?.typeOfassist}</td>
-                              <td class="flex space-x-4">
+                              <td className="flex space-x-4">
                                 <Link to={`/viewstudent/${data._id}`}>
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
