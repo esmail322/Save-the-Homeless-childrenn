@@ -151,10 +151,16 @@ export default function Dashboard() {
   if (loading) {
     return <div>Loading..........</div>;
   }
-  const { notification, setNotification, NDonar } =
-    useContext(NotificationContext);
-  let storedDonar = JSON.parse(localStorage.getItem("donar"));
-  console.log(storedDonar);
+  const {
+    handelRemoveNotification,
+    NDonar,
+    NStudent,
+    NTeacher,
+    NNotification,
+  } = useContext(NotificationContext);
+
+  //student
+
   return (
     <>
       <div className="min-h-full">
@@ -213,7 +219,7 @@ export default function Dashboard() {
                           />
                         </svg>
                         <span className="absolute top-1 right-1.5 h-5 text-xs w-5 bg-red-500 text-white rounded-full pb-1  text-center">
-                          {NDonar}
+                          {NNotification}
                         </span>
                       </div>
                       <ChevronDownIcon
@@ -244,7 +250,7 @@ export default function Dashboard() {
                           >
                             <div className="flex justify-between gap-5">
                               <span>donar: </span>
-                              {storedDonar.donar}
+                              {NDonar ? NDonar : 0}
                             </div>
                           </a>
                         )}
@@ -258,7 +264,12 @@ export default function Dashboard() {
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Settings
+                            <div className="flex justify-between gap-5">
+                              <span>student: </span>
+
+                              {NStudent ? NStudent : 0}
+                              {/* {storedStudent?.student} */}
+                            </div>
                           </a>
                         )}
                       </Menu.Item>
@@ -266,14 +277,32 @@ export default function Dashboard() {
                         {({ active }) => (
                           <a
                             href="#"
-                            onClick={logout}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Logout
+                            <div className="flex justify-between gap-5">
+                              <span>Teacher: </span>
+                              {NTeacher ? NTeacher : 0}
+                            </div>
                           </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            href="#"
+                            disabled={NNotification > 0 ? false : true}
+                            onClick={handelRemoveNotification}
+                            className={
+                              NNotification > 0
+                                ? `flex justify-center  items-center w-full mx-auto rounded-lg  font-bold m-1 hover:bg-red-500 hover:text-white`
+                                : "flex justify-center  items-center w-full mx-auto rounded-lg bg-gray-200 font-bold m-1 "
+                            }
+                          >
+                            clear
+                          </button>
                         )}
                       </Menu.Item>
                     </Menu.Items>

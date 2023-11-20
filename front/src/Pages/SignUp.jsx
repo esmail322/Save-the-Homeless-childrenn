@@ -13,10 +13,15 @@ import { toast } from "react-toastify";
 import { NotificationContext } from "../context/NotificationContext";
 function SignUp() {
   /////
-  const { notification, setNotification, handelNDonar } =
-    useContext(NotificationContext);
+  const {
+    notification,
+    setNotification,
+    handelNDonar,
+    handelNStudent,
+    handelNTeacher,
+  } = useContext(NotificationContext);
   console.log(notification);
-  const [donar, donarLog] = useState(false);
+
   const [page, setPage] = useState(0);
   const [formerrors, setformerrors] = useState({});
   const [issubmit, setissubmit] = useState(false);
@@ -40,7 +45,7 @@ function SignUp() {
     setissubmit(true);
     if (issubmit) {
       toast.success("successfuly account created");
-
+      handelNTeacher();
       navigate("/studentlistforteacher");
     }
     try {
@@ -82,8 +87,9 @@ function SignUp() {
     setformerrors(validate(studentField));
     setissubmit(true);
     if (issubmit) {
+      handelNStudent();
       navigate("/course");
-      toast.success("successfuly account created");
+      toast.success("successful student account created");
     }
     try {
       const result = await axios.post(
