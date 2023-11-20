@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 function Alcourse() {
   return (
@@ -42,7 +43,7 @@ function Alcourse() {
                 alt="Math"
               />
               <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <div className="font-bold text-xl mb-2">Computer</div>
                 <p className="text-gray-700 text-base">
                   If you are interested in continuing lessons in this subject,
                   please follow this course to build a better future for
@@ -50,15 +51,17 @@ function Alcourse() {
                 </p>
               </div>
               <div className="px-6 py-4">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  Go to Course
-                </button>
+                <Link to="https://classroom.google.com/c/NjQxODQ5NzEwMTky?cjc=aj2g7gd">
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Go to Course
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
               <img className="w-full h-56" src="Telegram/math.jpg" alt="Math" />
               <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <div className="font-bold text-xl mb-2">Mathematic</div>
                 <p className="text-gray-700 text-base">
                   If you are interested in continuing lessons in this subject,
                   please follow this course to build a better future for
@@ -66,9 +69,11 @@ function Alcourse() {
                 </p>
               </div>
               <div className="px-6 py-4">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  Go to Course
-                </button>
+                <Link to="https://classroom.google.com/c/NjM4NzAxNzQ4ODQ3?cjc=mmn5652">
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Go to Course
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
