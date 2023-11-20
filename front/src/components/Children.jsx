@@ -17,7 +17,7 @@ function Children() {
             />
 
             <h1 className="text-4xl    mt-24 md:mt-4  text-white   absolute">
-              Ahmad Rashid
+              Rashida
             </h1>
             <p className=" absolute top-10   font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
               {" "}
@@ -37,23 +37,25 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2 flex  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.5] "
+              className="w-72 h-96  brightness-[0.2] "
               src="Telegram/poorboard.jpg"
               alt=""
             />
 
             <h1 className="text-4xl    mt-24 md:mt-4  text-white   absolute">
-              leo{" "}
+              Zubair
             </h1>
-            <p className=" absolute top-24  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
+            <p className=" absolute top-10  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
               {" "}
-              messi{" "}
+              He is a talented boy from Mazar Sharif and has 4 sisters and 4
+              brothers he is so smart boy he always want study but their
+              economic condition do not let him
             </p>
             <Link
               to="/bank"
               className="absolute  top-44 mt-24  w-32 bg-accent-2 pt-0.5 rounded-sm lg:h-8 border border-collapse pl-3 hover:bg-white"
             >
-              appale{" "}
+              Donate Now
             </Link>
           </div>
         </div>
@@ -65,23 +67,23 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.5] "
+              className="w-72 h-96  brightness-[0.2] "
               src="Telegram/poorhair.jpg"
               alt=""
             />
 
             <h1 className="text-4xl    mt-24 md:mt-4  text-white   absolute">
-              leo{" "}
+              Jmaila
             </h1>
-            <p className=" absolute top-24  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
-              {" "}
-              messi{" "}
+            <p className=" absolute top-10  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
+              She is from Logarr and he their family is so poor and can not
+              fullfill their requirement so she can not study
             </p>
             <Link
               to="/bank"
               className="absolute  top-44 mt-24  w-32 bg-accent-2 pt-0.5 rounded-sm lg:h-8 border border-collapse pl-3 hover:bg-white"
             >
-              appale{" "}
+              Donate Now
             </Link>
           </div>
         </div>
@@ -93,23 +95,24 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.5] "
+              className="w-72 h-96  brightness-[0.2] "
               src="Telegram/pooreyes.jpg"
               alt=""
             />
 
             <h1 className="text-4xl    mt-24 md:mt-4  text-white   absolute">
-              leo{" "}
+              Karima
             </h1>
-            <p className=" absolute top-24  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
+            <p className=" absolute top-10  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
               {" "}
-              messi{" "}
+              She is from Logarr and he their family is so poor and can not
+              fullfill their requirement so she can not study
             </p>
             <Link
               to="/bank"
               className="absolute  top-44 mt-24  w-32 bg-accent-2 pt-0.5 rounded-sm lg:h-8 border border-collapse pl-3 hover:bg-white"
             >
-              appale{" "}
+              Doante Now
             </Link>
           </div>
         </div>
@@ -121,23 +124,24 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.5] "
+              className="w-72 h-96  brightness-[0.2] "
               src="Telegram/poorgs.jpg"
               alt=""
             />
 
             <h1 className="text-4xl    mt-24 md:mt-4  text-white   absolute">
-              leo{" "}
+              Safia and Shamsia
             </h1>
-            <p className=" absolute top-24  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
+            <p className=" absolute top-10  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
               {" "}
-              messi{" "}
+              They are both sister and they ahve a poor family the situation of
+              their life is so hard and it is that they fullfill three timebread
             </p>
             <Link
               to="/bank"
               className="absolute  top-44 mt-24  w-32 bg-accent-2 pt-0.5 rounded-sm lg:h-8 border border-collapse pl-3 hover:bg-white"
             >
-              appale{" "}
+              Donate Now
             </Link>
           </div>
         </div>
@@ -149,23 +153,24 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.5] "
+              className="w-72 h-96  brightness-[0.2] "
               src="Telegram/poorgirl.jpg"
               alt=""
             />
 
             <h1 className="text-4xl    mt-24 md:mt-4  text-white   absolute">
-              leo{" "}
+              Sara
             </h1>
-            <p className=" absolute top-24  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
+            <p className=" absolute top-10  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
               {" "}
-              messi{" "}
+              Sara is in a poor family the situation of their life is so hard
+              and it is hard that they fullfill three time bread
             </p>
             <Link
               to="/bank"
               className="absolute  top-44 mt-24  w-32 bg-accent-2 pt-0.5 rounded-sm lg:h-8 border border-collapse pl-3 hover:bg-white"
             >
-              appale{" "}
+              Doante Now
             </Link>
           </div>
         </div>
@@ -177,23 +182,25 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.5] "
+              className="w-72 h-96  brightness-[0.2] "
               src="Telegram/poorbread.jpg"
               alt=""
             />
 
             <h1 className="text-4xl    mt-24 md:mt-4  text-white   absolute">
-              leo{" "}
+              Ahmad
             </h1>
-            <p className=" absolute top-24  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
+            <p className=" absolute top-10  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
               {" "}
-              messi{" "}
+              He is a talented boy from Mazar Sharif and has 4 sisters and 4
+              brothers he is so smart boy he always want study but their
+              economic condition do not let him
             </p>
             <Link
               to="/bank"
               className="absolute  top-44 mt-24  w-32 bg-accent-2 pt-0.5 rounded-sm lg:h-8 border border-collapse pl-3 hover:bg-white"
             >
-              appale{" "}
+              Donate Now
             </Link>
           </div>
         </div>
@@ -205,17 +212,19 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.5] "
+              className="w-72 h-96  brightness-[0.2] "
               src="Telegram/poorpic.jpg"
               alt=""
             />
 
             <h1 className="text-4xl    mt-24 md:mt-4  text-white   absolute">
-              leo{" "}
+              Mehdi
             </h1>
-            <p className=" absolute top-24  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
+            <p className=" absolute top-10  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
               {" "}
-              messi{" "}
+              he is so smart boy but he cant not show his skills cause of
+              economic problem hid father died and he worked on city and bring
+              bread to his family
             </p>
             <Link
               to="/bank"
@@ -233,17 +242,19 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.5] "
+              className="w-72 h-96  brightness-[0.2] "
               src="Telegram/orphan.jpeg"
               alt=""
             />
 
             <h1 className="text-4xl    mt-24 md:mt-4  text-white   absolute">
-              leo{" "}
+              Farid
             </h1>
-            <p className=" absolute top-24  font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
+            <p className=" absolute top-10 font-semibold px-[50px]   pt-16 md:pt-9 lg:items-center font-sans text-center text-white">
               {" "}
-              messi{" "}
+              Farid is from Jalal Abad and he has a five members family he and
+              his brother do hard work to find money for requirements of their
+              family
             </p>
             <Link
               to="/bank"
