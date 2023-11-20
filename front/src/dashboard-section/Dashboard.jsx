@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 
 import {
@@ -22,6 +22,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import axios from "axios";
+import { NotificationContext } from "../context/NotificationContext";
 const navigation = [
   { name: "home", href: "/dashboard", icon: HomeIcon, current: true },
   {
@@ -150,6 +151,16 @@ export default function Dashboard() {
   if (loading) {
     return <div>Loading..........</div>;
   }
+  const {
+    handelRemoveNotification,
+    NDonar,
+    NStudent,
+    NTeacher,
+    NNotification,
+  } = useContext(NotificationContext);
+
+  //student
+
   return (
     <>
       <div className="min-h-full">
@@ -188,10 +199,119 @@ export default function Dashboard() {
                   </div>
                 </form>
               </div>
-              <div className="ml-4 flex items-center md:ml-6">
+              <div className="ml-4 flex items-center justify-center md:ml-6">
+                <Menu as="div" className="ml-3  relative">
+                  <div className="flex gap-10 justify-center items-center">
+                    <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
+                      <div className="relative p-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="w-7 h-7"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                          />
+                        </svg>
+                        <span className="absolute top-1 right-1.5 h-5 text-xs w-5 bg-red-500 text-white rounded-full pb-1  text-center">
+                          {NNotification}
+                        </span>
+                      </div>
+                      <ChevronDownIcon
+                        className="hidden flex-shrink-0 ml-1 h-5 w-5 text-gray-400 lg:block"
+                        aria-hidden="true"
+                        s
+                      />
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            <div className="flex justify-between gap-5">
+                              <span>donar: </span>
+                              {NDonar ? NDonar : 0}
+                            </div>
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            <div className="flex justify-between gap-5">
+                              <span>student: </span>
+
+                              {NStudent ? NStudent : 0}
+                              {/* {storedStudent?.student} */}
+                            </div>
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            <div className="flex justify-between gap-5">
+                              <span>Teacher: </span>
+                              {NTeacher ? NTeacher : 0}
+                            </div>
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            href="#"
+                            disabled={NNotification > 0 ? false : true}
+                            onClick={handelRemoveNotification}
+                            className={
+                              NNotification > 0
+                                ? `flex justify-center  items-center w-full mx-auto rounded-lg  font-bold m-1 hover:bg-red-500 hover:text-white`
+                                : "flex justify-center  items-center w-full mx-auto rounded-lg bg-gray-200 font-bold m-1 "
+                            }
+                          >
+                            clear
+                          </button>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+
                 {/* Profile dropdown */}
-                <Menu as="div" className="ml-3 relative">
-                  <div>
+                <Menu as="div" className="ml-3  relative">
+                  <div className="flex gap-10 justify-center items-center">
                     <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
                       <img
                         className="h-8 w-8 rounded-full"

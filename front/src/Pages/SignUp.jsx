@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
@@ -9,14 +9,25 @@ import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { object } from "zod";
-
+import { toast } from "react-toastify";
+import { NotificationContext } from "../context/NotificationContext";
 function SignUp() {
   /////
-  const [donar, donarLog] = useState(false);
+  const {
+    notification,
+    setNotification,
+    handelNDonar,
+    handelNStudent,
+    handelNTeacher,
+  } = useContext(NotificationContext);
+  console.log(notification);
+
   const [page, setPage] = useState(0);
   const [formerrors, setformerrors] = useState({});
   const [issubmit, setissubmit] = useState(false);
+  const navigate = useNavigate();
   // Teacher function code
+
   const [teacherField, setTeacherField] = useState({
     fullname: "",
     email: "",
@@ -32,7 +43,11 @@ function SignUp() {
     event.preventDefault(event);
     setformerrors(validate(teacherField));
     setissubmit(true);
-    navigate("/studentlistforteacher");
+    if (issubmit) {
+      toast.success("successfuly account created");
+      handelNTeacher();
+      navigate("/studentlistforteacher");
+    }
     try {
       const result = await axios.post(
         "http://localhost:8080/teacher",
@@ -67,12 +82,15 @@ function SignUp() {
     typeOfassist: "",
     confirmPassword: "",
   });
-  const navigate = useNavigate();
   const handleStudentFormSubmit = async (event) => {
     event.preventDefault(event);
     setformerrors(validate(studentField));
     setissubmit(true);
-    navigate("/course");
+    if (issubmit) {
+      handelNStudent();
+      navigate("/course");
+      toast.success("successful student account created");
+    }
     try {
       const result = await axios.post(
         "http://localhost:8080/student",
@@ -113,14 +131,16 @@ function SignUp() {
   const [loading, setLoading] = useState();
   const onSubmitchange = async (e) => {
     e.preventDefault(e);
-
+    // alert("you have successfully sign in");
     console.log(donarField);
-    navigate("/bank");
+
     try {
       const response = await axios.post(
         "http://127.0.0.1:8080/donar",
         donarField
       );
+      // setNotification(response.data);
+      handelNDonar();
       console.log(response);
       setDonarField({
         fullname: "",
@@ -131,7 +151,12 @@ function SignUp() {
       console.log("something went wrong");
     }
     setformerrors(validate(donarField));
+
     setissubmit(true);
+    if (issubmit) {
+      toast.success("successful account created");
+      navigate("/bank");
+    }
   };
   useEffect(() => {
     console.log(formerrors);
@@ -155,10 +180,17 @@ function SignUp() {
     if (!values.password) {
       errors.password = "password is required!";
     } else if (values.password.length < 4) {
-      errors.password = "Passwrod must be greater than 4 characters";
+      errors.password = "Password must be greater than 4 characters";
     } else if (values.password.length > 10) {
-      errors.password = "Password connot exceed more than 10 characters";
+      errors.password = "Password cannot exceed more than 10 characters";
     }
+    if (!values.confirmPassword) {
+      errors.confirmPassword = "confirmPassword is required!";
+    }
+    if (values.password !== values.confirmPassword) {
+      errors.confirmPassword = "password don't match";
+    }
+
     if (!values.contact_number) {
       errors.contact_number = "number is required!";
     } else if (values.contact_number.length > 9) {
@@ -294,7 +326,7 @@ function SignUp() {
           {page == 1 && (
             // donrafrom
 
-            <form className=" w-96 bg-backgorund">
+            <form className=" w-96 bg-backgorund" onSubmit={onSubmitchange}>
               <input
                 type="text"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
@@ -327,21 +359,23 @@ function SignUp() {
               )}
               <input
                 type="password"
-                className="block border bg-backgorund border-black w-full p-3  rounded mb-10"
+                className="block border bg-backgorund border-black w-full p-3  rounded"
                 name="confirm_password"
                 placeholder={`${t("password12")}`}
+                onChange={(e) => ChangeDonarhandler(e)}
               />
-              <Link
-                to="/pending
-              "
+              {formerrors.confirmPassword && (
+                <span className="text-red-600">
+                  {formerrors.confirmPassword}
+                </span>
+              )}
+
+              <button
+                type="submit"
+                className="  mb-14 w-96  h-10 text-white hover:bg-sky-700 rounded-sm bg-teal-950  "
               >
-                <button
-                  className="  mb-14 w-96  h-10 text-white hover:bg-sky-700 rounded-sm bg-teal-950  "
-                  onClick={onSubmitchange}
-                >
-                  {t("Sign")}
-                </button>
-              </Link>
+                {t("Sign")}
+              </button>
               <button
                 type="submit"
                 className="w-full text-center  py-3 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1"
@@ -421,10 +455,16 @@ function SignUp() {
               <input
                 type="password"
                 // {...register("confirmPassword")}
-                className="block border  border-black bg-backgorund w-full p-3  rounded mb-8"
+                className="block border  border-black bg-backgorund w-full p-3  rounded "
                 name="confirm_password"
                 placeholder={`${t("password12")}`}
+                onChange={(e) => ChangeDonarhandler(e)}
               />
+              {formerrors.confirmPassword && (
+                <span className="text-red-600">
+                  {formerrors.confirmPassword}
+                </span>
+              )}
               <div className="flex flex-row   ">
                 <select
                   className="  bg-secondary w-20 h-12 border border-black  border-r-0  "
@@ -616,10 +656,16 @@ function SignUp() {
               )}
               <input
                 type="password"
-                className="block border  border-black bg-backgorund w-full p-3  rounded mb-8"
+                className="block border  border-black bg-backgorund w-full p-3  rounded "
                 name="confirm_password"
                 placeholder={`${t("password12")}`}
+                onChange={(e) => ChangeDonarhandler(e)}
               />
+              {formerrors.confirmPassword && (
+                <span className="text-red-600  bg-blue-400">
+                  {formerrors.confirmPassword}
+                </span>
+              )}
               <div className="flex flex-row   ">
                 <select
                   className="  bg-secondary w-20 h-12 border border-black  border-r-0  "
