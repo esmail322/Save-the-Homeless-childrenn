@@ -13,14 +13,8 @@ import { toast } from "react-toastify";
 import { NotificationContext } from "../context/NotificationContext";
 function SignUp() {
   /////
-  const {
-    notification,
-    setNotification,
-    handelNDonar,
-    handelNStudent,
-    handelNTeacher,
-  } = useContext(NotificationContext);
-  console.log(notification);
+  const { handelNDonar, handelNStudent, handelNTeacher } =
+    useContext(NotificationContext);
 
   const [page, setPage] = useState(0);
   const [formerrors, setformerrors] = useState({});
@@ -88,6 +82,7 @@ function SignUp() {
     setissubmit(true);
     if (issubmit) {
       handelNStudent();
+
       navigate("/course");
       toast.success("successful student account created");
     }
@@ -159,7 +154,6 @@ function SignUp() {
     }
   };
   useEffect(() => {
-    console.log(formerrors);
     if (Object.keys(formerrors).length === 0 && issubmit) {
       console.log(donarField);
     }

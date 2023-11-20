@@ -6,7 +6,6 @@ const NotificationProvider = ({ children }) => {
   // const donar = localStorage.getItem("donar");
   let storedDonar = JSON.parse(localStorage.getItem("donar"));
   let donarValue = storedDonar?.donar;
-  console.log(donarValue);
 
   // const student = localStorage.getItem("student");
   let storedStudent = JSON.parse(localStorage.getItem("student"));
@@ -28,11 +27,13 @@ const NotificationProvider = ({ children }) => {
     localStorage.setItem("donar", JSON.stringify({ donar: NDonar }));
   };
   const handelNStudent = () => {
+    console.log("student");
     setNStudent(Number(NStudent) + 1);
     localStorage.setItem("student", JSON.stringify({ student: NStudent }));
   };
   const handelNTeacher = () => {
     setNTeacher(Number(NTeacher) + 1);
+    localStorage.setItem("teacher", JSON.stringify({ teacher: NTeacher }));
   };
   const handelRemoveNotification = () => {
     console.log("hello");

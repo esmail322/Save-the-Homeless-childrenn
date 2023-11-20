@@ -291,6 +291,22 @@ export default function Dashboard() {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            <div className="flex justify-between gap-5">
+                              <span>Teacher: </span>
+                              {NTeacher ? NTeacher : 0}
+                            </div>
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
                           <button
                             href="#"
                             disabled={NNotification > 0 ? false : true}
