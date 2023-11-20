@@ -31,8 +31,12 @@ function Alcourse() {
             </button>
           </div>
           <div className="w-72 border border-black h-[560px]">
-            <img className=" p-2 rounded-md" src="Telegram/math.jpg" alt="" />
-            <h1 className="pl-2 font-bold">Mathmathic</h1>
+            <img
+              className=" p-2 rounded-md mb-20"
+              src="Telegram/dari.jpeg"
+              alt=""
+            />
+            <h1 className="pl-2 font-bold">Sawad Amozi</h1>
             <p className="p-3 font-semibold">
               If you are intersted to continue lesson in this part please follow
               this course to a fututre for yourself.
@@ -42,9 +46,13 @@ function Alcourse() {
             </button>
           </div>
           <div className="w-72 border border-black h-[560px]">
-            <img className=" p-2 rounded-md" src="Telegram/math.jpg" alt="" />
-            <h1 className="pl-2 font-bold">Mathmathic</h1>
-            <p className="p-3 font-semibold">
+            <img
+              className=" p-2 rounded-md h-96"
+              src="Telegram/english.jpg"
+              alt=""
+            />
+            <h1 className="pl-2 font-bold">English</h1>
+            <p className="p-3 pb-0 font-semibold">
               If you are intersted to continue lesson in this part please follow
               this course to a fututre for yourself.
             </p>
@@ -54,7 +62,6 @@ function Alcourse() {
           </div>
         </div>
         <div className="flex ml-64 space-x-4 mt-6 mb-16">
-          {" "}
           <div className="w-72 border border-black h-[560px]">
             <img
               className=" p-2 h-[375px] rounded-md"
@@ -72,9 +79,13 @@ function Alcourse() {
           </div>
           <div className="w-72 border border-black h-[560px]">
             {" "}
-            <img className=" p-2 rounded-md" src="Telegram/math.jpg" alt="" />
-            <h1 className="pl-2 font-bold">Mathmathic</h1>
-            <p className="p-3 font-semibold">
+            <img
+              className=" p-2 rounded-md h-96 "
+              src="Telegram/islamic.jpg"
+              alt=""
+            />
+            <h1 className="pl-2 font-bold">Islamic</h1>
+            <p className="p-3 pb-0 font-semibold">
               If you are intersted to continue lesson in this part please follow
               this course to a fututre for yourself.
             </p>
@@ -83,8 +94,12 @@ function Alcourse() {
             </button>
           </div>
           <div className="w-72 border border-black h-[560px]">
-            <img className=" p-2 rounded-md" src="Telegram/math.jpg" alt="" />
-            <h1 className="pl-2 font-bold">Mathmathic</h1>
+            <img
+              className=" p-2 rounded-md mb-40 mt-10"
+              src="Telegram/tarbiat.jpeg"
+              alt=""
+            />
+            <h1 className="pl-2 font-bold">Tarbyat</h1>
             <p className="p-3 font-semibold">
               If you are intersted to continue lesson in this part please follow
               this course to a fututre for yourself.
