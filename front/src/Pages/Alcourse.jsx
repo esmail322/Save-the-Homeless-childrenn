@@ -4,112 +4,188 @@ import Footer from "../components/Footer";
 
 function Alcourse() {
   return (
-    <div className="relative bg-backgorund ">
+    <div className=" bg-backgorund  ">
       <Header />
 
-      <select
-        name=""
-        id=""
-        className="absolute left-64 top-44 border border-black rounded-sm bg-backgorund "
-      >
-        <option value="">Sort By</option>
-        <option value=""></option>
-        <option value=""></option>
-      </select>
-      <section className="relative ">
-        <div className="flex ml-64 space-x-4 mb mt-32">
-          {" "}
-          <div className="w-72 border border-black h-[560px]">
-            <img className=" p-2 rounded-md" src="Telegram/math.jpg" alt="" />
-            <h1 className="pl-2 font-bold">Mathmathic</h1>
-            <p className="p-3 font-semibold">
-              If you are intersted to continue lesson in this part please follow
-              this course to a fututre for yourself.
-            </p>
-            <button className="border w-32 h-10 border-black m-3 font-bold ">
-              Go to Course
-            </button>
+      <div className="container p-5 md:p-10 ">
+        <select
+          name=""
+          id=""
+          className="  border border-slate-800 rounded-lg shadow-xl  my-5 w-[20%] p-2  bg-backgorund "
+        >
+          <option value="">Sort By</option>
+          <option value="">name</option>
+          <option value="">date</option>
+        </select>
+        <section>
+          <div className="grid grid-cols-1  mx-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4  gap-10  ">
+            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+              <img className="w-full h-56" src="Telegram/math.jpg" alt="Math" />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <p className="text-gray-700 text-base">
+                  If you are interested in continuing lessons in this subject,
+                  please follow this course to build a better future for
+                  yourself.
+                </p>
+              </div>
+              <div className="px-6 py-4">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Go to Course
+                </button>
+              </div>
+            </div>
+            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+              <img
+                className="w-full h-56"
+                src="Telegram/computer.jpg"
+                alt="Math"
+              />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <p className="text-gray-700 text-base">
+                  If you are interested in continuing lessons in this subject,
+                  please follow this course to build a better future for
+                  yourself.
+                </p>
+              </div>
+              <div className="px-6 py-4">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Go to Course
+                </button>
+              </div>
+            </div>
+            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+              <img className="w-full h-56" src="Telegram/math.jpg" alt="Math" />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <p className="text-gray-700 text-base">
+                  If you are interested in continuing lessons in this subject,
+                  please follow this course to build a better future for
+                  yourself.
+                </p>
+              </div>
+              <div className="px-6 py-4">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Go to Course
+                </button>
+              </div>
+            </div>
+            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+              <img
+                className="w-full h-56"
+                src="Telegram/dari.jpeg"
+                alt="Math"
+              />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <p className="text-gray-700 text-base">
+                  If you are interested in continuing lessons in this subject,
+                  please follow this course to build a better future for
+                  yourself.
+                </p>
+              </div>
+              <div className="px-6 py-4">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Go to Course
+                </button>
+              </div>
+            </div>
+            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+              <img className="w-full h-56" src="Telegram/math.jpg" alt="Math" />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <p className="text-gray-700 text-base">
+                  If you are interested in continuing lessons in this subject,
+                  please follow this course to build a better future for
+                  yourself.
+                </p>
+              </div>
+              <div className="px-6 py-4">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Go to Course
+                </button>
+              </div>
+            </div>
+            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+              <img
+                className="w-full h-56"
+                src="Telegram/english.jpg"
+                alt="Math"
+              />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <p className="text-gray-700 text-base">
+                  If you are interested in continuing lessons in this subject,
+                  please follow this course to build a better future for
+                  yourself.
+                </p>
+              </div>
+              <div className="px-6 py-4">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Go to Course
+                </button>
+              </div>
+            </div>
+            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+              <img className="w-full h-56" src="Telegram/math.jpg" alt="Math" />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <p className="text-gray-700 text-base">
+                  If you are interested in continuing lessons in this subject,
+                  please follow this course to build a better future for
+                  yourself.
+                </p>
+              </div>
+              <div className="px-6 py-4">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Go to Course
+                </button>
+              </div>
+            </div>
+            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+              <img
+                className="w-full h-56"
+                src="Telegram/image.jpg"
+                alt="Math"
+              />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <p className="text-gray-700 text-base">
+                  If you are interested in continuing lessons in this subject,
+                  please follow this course to build a better future for
+                  yourself.
+                </p>
+              </div>
+              <div className="px-6 py-4">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Go to Course
+                </button>
+              </div>
+            </div>
+            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+              <img
+                className="w-full h-56"
+                src="Telegram/email.jpeg"
+                alt="Math"
+              />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">Mathmatic</div>
+                <p className="text-gray-700 text-base">
+                  If you are interested in continuing lessons in this subject,
+                  please follow this course to build a better future for
+                  yourself.
+                </p>
+              </div>
+              <div className="px-6 py-4">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Go to Course
+                </button>
+              </div>
+            </div>
           </div>
-          <div className="w-72 border border-black h-[560px]">
-            <img
-              className=" p-2 rounded-md mb-20"
-              src="Telegram/dari.jpeg"
-              alt=""
-            />
-            <h1 className="pl-2 font-bold">Sawad Amozi</h1>
-            <p className="p-3 font-semibold">
-              If you are intersted to continue lesson in this part please follow
-              this course to a fututre for yourself.
-            </p>
-            <button className="border w-32 h-10 border-black m-3 font-bold ">
-              Go to Course
-            </button>
-          </div>
-          <div className="w-72 border border-black h-[560px]">
-            <img
-              className=" p-2 rounded-md h-96"
-              src="Telegram/english.jpg"
-              alt=""
-            />
-            <h1 className="pl-2 font-bold">English</h1>
-            <p className="p-3 pb-0 font-semibold">
-              If you are intersted to continue lesson in this part please follow
-              this course to a fututre for yourself.
-            </p>
-            <button className="border w-32 h-10 border-black m-3 font-bold ">
-              Go to Course
-            </button>
-          </div>
-        </div>
-        <div className="flex ml-64 space-x-4 mt-6 mb-16">
-          <div className="w-72 border border-black h-[560px]">
-            <img
-              className=" p-2 h-[375px] rounded-md"
-              src="Telegram/computer.jpg"
-              alt=""
-            />
-            <h1 className="pl-2 font-bold">Computer</h1>
-            <p className="p-3 font-semibold">
-              If you are intersted to continue lesson in this part please follow
-              this course to a fututre for yourself.
-            </p>
-            <button className="border w-32 h-10 border-black m-3 font-bold ">
-              Go to Course
-            </button>
-          </div>
-          <div className="w-72 border border-black h-[560px]">
-            {" "}
-            <img
-              className=" p-2 rounded-md h-96 "
-              src="Telegram/islamic.jpg"
-              alt=""
-            />
-            <h1 className="pl-2 font-bold">Islamic</h1>
-            <p className="p-3 pb-0 font-semibold">
-              If you are intersted to continue lesson in this part please follow
-              this course to a fututre for yourself.
-            </p>
-            <button className="border w-32 h-10 border-black m-3 font-bold ">
-              Go to Course
-            </button>
-          </div>
-          <div className="w-72 border border-black h-[560px]">
-            <img
-              className=" p-2 rounded-md mb-40 mt-10"
-              src="Telegram/tarbiat.jpeg"
-              alt=""
-            />
-            <h1 className="pl-2 font-bold">Tarbyat</h1>
-            <p className="p-3 font-semibold">
-              If you are intersted to continue lesson in this part please follow
-              this course to a fututre for yourself.
-            </p>
-            <button className="border w-32 h-10 border-black m-3 font-bold ">
-              Go to Course
-            </button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <Footer />
     </div>
