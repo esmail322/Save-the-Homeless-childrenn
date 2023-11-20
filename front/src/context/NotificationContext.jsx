@@ -9,11 +9,11 @@ const NotificationProvider = ({ children }) => {
 
   // const student = localStorage.getItem("student");
   let storedStudent = JSON.parse(localStorage.getItem("student"));
-  let studentValue = storedStudent?.donar;
+  let studentValue = storedStudent?.student;
 
   // const teacher = localStorage.getItem("teacher");
   let storedTeacher = JSON.parse(localStorage.getItem("teacher"));
-  let TeacherValue = storedTeacher?.donar;
+  let TeacherValue = storedTeacher?.teacher;
 
   const [NDonar, setNDonar] = useState(donarValue > 0 ? donarValue : 0);
   const [NStudent, setNStudent] = useState(studentValue > 0 ? studentValue : 0);
@@ -27,7 +27,7 @@ const NotificationProvider = ({ children }) => {
     localStorage.setItem("donar", JSON.stringify({ donar: NDonar }));
   };
   const handelNStudent = () => {
-    console.log("student");
+    console.log("student" + NStudent);
     setNStudent(Number(NStudent) + 1);
     localStorage.setItem("student", JSON.stringify({ student: NStudent }));
   };

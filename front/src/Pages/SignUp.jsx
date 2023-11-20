@@ -39,7 +39,6 @@ function SignUp() {
     setissubmit(true);
     if (issubmit) {
       toast.success("successfuly account created");
-      handelNTeacher();
       navigate("/studentlistforteacher");
     }
     try {
@@ -47,6 +46,7 @@ function SignUp() {
         "http://localhost:8080/teacher",
         teacherField
       );
+      handelNTeacher();
       console.log(result);
       setTeacherField({
         fullname: "",
@@ -81,8 +81,6 @@ function SignUp() {
     setformerrors(validate(studentField));
     setissubmit(true);
     if (issubmit) {
-      handelNStudent();
-
       navigate("/course");
       toast.success("successful student account created");
     }
@@ -91,6 +89,7 @@ function SignUp() {
         "http://localhost:8080/student",
         studentField
       );
+      handelNStudent();
       console.log(result);
       setstudentField({
         fullname: "",
