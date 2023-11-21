@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Children() {
   return (
-    <div className="flex flex-wrap mb-16 ml-24 ">
+    <div className="flex lg:flex-wrap lg:mb-16 lg:ml-24 ">
       <div
         id="Come"
         className=" flex   lg:ml-20 md:mt-36 lg:mt-14    lg:first-letter:  "
@@ -11,7 +11,7 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2 flex  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.2] "
+              className="w-72 h-96  brightness-[0.4] "
               src="Telegram/poorbike.jpg"
               alt=""
             />
@@ -37,7 +37,7 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2 flex  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.2] "
+              className="w-72 h-96  4 brightness-[0.4]"
               src="Telegram/poorboard.jpg"
               alt=""
             />
@@ -67,7 +67,7 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.2] "
+              className="w-72 h-96  4 brightness-[0.4]"
               src="Telegram/poorhair.jpg"
               alt=""
             />
@@ -95,7 +95,7 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.2] "
+              className="w-72 h-96  4 brightness-[0.4]"
               src="Telegram/pooreyes.jpg"
               alt=""
             />
@@ -124,7 +124,7 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.2] "
+              className="w-72 h-96  4 brightness-[0.4]"
               src="Telegram/poorgs.jpg"
               alt=""
             />
@@ -153,7 +153,7 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.2] "
+              className="w-72 h-96  4 brightness-[0.4]"
               src="Telegram/poorgirl.jpg"
               alt=""
             />
@@ -182,7 +182,7 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.2] "
+              className="w-72 h-96  4 brightness-[0.4]"
               src="Telegram/poorbread.jpg"
               alt=""
             />
@@ -212,7 +212,7 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.2] "
+              className="w-72 h-96  4 brightness-[0.4]"
               src="Telegram/poorpic.jpg"
               alt=""
             />
@@ -230,7 +230,7 @@ function Children() {
               to="/bank"
               className="absolute  top-44 mt-24  w-32 bg-accent-2 pt-0.5 rounded-sm lg:h-8 border border-collapse pl-3 hover:bg-white"
             >
-              appale{" "}
+              Donate Now{" "}
             </Link>
           </div>
         </div>
@@ -242,7 +242,7 @@ function Children() {
         <div className=" w-72 h-96 lg:bg-accent-2  lg:mr-20 md:mr-4">
           <div className="  bg-accent-2  md:relative  lg:flex md:flex md:justify-center lg:justify-center">
             <img
-              className="w-72 h-96  brightness-[0.2] "
+              className="w-72 h-96  4 brightness-[0.4]"
               src="Telegram/orphan.jpeg"
               alt=""
             />
@@ -260,7 +260,7 @@ function Children() {
               to="/bank"
               className="absolute  top-44 mt-24  w-32 bg-accent-2 pt-0.5 rounded-sm lg:h-8 border border-collapse pl-3 hover:bg-white"
             >
-              appale{" "}
+              Donate Now{" "}
             </Link>
           </div>
         </div>

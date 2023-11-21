@@ -45,7 +45,7 @@ export default function App() {
         {/* <LoginPage path="/login" element={<LoginPage />} /> */}
 
         <Route path="bloglist" element={<Bloglist />} />
-        <Route path="childs" element={<Children />} />
+        <Route path="/childs" element={<Children />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/accor" element={<Accordion />} />
         <Route path="/bankslip" element={<BankSlip />} />

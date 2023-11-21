@@ -249,7 +249,7 @@ export default function Dashboard() {
                             )}
                           >
                             <div className="flex justify-between gap-5">
-                              <span>donar: </span>
+                              <span>New donar: </span>
                               {NDonar ? NDonar : 0}
                             </div>
                           </a>
@@ -265,7 +265,7 @@ export default function Dashboard() {
                             )}
                           >
                             <div className="flex justify-between gap-5">
-                              <span>student: </span>
+                              <span> New student: </span>
 
                               {NStudent ? NStudent : 0}
                               {/* {storedStudent?.student} */}
@@ -283,7 +283,7 @@ export default function Dashboard() {
                             )}
                           >
                             <div className="flex justify-between gap-5">
-                              <span>Teacher: </span>
+                              <span>New Teacher: </span>
                               {NTeacher ? NTeacher : 0}
                             </div>
                           </a>

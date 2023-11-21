@@ -240,14 +240,14 @@ export default function Dashboard() {
                     <div className="flex items-center">
                       <img
                         className="hidden h-16 w-16 rounded-full sm:block"
-                        src="/Telegram/email.jpeg"
+                        src="/Telegram/admin.jpg"
                         alt=""
                       />
                       <div>
                         <div className="flex items-center">
                           <img
                             className="h-16 w-16 rounded-full sm:hidden"
-                            src="/Telegram/email.jpeg"
+                            src="/Telegram/admin.jpg"
                             alt=""
                           />
                           <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">

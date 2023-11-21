@@ -3,12 +3,14 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [donar, donarLog] = useState(false);
   const [page, setPage] = useState(0);
   const [formerrors, setformerrors] = useState({});
   const [issubmit, setissubmit] = useState(false);
+  const navigate = useNavigate();
   const { t } = useTranslation();
   // Teacher login function
   const [Teacher, setTeacher] = useState({
@@ -50,6 +52,7 @@ function Login() {
     } catch (error) {
       console.log(error);
     }
+    navigate("/course");
   };
   // donar login function
   const [Donar, setDonar] = useState({
@@ -70,6 +73,7 @@ function Login() {
     } catch (error) {
       console.log(error);
     }
+    navigate("/bank");
   };
   useEffect(() => {
     console.log(formerrors);

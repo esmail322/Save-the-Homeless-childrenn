@@ -162,7 +162,7 @@ function SignUp() {
       if (response.data && donarField.password === donarField.confirmPassword) {
         handelNDonar();
         toast.success("successful account created");
-        navigate("/bank");
+        navigate("/childs");
         setDonarField({
           fullname: "",
           email: "",

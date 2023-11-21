@@ -207,8 +207,8 @@ export default function Example() {
           <div className="flex flex-col flex-grow bg-cyan-700 pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
               <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/easywire-logo-cyan-300-mark-white-text.svg"
+                className="h-20 rounded-3xl ml-10 w-auto"
+                src="/Telegram/Dlogo.jpeg"
                 alt="Save the homeless"
               />
             </div>
