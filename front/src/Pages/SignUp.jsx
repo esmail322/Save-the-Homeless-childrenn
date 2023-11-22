@@ -129,10 +129,11 @@ function SignUp() {
         handelNStudent();
         console.log(studentField);
 
-        if (studentField.typeOfassist === "education") {
+        if (response.data.typeOfassist === "education") {
           navigate("/course");
-        } else if (studentField.typeOfassist === "help") {
-          navigate("/childs");
+        } else if (response.data.typeOfassist === "help") {
+          console.log(response);
+          navigate(`/studentProfile/${response.data._id}`);
         }
         toast.success("successful student account created");
         // setstudentField({
@@ -488,12 +489,19 @@ function SignUp() {
                 />
               </div>
               <textarea
-                name=""
-                id=""
+                name="description"
+                id="description"
                 cols="50"
-                rows="10"
-                className="block border border-black bg-backgorund w-full p-3  h-12 mb-1"
-                placeholder="brief description about yourself"
+                rows="2"
+                value={studentField.description}
+                className="block border border-black bg-backgorund w-full p-3   mb-1"
+                placeholder="Brief description about yourself"
+                onChange={(event) =>
+                  setstudentField({
+                    ...studentField,
+                    description: event.target.value,
+                  })
+                }
               ></textarea>
               <input
                 type="text"

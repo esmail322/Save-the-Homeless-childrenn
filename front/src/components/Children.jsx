@@ -21,6 +21,7 @@ function Children() {
   async function getStudents() {
     try {
       const response = await axios.get("http://127.0.0.1:8080/student");
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -34,9 +35,9 @@ function Children() {
       <ul>
         <div className="grid grid-cols-1  mx-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4  gap-10  ">
           {students.map((student) => (
-            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+            <div className=" border w-72  h-fit border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
               <img
-                className="w-full h-56"
+                className="w-72 h-56"
                 src={getHostname(student?.image)}
                 alt="Math"
               />
@@ -49,8 +50,15 @@ function Children() {
               </div>
               <Link to={`/bank?std=${student._id}`}>
                 <div className="px-6 py-4">
-                  <button className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Donate Now
+                  <button
+                    disabled={student.donar === undefined ? false : true}
+                    className={
+                      student.donar === undefined
+                        ? `bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`
+                        : "bg-gray-500 opacity-50 text-white  font-bold py-2 px-4 rounded"
+                    }
+                  >
+                    {student.donar === undefined ? "Donate Now" : "Donated"}
                   </button>
                 </div>
               </Link>

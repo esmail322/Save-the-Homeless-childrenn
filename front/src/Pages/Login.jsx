@@ -48,12 +48,20 @@ function Login() {
     console.log("clicked");
 
     try {
-      const result = await axios.post("http://localhost:8080/login/", Student);
-      console.log(result);
+      const response = await axios.post(
+        "http://localhost:8080/login/",
+        Student
+      );
+      if (response.data.typeOfassist === "education") {
+        navigate("/course");
+      } else if (response.data.user.typeOfassist === "help") {
+        console.log(response);
+        navigate(`/studentProfile/${response.data.user._id}`);
+      }
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
-    navigate("/course");
   };
   // donar login function
   const [Donar, setDonar] = useState({

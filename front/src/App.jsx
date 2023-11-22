@@ -30,6 +30,7 @@ import TeacherList from "./dashboard-section/TeacherList";
 import Children from "./components/Children";
 import StudentListforteacher from "./Pages/StudentListforteacher";
 import Card from "./dashboard-section/Card";
+import StudentProfile from "./Pages/StudentProfile";
 // import Sidebar from "./dashboard/Sidebar";
 
 export default function App() {
@@ -66,6 +67,7 @@ export default function App() {
         <Route path="/dashboard/students" element={<StudentList />} />
         <Route path="/dashboard/volunteers" element={<TeacherList />} />
         <Route path="/dashboard/donar" element={<DonarList />} />
+        <Route path="/studentProfile/:id" element={<StudentProfile />} />
 
         <Route path="/card" element={<Card />} />
 

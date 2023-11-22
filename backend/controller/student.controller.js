@@ -1,3 +1,4 @@
+const Payment = require("../models/payment.model");
 const Student = require("../models/student.model");
 const bcrypt = require("bcryptjs");
 
@@ -57,9 +58,15 @@ const editStudent = async (req, res) => {
 
 const getStudent = async (req, res) => {
   const { _id } = req.params;
-  const result = await Student.findOne({ _id });
-  return res.send(result);
+  const result = await Student.findOne({ _id }).populate("donar", "fullName");
+  const payment = await Payment.findOne({ donar: result?.donar?.id });
+
+  const restObject = { ...result };
+  restObject._doc.payment = payment?.amount;
+
+  return res.send(restObject._doc);
 };
+
 const AllStudent = async (req, res) => {
   const students = await Student.find();
   return res.send(students.count());
