@@ -1,31 +1,37 @@
 const Student = require("../models/student.model");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const saveStudent = async (req, res) => {
+  console.log(req.file);
   const {
     fullname,
     email,
     password,
     contact_number,
+    description,
     address,
     province,
     Zip_code,
     Country,
     typeOfassist,
   } = req.body;
-
-  const hashPassword = await bcrypt.hash(password, 12);
+  console.log(req.file, req.body);
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+  const imagePath = req?.file?.path;
 
   const student = new Student({
     fullName: fullname,
     email,
-    password: hashPassword,
+    password: hashedPassword,
     contact_number,
+    description,
     address,
     province,
     Zip_code,
     Country,
     typeOfassist,
+    image: imagePath,
   });
 
   const result = await student.save();
@@ -33,7 +39,7 @@ const saveStudent = async (req, res) => {
 };
 
 const getStudents = async (req, res) => {
-  const students = await Student.find();
+  const students = await Student.find().populate("donar", "fullName");
   return res.send(students);
 };
 

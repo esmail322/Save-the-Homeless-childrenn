@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 const donarRoutes = require("./routes/donar.route");
 const studentRoutes = require("./routes/student.route");
 const teacherRoutes = require("./routes/teacher.route");
@@ -42,6 +43,8 @@ app.get("/getTotalPayment", async (req, res) => {
 app.post("/pay", auth, (req, res, next) => {
   return res.status(200).send({ message: "Login Success" });
 });
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 mongoose.connect("mongodb://127.0.0.1:27017/savethehomeless").then(() => {});
 app.listen(8080, () => {

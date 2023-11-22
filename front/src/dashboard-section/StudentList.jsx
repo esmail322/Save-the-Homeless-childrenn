@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Dialog, Menu, Transition } from "@headlessui/react";
+import { FaCircleCheck } from "react-icons/fa6";
+import { IoCloseCircle } from "react-icons/io5";
 import {
   AcademicCapIcon,
   CogIcon,
@@ -342,6 +344,9 @@ export default function Dashboard() {
                               ID No:
                             </th>
                             <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Donar
+                            </th>
+                            <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                               FullName
                             </th>
                             <th className="hidden px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider md:block">
@@ -372,6 +377,17 @@ export default function Dashboard() {
                             <tr key={id + 1} className="bg-white">
                               <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                 {id + 1}
+                              </td>
+                              <td>
+                                {data?.donar?.fullName ? (
+                                  <FaCircleCheck
+                                    color="green"
+                                    cursor="pointer"
+                                    title={data?.donar?.fullName}
+                                  />
+                                ) : (
+                                  <IoCloseCircle color="red" />
+                                )}
                               </td>
                               <td>{data?.fullName}</td>
                               <td>{data?.contact_number}</td>

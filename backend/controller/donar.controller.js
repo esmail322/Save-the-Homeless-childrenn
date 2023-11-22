@@ -1,23 +1,27 @@
 const Donar = require("../models/donar.model");
 const bcrypt = require("bcrypt");
+const { createJwt } = require("../utils");
 
 const saveDonar = async (req, res) => {
-  const { fullname, email, password } = req.body;
+  const { body } = req;
 
-  const hashPassword = await bcrypt.hash(password, 12);
+  const hashPassword = await bcrypt.hash(body.password, 12);
 
-  const donar = new Donar({
-    fullName: fullname,
-    email,
-    password: hashPassword,
-  });
+  const isEmailExists = await Donar.findOne({ email: body.email });
 
-  const result = await donar.save();
-  return res.send(result);
+  if (isEmailExists) {
+    return res.status(400).json({ message: "User already exists!" });
+  }
+
+  body.password = hashPassword;
+  const donar = await Donar.create(body);
+
+  res.status(201).json(donar);
 };
 
 const getDonars = async (req, res) => {
   const donars = await Donar.find();
+  // const donar = ["some", "jama", "tama"];
   return res.send(donars);
 };
 

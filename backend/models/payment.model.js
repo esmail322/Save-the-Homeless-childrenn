@@ -6,6 +6,10 @@ const Schema = new mongoose.Schema({
   amount: Number,
   expire_date: Date,
   cvc: Number,
+  donar: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Donar",
+  },
 });
 
 const Payment = mongoose.model("Payment", Schema);

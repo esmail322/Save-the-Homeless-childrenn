@@ -72,26 +72,48 @@ function SignUp() {
   };
   // //student function code
 
+  const [imageFile, setImageFile] = useState("");
+
+  const imageHandler = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+  };
+
   const [studentField, setstudentField] = useState({
     fullname: "",
     email: "",
     password: "",
     contact_number: "",
+    description: "",
     address: "",
     province: "",
     Country: "",
     typeOfassist: "",
     confirmPassword: "",
+    image: "",
   });
+
   const handleStudentFormSubmit = async (event) => {
     event.preventDefault(event);
 
     if (isSubmit) {
     }
     try {
+      const formData = new FormData();
+      formData.append("fullname", studentField.fullname);
+      formData.append("email", studentField.email);
+      formData.append("typeOfassist", studentField.typeOfassist);
+      formData.append("password", studentField.password);
+      formData.append("contact_number", studentField.contact_number);
+      formData.append("description", studentField.description);
+      formData.append("address", studentField.address);
+      formData.append("province", studentField.province);
+      formData.append("Country", studentField.Country);
+      formData.append("image", imageFile);
+
       const response = await axios.post(
         "http://localhost:8080/student",
-        studentField
+        formData
       );
 
       if (studentField.password !== studentField.confirmPassword) {
@@ -105,22 +127,30 @@ function SignUp() {
         studentField.password === studentField.confirmPassword
       ) {
         handelNStudent();
-        navigate("/course");
+        console.log(studentField);
+
+        if (studentField.typeOfassist === "education") {
+          navigate("/course");
+        } else if (studentField.typeOfassist === "help") {
+          navigate("/childs");
+        }
         toast.success("successful student account created");
-        setstudentField({
-          fullname: "",
-          email: "",
-          password: "",
-          contact_number: "",
-          address: "",
-          province: "",
-          Country: "",
-          typeOfassist: "",
-          confirmPassword: "",
-        });
+        // setstudentField({
+        //   fullname: "",
+        //   email: "",
+        //   password: "",
+        //   contact_number: "",
+        //   description: "",
+        //   address: "",
+        //   province: "",
+        //   Country: "",
+        //   typeOfassist: "",
+        //   confirmPassword: "",
+        //   image: "",
+        // });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -148,6 +178,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
+      donarField.fullName = donarField.fullname;
       const response = await axios.post(
         "http://127.0.0.1:8080/donar",
         donarField
@@ -170,7 +201,10 @@ function SignUp() {
           confirmPassword: "",
         });
       }
+
+      localStorage.setItem("donar", JSON.stringify(response.data._id));
     } catch (err) {
+      toast.error(err.response.data.message);
       console.log("something went wrong");
     }
   };
@@ -453,6 +487,14 @@ function SignUp() {
                   }
                 />
               </div>
+              <textarea
+                name=""
+                id=""
+                cols="50"
+                rows="10"
+                className="block border border-black bg-backgorund w-full p-3  h-12 mb-1"
+                placeholder="brief description about yourself"
+              ></textarea>
               <input
                 type="text"
                 className=" border  bg-backgorund w-full font-semibold border-black  p-3  rounded mb-1"
@@ -538,9 +580,19 @@ function SignUp() {
                 >
                   <option value="">{t("assisted")}</option>
                   <option value="education">{t("education")}</option>
-                  <option value="Help">{t("help")}</option>
+                  <option value="help">{t("help")}</option>
                 </select>
               </div>
+              <span>Select a picture</span>
+              <input
+                type="file"
+                className="block border h-12 bg-backgorund border-black  p-2  rounded mb-3"
+                name="image"
+                // accept="image/*"
+                required
+                placeholder={t("image")}
+                onChange={imageHandler}
+              />
               <button
                 type="submit"
                 className="  mb-14 w-96  h-10 text-white hover:bg-sky-700 rounded-sm bg-teal-950  "

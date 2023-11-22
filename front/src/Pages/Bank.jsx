@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import BankSlip from "./BankSlip";
 import { useTranslation } from "react-i18next";
 
@@ -13,6 +18,9 @@ function Bank() {
   const [formerrors, setformerrors] = useState({});
   const [issubmit, setissubmit] = useState(false);
   const [page, setPage] = useState(1);
+
+  const [searchParams] = useSearchParams();
+  const stdValue = searchParams.get("std");
 
   const [Payment, setPayment] = useState({
     card_name: "",
@@ -34,6 +42,11 @@ function Bank() {
 
     console.log(Payment);
     try {
+      const donarId = JSON.parse(localStorage.getItem("donar"));
+
+      Payment.donarId = donarId;
+      Payment.studentId = stdValue;
+
       const response = await axios.post(
         "http://127.0.0.1:8080/payment",
         Payment

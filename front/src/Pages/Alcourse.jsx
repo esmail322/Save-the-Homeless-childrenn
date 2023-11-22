@@ -168,26 +168,6 @@ function Alcourse() {
                 </button>
               </div>
             </div>
-            <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
-              <img
-                className="w-full h-56"
-                src="Telegram/email.jpeg"
-                alt="Math"
-              />
-              <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">Mathmatic</div>
-                <p className="text-gray-700 text-base">
-                  If you are interested in continuing lessons in this subject,
-                  please follow this course to build a better future for
-                  yourself.
-                </p>
-              </div>
-              <div className="px-6 py-4">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  Go to Course
-                </button>
-              </div>
-            </div>
           </div>
         </section>
       </div>

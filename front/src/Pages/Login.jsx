@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Login() {
   const [donar, donarLog] = useState(false);
@@ -63,24 +64,23 @@ function Login() {
   // handle submit
   const handleSubmit = async (event) => {
     event.preventDefault(event);
-    setformerrors(validate(Donar));
-    setissubmit(true);
-    console.log("clicked");
+    // setformerrors(validate(Donar));
+    // setissubmit(true);
 
     try {
       const result = await axios.post("http://localhost:8080/login/", Donar);
       console.log(result);
+      navigate("/childs");
     } catch (error) {
+      toast.error(error.response.data.message);
       console.log(error);
     }
-    navigate("/bank");
   };
-  useEffect(() => {
-    console.log(formerrors);
-    if (Object.keys(formerrors).length === 0 && issubmit) {
-      console.log(donarField);
-    }
-  }, [formerrors]);
+  // useEffect(() => {
+  //   console.log(formerrors);
+  //   if (Object.keys(formerrors).length === 0 && issubmit) {
+  //   }
+  // }, [formerrors]);
 
   const validate = (values) => {
     const errors = {};
@@ -179,7 +179,7 @@ function Login() {
         </div>
         <div className="flex justify-center pt-2 mb-16  ">
           {page == 1 && (
-            <div action="" className=" w-96 bg-backgorund">
+            <form onSubmit={handleSubmit} className=" w-96 bg-backgorund">
               <input
                 type="string"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-3"
@@ -215,13 +215,12 @@ function Login() {
 
               <button
                 type="submit"
-                onClick={handleSubmit}
                 className="  w-96  h-10 text-white  hover:bg-sky-700 rounded-md  bg-primary  "
               >
                 {" "}
-                {`${t("Sign")}`}
+                {`${t("Login")}`}
               </button>
-            </div>
+            </form>
           )}
           {page == 2 && (
             <div action="" className=" w-96 bg-backgorund">
@@ -264,7 +263,7 @@ function Login() {
                 className="  w-96  h-10 text-white  hover:bg-sky-700 rounded-md  bg-primary  "
               >
                 {" "}
-                {`${t("Sign")}`}
+                {`${t("Login")}`}
               </button>
             </div>
           )}
@@ -309,7 +308,7 @@ function Login() {
                 className="  w-96  h-10 text-white  hover:bg-sky-700 rounded-md  bg-primary  "
               >
                 {" "}
-                {`${t("Sign")}`}
+                {`${t("Login")}`}
               </button>
             </div>
           )}

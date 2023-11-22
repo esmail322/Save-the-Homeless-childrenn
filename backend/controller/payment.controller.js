@@ -1,7 +1,17 @@
+const mongoose = require("mongoose");
 const Payment = require("../models/payment.model");
+const Student = require("../models/student.model");
 
 const savepayment = async (req, res) => {
-  const { card_name, card_number, amount, expire_date, cvc } = req.body;
+  const {
+    card_name,
+    card_number,
+    amount,
+    expire_date,
+    cvc,
+    donarId,
+    studentId,
+  } = req.body;
 
   const payment = new Payment({
     card_name,
@@ -9,9 +19,17 @@ const savepayment = async (req, res) => {
     amount,
     expire_date,
     cvc,
+    donar: new mongoose.Types.ObjectId(donarId),
   });
 
   const result = await payment.save();
+
+  await Student.findByIdAndUpdate(
+    studentId,
+    { donar: new mongoose.Types.ObjectId(donarId) },
+    { new: true }
+  );
+
   return res.send(result);
 };
 
