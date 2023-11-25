@@ -6,34 +6,44 @@ const NotificationProvider = ({ children }) => {
   // const donar = localStorage.getItem("donar");
   let storedDonar = JSON.parse(localStorage.getItem("donar"));
   let donarValue = storedDonar?.donar;
-  console.log(donarValue);
 
   // const student = localStorage.getItem("student");
   let storedStudent = JSON.parse(localStorage.getItem("student"));
-  let studentValue = storedStudent?.donar;
+  let studentValue = storedStudent?.student;
 
   // const teacher = localStorage.getItem("teacher");
   let storedTeacher = JSON.parse(localStorage.getItem("teacher"));
-  let TeacherValue = storedTeacher?.donar;
+  let TeacherValue = storedTeacher?.teacher;
 
   const [NDonar, setNDonar] = useState(donarValue > 0 ? donarValue : 0);
   const [NStudent, setNStudent] = useState(studentValue > 0 ? studentValue : 0);
   const [NTeacher, setNTeacher] = useState(TeacherValue > 0 ? TeacherValue : 0);
+
+  const handelNDonar = () => {
+    const updatedNDonar = Number(NDonar) + 1;
+    setNDonar(updatedNDonar);
+    localStorage.setItem("donar", JSON.stringify({ donar: updatedNDonar }));
+  };
+  const handelNStudent = () => {
+    const updatedNStudent = Number(NStudent) + 1;
+    setNStudent(updatedNStudent);
+    localStorage.setItem(
+      "student",
+      JSON.stringify({ student: updatedNStudent })
+    );
+  };
+
+  const handelNTeacher = () => {
+    const updatedNTeacher = Number(NTeacher) + 1;
+    setNTeacher(updatedNTeacher);
+    localStorage.setItem(
+      "teacher",
+      JSON.stringify({ teacher: updatedNTeacher })
+    );
+  };
   const [NNotification, setNNotification] = useState(
     NDonar + NTeacher + NStudent
   );
-
-  const handelNDonar = () => {
-    setNDonar(Number(NDonar) + 1);
-    localStorage.setItem("donar", JSON.stringify({ donar: NDonar }));
-  };
-  const handelNStudent = () => {
-    setNStudent(Number(NStudent) + 1);
-    localStorage.setItem("student", JSON.stringify({ student: NStudent }));
-  };
-  const handelNTeacher = () => {
-    setNTeacher(Number(NTeacher) + 1);
-  };
   const handelRemoveNotification = () => {
     console.log("hello");
     localStorage.removeItem("donar");

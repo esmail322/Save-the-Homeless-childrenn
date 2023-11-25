@@ -40,38 +40,38 @@ function StudentListforteacher() {
           </p>
         </div>
 
-        <div class="relative overflow-x-auto w-full mb-12 bgba shadow-md  sm:rounded-lg px-[60px]">
-          <div class="sm:-mx-6 rounded-sm">
-            <div class="inline-block min-w-full py-2 rounded-md sm:px-6 lg:px-8">
-              <div class="overflow-x-auto rounded-sm ">
-                <table class="min-w-full w-full text-left border border-black  rounded-sm text-sm font-light">
-                  <thead class="border-b  font-medium dark:border-neutral-500">
+        <div className="relative overflow-x-auto w-full mb-12 bgba shadow-md  sm:rounded-lg px-[60px]">
+          <div className="sm:-mx-6 rounded-sm">
+            <div className="inline-block min-w-full py-2 rounded-md sm:px-6 lg:px-8">
+              <div className="overflow-x-auto rounded-sm ">
+                <table className="min-w-full w-full text-left border border-black  rounded-sm text-sm font-light">
+                  <thead className="border-b  font-medium dark:border-neutral-500">
                     <tr>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" className="px-6 py-4">
                         ID No.
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" className="px-6 py-4">
                         Fullname
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" className="px-6 py-4">
                         email
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" className="px-6 py-4">
                         Contact_number
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" className="px-6 py-4">
                         Address
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" className="px-6 py-4">
                         Provice
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" className="px-6 py-4">
                         Zip_code
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" className="px-6 py-4">
                         Country
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" className="px-6 py-4">
                         TypeOfassist
                       </th>
                     </tr>
@@ -79,32 +79,35 @@ function StudentListforteacher() {
                   <tbody>
                     {data.map((donor, i) => {
                       return (
-                        <tr key={i} class="border-b dark:border-neutral-500">
-                          <td class="whitespace-nowrap px-6 py-4 font-medium">
+                        <tr
+                          key={i}
+                          className="border-b dark:border-neutral-500"
+                        >
+                          <td className="whitespace-nowrap px-6 py-4 font-medium">
                             {i + 1}
                           </td>
-                          <td class="whitespace-nowrap px-6 font-bold  py-4">
+                          <td className="whitespace-nowrap px-6 font-bold  py-4">
                             {donor.fullName}
                           </td>
-                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                          <td className="whitespace-nowrap font-bold  px-6 py-4">
                             {donor.email}
                           </td>
-                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                          <td className="whitespace-nowrap font-bold  px-6 py-4">
                             {donor.Contact_number}
                           </td>
-                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                          <td className="whitespace-nowrap font-bold  px-6 py-4">
                             {donor.address}
                           </td>
-                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                          <td className="whitespace-nowrap font-bold  px-6 py-4">
                             {donor.Provice}
                           </td>
-                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                          <td className="whitespace-nowrap font-bold  px-6 py-4">
                             {donor.Zip_code}
                           </td>
-                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                          <td className="whitespace-nowrap font-bold  px-6 py-4">
                             {donor.Country}
                           </td>
-                          <td class="whitespace-nowrap font-bold  px-6 py-4">
+                          <td className="whitespace-nowrap font-bold  px-6 py-4">
                             {donor.typeOfassist}
                           </td>
                         </tr>
@@ -123,14 +126,14 @@ function StudentListforteacher() {
                           password,
                 
                         }) => (
-                          <tr class="border-b dark:border-neutral-500">
-                            <td class="whitespace-nowrap px-6 py-4 font-medium">
+                          <tr className="border-b dark:border-neutral-500">
+                            <td className="whitespace-nowrap px-6 py-4 font-medium">
                               {fullname}
                             </td>
-                            <td class="whitespace-nowrap px-6 font-bold  py-4">
+                            <td className="whitespace-nowrap px-6 font-bold  py-4">
                               {email}
                             </td>
-                            <td class="whitespace-nowrap font-bold  px-6 py-4">
+                            <td className="whitespace-nowrap font-bold  px-6 py-4">
                               {password}
                             </td>
                           </tr>
@@ -138,13 +141,13 @@ function StudentListforteacher() {
                       )
                     )} */}
 
-                    {/* <tr class="border-b dark:border-neutral-500">
-                      <td class="whitespace-nowrap px-6 py-4 font-medium"></td>
-                      <td class="whitespace-nowrap px-6 py-4">Cell</td>
-                      <td class="whitespace-nowrap px-6 py-4">Cell</td>
-                      <td class="whitespace-nowrap px-6 py-4">Cell</td>
-                      <td class="whitespace-nowrap px-6 py-4">Cell</td>
-                      <td class="whitespace-nowrap px-6 py-4">Cell</td>
+                    {/* <tr className="border-b dark:border-neutral-500">
+                      <td className="whitespace-nowrap px-6 py-4 font-medium"></td>
+                      <td className="whitespace-nowrap px-6 py-4">Cell</td>
+                      <td className="whitespace-nowrap px-6 py-4">Cell</td>
+                      <td className="whitespace-nowrap px-6 py-4">Cell</td>
+                      <td className="whitespace-nowrap px-6 py-4">Cell</td>
+                      <td className="whitespace-nowrap px-6 py-4">Cell</td>
                     </tr> */}
                   </tbody>
                 </table>
@@ -154,26 +157,26 @@ function StudentListforteacher() {
         </div>
 
         {/* 
-        <div class="relative overflow-x-auto w-full mb-12 bgba shadow-md sm:rounded-lg px-[60px]">
-          <table class="w-full text-sm text-left  border border-black">
-            <thead class="text-xs  uppercase  bg-backgorun">
+        <div className="relative overflow-x-auto w-full mb-12 bgba shadow-md sm:rounded-lg px-[60px]">
+          <table className="w-full text-sm text-left  border border-black">
+            <thead className="text-xs  uppercase  bg-backgorun">
               <tr className="border border-black ">
-                <th scope="col" class="px-6 py-3 border border-r-none ">
+                <th scope="col" className="px-6 py-3 border border-r-none ">
                   Image
                 </th>
-                <th scope="col" class="px-6 py-3 border border-black">
+                <th scope="col" className="px-6 py-3 border border-black">
                   Name
                 </th>
-                <th scope="col" class="px-6 py-3 border border-black">
+                <th scope="col" className="px-6 py-3 border border-black">
                   Father Name
                 </th>
-                <th scope="col" class="px-6 border border-black py-3">
+                <th scope="col" className="px-6 border border-black py-3">
                   Street Name
                 </th>
-                <th scope="col" class="px-6 border border-black py-3">
+                <th scope="col" className="px-6 border border-black py-3">
                   Phone Number
                 </th>
-                <th scope="col" class="px-6 border border-black py-3">
+                <th scope="col" className="px-6 border border-black py-3">
                   Edit
                 </th>
               </tr>
@@ -184,22 +187,22 @@ function StudentListforteacher() {
               ) : (
                 data.map(
                   ({ name, image, father_name, phone_num, streat_name }) => (
-                    <tr class=" border-b bg-backgorund border border-black dark:border-gray-700">
-                      <td class="px-6 py-4 border border-black">{image}</td>
-                      <td class="px-6 py-4 border font-bold border-black">
+                    <tr className=" border-b bg-backgorund border border-black dark:border-gray-700">
+                      <td className="px-6 py-4 border border-black">{image}</td>
+                      <td className="px-6 py-4 border font-bold border-black">
                         {name}
                       </td>
-                      <td class="px-6 py-4 border border-black">
+                      <td className="px-6 py-4 border border-black">
                         {father_name}
                       </td>
-                      <td class="px-6 py-4 border border-black">
+                      <td className="px-6 py-4 border border-black">
                         {" "}
                         {streat_name}
                       </td>
-                      <td class="px-6 py-4 border border-black">
+                      <td className="px-6 py-4 border border-black">
                         <a
                           href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                         >
                           {phone_num}
                         </a>

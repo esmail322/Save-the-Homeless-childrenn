@@ -8,6 +8,8 @@ import i18next from "i18next";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import NotificationProvider from "./context/NotificationContext.jsx";
+import "react-toastify/dist/ReactToastify.css";
+
 i18next.init({
   interpolation: { escapeValue: false }, // React already does escaping
   lng: "en", // Set the default language

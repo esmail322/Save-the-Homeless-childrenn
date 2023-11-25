@@ -208,13 +208,13 @@ export default function Dashboard() {
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
                           stroke="currentColor"
                           className="w-7 h-7"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
                           />
                         </svg>
@@ -249,7 +249,7 @@ export default function Dashboard() {
                             )}
                           >
                             <div className="flex justify-between gap-5">
-                              <span>donar: </span>
+                              <span>New donar: </span>
                               {NDonar ? NDonar : 0}
                             </div>
                           </a>
@@ -265,10 +265,26 @@ export default function Dashboard() {
                             )}
                           >
                             <div className="flex justify-between gap-5">
-                              <span>student: </span>
+                              <span> New student: </span>
 
                               {NStudent ? NStudent : 0}
                               {/* {storedStudent?.student} */}
+                            </div>
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            <div className="flex justify-between gap-5">
+                              <span>New Teacher: </span>
+                              {NTeacher ? NTeacher : 0}
                             </div>
                           </a>
                         )}
@@ -419,12 +435,12 @@ export default function Dashboard() {
               {/* card for showing amount of money*/}
               <a
                 href="#"
-                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   Amount Of money
                 </h5>
-                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                <p className=" text-center font-normal text-gray-700 dark:text-gray-400">
                   {totalAmount}
                 </p>
               </a>
@@ -432,12 +448,12 @@ export default function Dashboard() {
               {/* card for showing student amount */}
               <a
                 href="#"
-                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   Student Amount
                 </h5>
-                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                <p className=" text-center font-normal text-gray-700 dark:text-gray-400">
                   {data.length}
                 </p>
               </a>
@@ -445,24 +461,24 @@ export default function Dashboard() {
               {/* card for showing donar Amount */}
               <a
                 href="#"
-                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   Donar Amount
                 </h5>
-                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                <p className=" text-center font-normal text-gray-700 dark:text-gray-400">
                   {Ddata.length}
                 </p>
               </a>
               {/* card for showing teacher Amount */}
               <a
                 href="#"
-                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   Teacher Amount
                 </h5>
-                <p class=" text-center font-normal text-gray-700 dark:text-gray-400">
+                <p className=" text-center font-normal text-gray-700 dark:text-gray-400">
                   {Tdata.length}
                 </p>
               </a>

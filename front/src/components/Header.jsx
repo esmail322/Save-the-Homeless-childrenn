@@ -70,7 +70,7 @@ function Header() {
               to="/"
               className="text-black sm:ml-10  sm:w-40  focus:ring-gray-300 font-semibold  sm:rounded-lg sm:text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
             >
-              SAVE THE HOMELESS
+              <img src="/Telegram/logo.jpeg" className="rounded-full" alt="" />
             </Link>
           </Link>
           <div className="sm:flex sm:items-center lg:order-2">
@@ -95,6 +95,13 @@ function Header() {
             >
               {t("Login")}
             </Link>{" "}
+            </Link>
+            <Link
+              to="/signup"
+              className="text-black hover:bg-accent-2  sm:font-medium sm:rounded-lg sm:text-sm sm:px-2 sm:lg:px-2 py-2  mr-2 "
+            >
+              {t("Sign")}
+            </Link>
           </div>
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1 md:hidden"

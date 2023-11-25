@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Dialog, Menu, Transition } from "@headlessui/react";
+import { FaCircleCheck } from "react-icons/fa6";
+import { IoCloseCircle } from "react-icons/io5";
 import {
   AcademicCapIcon,
   CogIcon,
@@ -96,11 +98,16 @@ export default function Dashboard() {
     fetchData();
   }, []);
   const handleDelete = async (id) => {
-    await axios.delete("http://127.0.0.1:8080/student/" + id);
-    const newdonordata = data.filter((item) => {
-      return item._id !== id;
-    });
-    setData(newdonordata);
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this item?"
+    );
+    if (confirmed) {
+      await axios.delete("http://127.0.0.1:8080/student/" + id);
+      const newdonordata = data.filter((item) => {
+        return item._id !== id;
+      });
+      setData(newdonordata);
+    }
   };
 
   // console.log(data);
@@ -108,7 +115,6 @@ export default function Dashboard() {
   if (loading) {
     return <div>Loading..........</div>;
   }
-  //jkhjjghjhghjgjhgjhgjh
 
   return (
     <>
@@ -155,7 +161,7 @@ export default function Dashboard() {
                     <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="./Telegram/email.jpg"
+                        src="/Telegram/admin.jpg"
                         alt=""
                       />
                       <span className="hidden ml-3 text-gray-700 text-sm font-medium lg:block">
@@ -235,14 +241,14 @@ export default function Dashboard() {
                     <div className="flex items-center">
                       <img
                         className="hidden h-16 w-16 rounded-full sm:block"
-                        src=""
+                        src="/Telegram/admin.jpg"
                         alt=""
                       />
                       <div>
                         <div className="flex items-center">
                           <img
                             className="h-16 w-16 rounded-full sm:hidden"
-                            src="./Telegram/younus.jpg"
+                            src="/Telegram/admin.jpg"
                             alt=""
                           />
                           <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
@@ -337,6 +343,9 @@ export default function Dashboard() {
                               ID No:
                             </th>
                             <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Donar
+                            </th>
+                            <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                               FullName
                             </th>
                             <th className="hidden px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider md:block">
@@ -368,6 +377,17 @@ export default function Dashboard() {
                               <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                 {id + 1}
                               </td>
+                              <td>
+                                {data?.donar?.fullName ? (
+                                  <FaCircleCheck
+                                    color="green"
+                                    cursor="pointer"
+                                    title={data?.donar?.fullName}
+                                  />
+                                ) : (
+                                  <IoCloseCircle color="red" />
+                                )}
+                              </td>
                               <td>{data?.fullName}</td>
                               <td>{data?.contact_number}</td>
                               <td>{data?.address}</td>
@@ -375,7 +395,7 @@ export default function Dashboard() {
                               <td>{data?.Zip_code}</td>
                               <td>{data?.Country}</td>
                               <td>{data?.typeOfassist}</td>
-                              <td class="flex space-x-4">
+                              <td className="flex space-x-4">
                                 <Link to={`/viewstudent/${data._id}`}>
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"

@@ -1,12 +1,13 @@
 const express = require("express");
 const StudentController = require("../controller/student.controller");
+const upload = require("../middlewares/imageUploader");
 
 const router = express.Router();
 
 router
   .route("/")
   .get(StudentController.getStudents)
-  .post(StudentController.saveStudent);
+  .post(upload.single("image"), StudentController.saveStudent);
 
 router
   .route("/:_id")

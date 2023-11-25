@@ -1,30 +1,36 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios"; // Import Axios at the top of the file
 
 const LoginForm = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    event.preventDefault(event);
+    event.preventDefault();
 
     try {
-      fetch("http://localhost:8080/auth/login", {
-        body: JSON.stringify(user),
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          if (response.token) {
-            localStorage.setItem("token", response.token);
-            navigate("/dashboard");
-          }
-        });
+      const response = await axios.post(
+        "http://localhost:8080/auth/login",
+        user,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.token) {
+        console.log("Login successful");
+        localStorage.setItem("token", response.data.token);
+        navigate("/dashboard");
+        toast.success("you are login successfully!");
+      }
     } catch (error) {
-      console.log(error);
+      console.log("An error occurred:", error);
+      // Handle the error gracefully, e.g., show a toast message
+      toast.error(error.response.data.message);
     }
   };
   return (
