@@ -9,8 +9,8 @@ import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { object } from "zod";
-import { toast } from "react-toastify";
-import { NotificationContext } from "../context/NotificationContext";
+// import { toast } from "react-toastify";
+// import { NotificationContext } from "../context/NotificationContext";
 function SignUp() {
   /////
   const {

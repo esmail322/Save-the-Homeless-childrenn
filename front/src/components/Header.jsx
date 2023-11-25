@@ -89,13 +89,12 @@ function Header() {
                 <option value="pa">{t("pashto")}</option>
               </select>
             </Link>
-
             <Link
               to="/login"
               className="text-black hover:bg-accent-2  sm:font-medium sm:rounded-lg sm:text-sm sm:px-2 sm:lg:px-2 py-2  mr-2 "
             >
               {t("Login")}
-            </Link>
+            </Link>{" "}
           </div>
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1 md:hidden"

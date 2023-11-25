@@ -5,8 +5,8 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import NotificationProvider from "./context/NotificationContext.jsx";
 i18next.init({
   interpolation: { escapeValue: false }, // React already does escaping
@@ -30,7 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <React.StrictMode>
         <BrowserRouter>
           <App />
-          <ToastContainer />
+          {/* <ToastContainer /> */}
         </BrowserRouter>
       </React.StrictMode>
     </I18nextProvider>
