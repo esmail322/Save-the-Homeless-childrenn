@@ -1,6 +1,13 @@
 const express = require("express");
 const TeacherController = require("../controller/teacher.controller");
 const upload = require("../middlewares/imageUploader");
+const {
+  getCourses,
+  createCourse,
+  deleteCourse,
+  getSingleCourse,
+  updateCourse,
+} = require("../controller/course.controller");
 
 const router = express.Router();
 
@@ -10,9 +17,20 @@ router
   .post(upload.single("image"), TeacherController.saveTeacher);
 
 router
+  .route("/course")
+  .get(getCourses)
+  .post(upload.single("image"), createCourse);
+
+router
   .route("/:_id")
   .delete(TeacherController.deleteTeacher)
   .get(TeacherController.getTeacher)
   .patch(TeacherController.editTeacher);
+
+router
+  .route("/course/:_id")
+  .delete(deleteCourse)
+  .get(getSingleCourse)
+  .patch(updateCourse);
 
 module.exports = router;

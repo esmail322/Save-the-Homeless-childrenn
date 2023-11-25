@@ -13,9 +13,9 @@ const saveTeacher = async (req, res) => {
     typeOfteach,
     Country,
   } = req.body;
-  console.log(req.file, req.body);
+
   const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(String(password), String(salt));
+  const hashedPassword = await bcrypt.hash(password, salt);
   const imagePath = req?.file?.path;
 
   // const hashPassword = await bcrypt.hash(password, 12);

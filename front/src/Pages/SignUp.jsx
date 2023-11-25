@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { object } from "zod";
-// import { toast } from "react-toastify";
-// import { NotificationContext } from "../context/NotificationContext";
+// import { useForm } from "react-hook-form";
+// import { zodResolver } from "@hookform/resolvers/zod";
+// import { object } from "zod";
+import { toast } from "react-toastify";
+import { NotificationContext } from "../context/NotificationContext";
 function SignUp() {
   /////
   const { handelNDonar, handelNStudent, handelNTeacher } =
@@ -44,7 +44,7 @@ function SignUp() {
       formData.append("email", teacherField.email);
       formData.append("typeOfteach", teacherField.typeOfteach);
       formData.append("password", teacherField.password);
-      formData.append("password", teacherField.Zip_code);
+      formData.append("Zip_code", teacherField.Zip_code);
       formData.append("contact_number", teacherField.contact_number);
       formData.append("address", teacherField.address);
       formData.append("province", teacherField.province);
@@ -69,7 +69,7 @@ function SignUp() {
         console.log("teacher form");
         handelNTeacher();
         toast.success("successfully account created");
-        navigate(`/studentProfile/${response.data._id}`);
+        navigate(`/teacherProfile/${response.data._id}`);
         setTeacherField({
           fullname: "",
           email: "",
@@ -197,7 +197,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      donarField.fullName = donarField.fullname;
+      donarField.fullname = donarField.fullname;
       const response = await axios.post(
         "http://127.0.0.1:8080/donar",
         donarField
@@ -223,6 +223,7 @@ function SignUp() {
 
       localStorage.setItem("donar", JSON.stringify(response.data._id));
     } catch (err) {
+      console.log(err);
       toast.error(err.response.data.message);
       console.log("something went wrong");
     }

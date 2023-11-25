@@ -29,8 +29,10 @@ function Login() {
 
     try {
       const result = await axios.post("http://localhost:8080/login/", Teacher);
+      navigate(`/teacherProfile/${result?.data?.user._id}`);
       console.log(result);
     } catch (error) {
+      toast.error(error.response.data.message);
       console.log(error);
     }
   };
@@ -60,6 +62,8 @@ function Login() {
       }
       console.log(response);
     } catch (error) {
+      toast.error(error.response.data.message);
+
       console.log(error);
     }
   };

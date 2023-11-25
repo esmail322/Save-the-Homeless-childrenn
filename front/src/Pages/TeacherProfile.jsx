@@ -1,6 +1,6 @@
 import { Fragment, useContext, useEffect, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
-
+import CourseModal from "../components/modals/CourseModal";
 import {
   AcademicCapIcon,
   CogIcon,
@@ -24,6 +24,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { NotificationContext } from "../context/NotificationContext";
 import { getHostname } from "../utils";
+import CourseList from "../components/modals/CourseList";
 // import { getTeacher } from "../../../backend/controller/teacher.controller";
 
 function classNames(...classes) {
@@ -64,6 +65,7 @@ export default function TeacherProfile() {
       const response = await axios.get(
         `http://127.0.0.1:8080/teacher/${params.id}`
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -79,8 +81,17 @@ export default function TeacherProfile() {
     NNotification,
   } = useContext(NotificationContext);
 
-  //teacher
-  //   console.log(student);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCourseList, setCourseList] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const toggleCourse = () => {
+    setCourseList(!isCourseList);
+  };
+
   return (
     <>
       <div className="min-h-full mt-10">
@@ -227,10 +238,84 @@ export default function TeacherProfile() {
                     </Menu.Items>
                   </Transition>
                 </Menu>
+                <Menu as="div" className="ml-3 relative">
+                  <div className="flex gap-10 justify-center items-center">
+                    <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
+                      <div className="relative p-3 font-bold text-xl">
+                        Courses
+                      </div>
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="origin-top-right right-0 absolute max-w-fit  mt-2  rounded-md shadow-lg py-1 bg-red-300 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        <a
+                          href="#"
+                          className={classNames(
+                            "bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+                          )}
+                        >
+                          <div className="flex capitalize flex-col w-full font-bold text-lg justify-between gap-5">
+                            {/* <div className="flex justify-between gap-24 w-full"> */}
+                            <button type="button" onClick={toggleCourse}>
+                              List
+                            </button>
+                            {/* </div> */}
+                          </div>
+                        </a>
+                      </Menu.Item>
+
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            <div className="flex capitalize flex-col w-full font-bold text-lg justify-between gap-5">
+                              {/* <div className="flex justify-between gap-24 w-full"> */}
+                              <button type="button" onClick={toggleModal}>
+                                Create
+                              </button>
+                              {/* </div> */}
+                            </div>
+                          </a>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
               </div>
             </div>
           </div>
+
           <main className="flex-1 pb-8">
+            {isModalOpen && (
+              <CourseModal
+                show={isModalOpen}
+                toggleModal={toggleModal}
+                onClose={() => setIsModalOpen(false)}
+              />
+            )}
+
+            {isCourseList && (
+              <CourseList
+                show={isCourseList}
+                toggleModal={toggleCourse}
+                onClose={() => setCourseList(false)}
+              />
+            )}
+
             {/* Page header */}
             <div className="">
               <div className="px-4 sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">

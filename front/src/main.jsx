@@ -9,6 +9,7 @@ import i18next from "i18next";
 // import "react-toastify/dist/ReactToastify.css";
 import NotificationProvider from "./context/NotificationContext.jsx";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 i18next.init({
   interpolation: { escapeValue: false }, // React already does escaping
@@ -32,7 +33,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <React.StrictMode>
         <BrowserRouter>
           <App />
-          {/* <ToastContainer /> */}
+          <ToastContainer />
         </BrowserRouter>
       </React.StrictMode>
     </I18nextProvider>

@@ -95,7 +95,6 @@ function Header() {
             >
               {t("Login")}
             </Link>{" "}
-            </Link>
             <Link
               to="/signup"
               className="text-black hover:bg-accent-2  sm:font-medium sm:rounded-lg sm:text-sm sm:px-2 sm:lg:px-2 py-2  mr-2 "
