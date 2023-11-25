@@ -54,7 +54,7 @@ function MainMenu() {
               {t("Fundraising_For_The_People")}
             </h1>
             <h1 className=" pl- mt-8  text-cyan-400 font-bold lg:text-8xl md:text-5xl outline-offset-1 ">
-              You Care{" "}
+              {t("you")}
             </h1>
             <div className="mt-8  text-1xl ">
               <p className="w-96 mx-auto">{t("des1")}</p>
