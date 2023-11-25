@@ -10,6 +10,7 @@ const Schema = new mongoose.Schema({
   Zip_code: Number,
   typeOfteach: String,
   Country: String,
+  image: String,
 });
 
 const Teacher = mongoose.model("Teacher", Schema);

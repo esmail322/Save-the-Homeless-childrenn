@@ -1,5 +1,5 @@
 const Teacher = require("../models/teacher.model");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const saveTeacher = async (req, res) => {
   const {
@@ -13,19 +13,24 @@ const saveTeacher = async (req, res) => {
     typeOfteach,
     Country,
   } = req.body;
+  console.log(req.file, req.body);
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(String(password), String(salt));
+  const imagePath = req?.file?.path;
 
-  const hashPassword = await bcrypt.hash(password, 12);
+  // const hashPassword = await bcrypt.hash(password, 12);
 
   const teacher = new Teacher({
     fullName: fullname,
     email,
-    password: hashPassword,
+    password: hashedPassword,
     contact_number,
     address,
     province,
     Zip_code,
     typeOfteach,
     Country,
+    image: imagePath,
   });
 
   const result = await teacher.save();

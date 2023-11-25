@@ -28,16 +28,32 @@ function SignUp() {
     contact_number: "",
     address: "",
     province: "",
+    Zip_code: "",
     Country: "",
     typeOfteach: "",
     confirmPassword: "",
+    image: "",
   });
   const handleTeacherFormSubmit = async (event) => {
     event.preventDefault(event);
+    if (isSubmit) {
+    }
     try {
+      const formData = new FormData();
+      formData.append("fullname", teacherField.fullname);
+      formData.append("email", teacherField.email);
+      formData.append("typeOfteach", teacherField.typeOfteach);
+      formData.append("password", teacherField.password);
+      formData.append("password", teacherField.Zip_code);
+      formData.append("contact_number", teacherField.contact_number);
+      formData.append("address", teacherField.address);
+      formData.append("province", teacherField.province);
+      formData.append("Country", teacherField.Country);
+      formData.append("image", imageFile);
+
       const response = await axios.post(
         "http://localhost:8080/teacher",
-        teacherField
+        formData
       );
 
       if (teacherField.password !== teacherField.confirmPassword) {
@@ -53,7 +69,7 @@ function SignUp() {
         console.log("teacher form");
         handelNTeacher();
         toast.success("successfully account created");
-        navigate("/studentlistforteacher");
+        navigate(`/studentProfile/${response.data._id}`);
         setTeacherField({
           fullname: "",
           email: "",
@@ -61,9 +77,11 @@ function SignUp() {
           contact_number: "",
           address: "",
           province: "",
+          Zip_code: "",
           Country: "",
           typeOfteach: "",
           confirmPassword: "",
+          image: "",
         });
       }
     } catch (error) {
@@ -767,12 +785,6 @@ function SignUp() {
                   }
                 />
               </div>{" "}
-              {formerrors.province && (
-                <span className="text-red-600 m-2">{formerrors.province}</span>
-              )}
-              {formerrors.Zip_code && (
-                <span className="text-red-600">{formerrors.Zip_code}</span>
-              )}
               <div className="flex flex-row mb-1 ">
                 <select
                   className=" bg-backgorund p-3  w-96 h-12 block rounded border border-black"
@@ -816,9 +828,15 @@ function SignUp() {
                   <option value="Pakistan">{t("pakistan")}</option>
                 </select>
               </div>
-              {formerrors.Country && (
-                <span className="text-red-600">{formerrors.Country}</span>
-              )}
+              <input
+                type="file"
+                className="block border h-12 bg-backgorund border-black  p-2  rounded mb-3"
+                name="image"
+                // accept="image/*"
+                required
+                placeholder={t("image")}
+                onChange={imageHandler}
+              />
               <button
                 type="submit"
                 className="  mb-14 w-96  h-10 rounded-sm text-white hover:bg-sky-700  bg-teal-950  "
