@@ -31,6 +31,6 @@ router
   .route("/course/:_id")
   .delete(deleteCourse)
   .get(getSingleCourse)
-  .patch(updateCourse);
+  .put(upload.single("image"), updateCourse);
 
 module.exports = router;

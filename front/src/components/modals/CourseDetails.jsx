@@ -15,7 +15,14 @@ const CourseDetails = ({ show, onClose, details }) => {
           <h2 className="text-center font-bold text-4xl my-3 mb-4">
             {details?.title}
           </h2>
-          <p className="text-justify">{details?.description}</p>
+          <p className="text-justify w-1/2 my-4 text-blue-500 cursor-pointer">
+            <a href={details?.url} target="_blank">
+              {details?.url}
+            </a>
+          </p>
+          <p className="text-justify max-w-7xl break-words">
+            {details?.description}
+          </p>
 
           <button
             type="button"

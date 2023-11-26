@@ -6,7 +6,7 @@ const createCourse = async (req, res) => {
 
   try {
     body.image = file?.path;
-
+    console.log(body);
     const course = await Course.create(body);
 
     res.status(201).json(course);
@@ -41,15 +41,19 @@ const getSingleCourse = async (req, res) => {
 // Update a course by ID
 const updateCourse = async (req, res) => {
   try {
-    const { title, description, image } = req.body;
-    const course = await Course.findById(req.params.id);
+    const { file, body } = req;
+
+    if (file?.path) {
+      body.image = file?.path;
+    }
+
+    const course = await Course.findByIdAndUpdate(req.params._id, body, {
+      new: true,
+    });
     if (!course) {
       return res.status(404).json({ message: "course not found" });
     }
-    Course.title = title;
-    Course.description = description;
-    Course.image = image;
-    await Course.updateOne();
+
     res.status(200).json(course);
   } catch (error) {
     res.status(500).json({ message: error.message });

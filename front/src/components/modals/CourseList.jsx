@@ -3,9 +3,16 @@ import { getHostname, limitString } from "../../utils";
 import axios from "axios";
 import CourseDetails from "./CourseDetails";
 import { toast } from "react-toastify";
+import UpdateModal from "./UpdateModal";
 
 const CourseList = ({ show, onClose }) => {
   const [courses, setCourses] = useState([]);
+  const [isCourseUpdate, setIsCourseUpdate] = useState(false);
+
+  const toggleUpdateCourse = (course) => {
+    setCourseUpdate(course);
+    setIsCourseUpdate(!isCourseUpdate);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -32,7 +39,7 @@ const CourseList = ({ show, onClose }) => {
 
   const [course, setCourse] = useState("");
   const [isEye, setIsEye] = useState(false);
-  const [id, setId] = useState("");
+  const [courseUpdate, setCourseUpdate] = useState("");
 
   const toggleEye = (content) => {
     setCourse(content);
@@ -58,7 +65,7 @@ const CourseList = ({ show, onClose }) => {
         } fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-50 flex items-center justify-center`}
       >
         <div
-          className={`absolute bg-white px-6 w-full max-w-3xl rounded-lg h-4/6 overflow-y-scroll`}
+          className={`absolute bg-white px-6 w-full max-w-4xl rounded-lg h-4/6 overflow-y-scroll`}
         >
           <table className="table-auto p-5">
             <thead>
@@ -83,7 +90,12 @@ const CourseList = ({ show, onClose }) => {
                   </td>
                   <td className="border px-4 py-2">{course?.title}</td>
                   <td className="border px-4 py-2">
-                    {limitString(course?.description, 50)}
+                    <a href={course?.url} target="_blank">
+                      {limitString(course?.url, 10)}
+                    </a>
+                  </td>
+                  <td className="border px-4 py-2">
+                    {limitString(course?.description, 30)}
                   </td>
                   <td className="border px-4 py-2">
                     <div className="flex gap-3">
@@ -96,7 +108,12 @@ const CourseList = ({ show, onClose }) => {
                       >
                         Delete
                       </button>
-                      <button type="button">Update</button>
+                      <button
+                        type="button"
+                        onClick={() => toggleUpdateCourse(course)}
+                      >
+                        Update
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -118,6 +135,16 @@ const CourseList = ({ show, onClose }) => {
           show={isEye}
           onClose={() => setIsEye(false)}
           details={course}
+        />
+      )}
+
+      {isCourseUpdate && (
+        <UpdateModal
+          show={isCourseUpdate}
+          toggleModal={toggleUpdateCourse}
+          onClose={() => setIsCourseUpdate(false)}
+          course={courseUpdate}
+          closeTable={onClose}
         />
       )}
     </>

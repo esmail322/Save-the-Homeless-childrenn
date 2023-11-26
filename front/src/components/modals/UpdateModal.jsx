@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { limitString } from "../../utils";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
@@ -19,7 +20,7 @@ const schema = yup.object().shape({
   //     ),
 });
 
-const CourseModal = ({ show, toggleModal, onClose }) => {
+const UpdateModal = ({ show, toggleModal, onClose, course, closeTable }) => {
   const {
     register,
     handleSubmit,
@@ -27,6 +28,11 @@ const CourseModal = ({ show, toggleModal, onClose }) => {
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      title: course?.title,
+      url: course?.url,
+      description: course?.description,
+    },
   });
 
   const [image, setImageFile] = useState(null);
@@ -36,6 +42,11 @@ const CourseModal = ({ show, toggleModal, onClose }) => {
     setImageFile(file);
   };
 
+  useEffect(() => {
+    setImageFile(course?.image);
+  }, [course?.image]);
+
+  console.log({ course });
   const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append("title", data.title);
@@ -48,8 +59,8 @@ const CourseModal = ({ show, toggleModal, onClose }) => {
     }
 
     try {
-      const response = await axios.post(
-        `http://127.0.0.1:8080/teacher/course`,
+      const response = await axios.put(
+        `http://127.0.0.1:8080/teacher/course/${course._id}`,
         formData,
         {
           headers: {
@@ -60,6 +71,7 @@ const CourseModal = ({ show, toggleModal, onClose }) => {
       reset();
       onClose();
       setImageFile(null);
+      closeTable();
       toast.success("Course has been created successfully");
 
       console.log(response.data);
@@ -76,7 +88,7 @@ const CourseModal = ({ show, toggleModal, onClose }) => {
           !show ? "hidden" : ""
         } fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-50 flex items-center justify-center`}
       >
-        <div className="absolute bg-white p-8 w-full max-w-md rounded-lg">
+        <div className="absolute bg-white p-8 w-full max-w-2xl rounded-lg">
           <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
             <div className="mb-4">
               <label
@@ -107,7 +119,6 @@ const CourseModal = ({ show, toggleModal, onClose }) => {
               <input
                 type="text"
                 id="url"
-                name="url"
                 {...register("url")}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
@@ -169,7 +180,7 @@ const CourseModal = ({ show, toggleModal, onClose }) => {
                 disabled={isSubmitting}
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
-                {isSubmitting ? "Saving" : "Submit"}
+                {isSubmitting ? "Updating..." : "Update"}
               </button>
             </div>
           </form>
@@ -179,4 +190,4 @@ const CourseModal = ({ show, toggleModal, onClose }) => {
   );
 };
 
-export default CourseModal;
+export default UpdateModal;

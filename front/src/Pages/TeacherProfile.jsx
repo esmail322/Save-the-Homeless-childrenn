@@ -25,6 +25,7 @@ import axios from "axios";
 import { NotificationContext } from "../context/NotificationContext";
 import { getHostname } from "../utils";
 import CourseList from "../components/modals/CourseList";
+import UpdateModal from "../components/modals/UpdateModal";
 // import { getTeacher } from "../../../backend/controller/teacher.controller";
 
 function classNames(...classes) {
