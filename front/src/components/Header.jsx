@@ -68,9 +68,13 @@ function Header() {
           <Link to="#" className="sm:flex sm:items-center ">
             <Link
               to="/"
-              className="text-black sm:ml-10  sm:w-40  focus:ring-gray-300 font-semibold  sm:rounded-lg sm:text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+              className="text-black sm:ml-10   sm:w-40  focus:ring-gray-300 font-semibold  sm:rounded-lg sm:text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
             >
-              <img src="/Telegram/logo.jpeg" className="rounded-full" alt="" />
+              <img
+                src="/Telegram/logo.jpeg"
+                className="rounded-full w-20 h-16 "
+                alt=""
+              />
             </Link>
           </Link>
           <div className="sm:flex sm:items-center lg:order-2">

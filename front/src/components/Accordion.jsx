@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Accordion = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative z-20 overflow-hidden bg-backgorund pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
       <div className="container mx-auto">
@@ -8,7 +11,7 @@ const Accordion = () => {
           <div className="w-full px-4">
             <div className="mx-auto mb-[60px] max-w-[520px] text-center lg:mb-20">
               <h2 className="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]">
-                Any Questions? Look Here
+                {t("question")}
               </h2>
             </div>
           </div>
@@ -16,40 +19,20 @@ const Accordion = () => {
 
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4   lg:w-1/2">
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
+            <AccordionItem header={`${t("long")}`} text={`${t("takes")}`} />
+            <AccordionItem header={`${t("long")}`} text={`${t("takes")}`} />
+            <AccordionItem header={`${t("long")}`} text={`${t("takes")}`} />
+
+            <AccordionItem header={`${t("long")}`} text={`${t("takes")}`} />
           </div>
           <div className="w-full px-4 lg:w-1/2">
+            <AccordionItem header={`${t("long")}`} text={`${t("takes")}`} />
+            <AccordionItem header={`${t("long")}`} text={`${t("takes")}`} />
             <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              header={`${t("long")}`}
+              text={`${t("takes")}`}
             />{" "}
-            <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
-            />
+            <AccordionItem header={`${t("long")}`} text={`${t("takes")}`} />
           </div>
         </div>
       </div>

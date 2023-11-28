@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
+import { useTranslation } from "react-i18next";
+
 import Footer from "./Footer";
 
 function Bloglist() {
+  const { t } = useTranslation();
+
   return (
     <div className=" bg-backgorund ">
       <div className="flex gap-3 py-2 px-16">
@@ -16,17 +20,17 @@ function Bloglist() {
           <div className="flex relative ">
             {" "}
             <p className="absolute lg:left-9 md:left-4 top-5 w-32">
-              Ahmad Rashid
+              {t("ahmad")}
             </p>
             <br />
             <p className=" lg:w-80 md:w-32 md:text-xs lg:left-8 md:left-4 top-14 absolute lg:text-[16px] md:font-bold flex flex-row lg:font-bold ">
-              10 Ways to Give To Charity Without Your Budget
+              {t("way")}
             </p>
             <Link
               to="/blog"
               className="text-1x2 w-80 lg:left-16 top-40 absolute flex flex-row md:left-5 font-bold "
             >
-              More About ...
+              {t("more")}
             </Link>
           </div>
         </div>
@@ -39,17 +43,17 @@ function Bloglist() {
           <div className="flex relative ">
             {" "}
             <p className="absolute lg:left-9 md:left-4 top-5 w-32">
-              Ahmad Rashid
+              {t("ahmad")}
             </p>
             <br />
             <p className=" lg:w-80 md:w-32 md:text-xs lg:left-8 md:left-4 top-14 absolute lg:text-[16px] md:font-bold flex flex-row lg:font-bold ">
-              10 Ways to Give To Charity Without Your Budget
+              {t("way")}
             </p>
             <Link
               to="/blog"
               className="text-1x2 w-80 lg:left-16 top-40 absolute flex flex-row md:left-5 font-bold "
             >
-              More About ...
+              {t("more")}
             </Link>
           </div>
         </div>
@@ -64,17 +68,17 @@ function Bloglist() {
           <div className="flex relative ">
             {" "}
             <p className="absolute lg:left-9 md:left-4 top-5 w-32">
-              Ahmad Rashid
+              {t("ahmad")}
             </p>
             <br />
             <p className=" lg:w-80 md:w-32 md:text-xs lg:left-8 md:left-4 top-14 absolute lg:text-[16px] md:font-bold flex flex-row lg:font-bold ">
-              10 Ways to Give To Charity Without Your Budget
+              {t("way")}
             </p>
             <Link
               to="/blog"
               className="text-1x2 w-80 lg:left-16 top-40 absolute flex flex-row md:left-5 font-bold "
             >
-              More About ...
+              {t("more")}
             </Link>
           </div>
         </div>
@@ -87,22 +91,21 @@ function Bloglist() {
           <div className="flex relative ">
             {" "}
             <p className="absolute lg:left-9 md:left-4 top-5 w-32">
-              Ahmad Rashid
+              {t("ahmad")}
             </p>
             <br />
             <p className=" lg:w-80 md:w-32 md:text-xs lg:left-8 md:left-4 top-14 absolute lg:text-[16px] md:font-bold flex flex-row lg:font-bold ">
-              10 Ways to Give To Charity Without Your Budget
+              {t("way")}
             </p>
             <Link
               to="/blog"
               className="text-1x2 w-80 lg:left-16 top-40 absolute flex flex-row md:left-5 font-bold "
             >
-              More About ...
+              {t("more")}
             </Link>
           </div>
         </div>
       </div>
-
     </div>
   );
 }
