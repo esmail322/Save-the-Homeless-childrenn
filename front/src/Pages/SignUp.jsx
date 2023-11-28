@@ -556,6 +556,10 @@ function SignUp() {
                   <option value="Mazar_shrif">{t("mazar")}</option>
                   <option value="Kunduz">{t("kunduz")}</option>
                   <option value="Herat">{t("herat")}</option>
+                  <option value="Takhar">{t("takhar")}</option>
+                  <option value="Parwan">{t("parwan")}</option>
+                  <option value="kandahar">{t("kandahar")}</option>
+                  <option value="jalal abad">{t("jalal abad")}</option>
                 </select>
 
                 <input
@@ -770,6 +774,10 @@ function SignUp() {
                   <option value="Mazar">{t("mazar")}</option>
                   <option value="Kunduz">{t("kunduz")}</option>
                   <option value="Herat">{t("herat")}</option>
+                  <option value="Takhar">{t("takhar")}</option>
+                  <option value="Parwan">{t("parwan")}</option>
+                  <option value="kandahar">{t("kandahar")}</option>
+                  <option value="jalal abad">{t("jalal abad")}</option>
                 </select>
                 <input
                   type="number"
@@ -805,6 +813,7 @@ function SignUp() {
                   <option value="Sawad Amozi">{t("sawad")}</option>
                   <option value="English">{t("english")}</option>
                   <option value="Painting">{t("paint")}</option>
+                  <option value="computer">{t("computer")}</option>
                 </select>
               </div>
               {formerrors.typeOfteach && (

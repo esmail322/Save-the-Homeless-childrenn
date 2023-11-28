@@ -180,7 +180,7 @@ export default function TeacherProfile() {
                 </Menu>
                 <Menu as="div" className="ml-3  relative">
                   <div className="flex gap-10 justify-center items-center">
-                    <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
+                    {/* <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
                       <div className="relative p-3">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -202,7 +202,7 @@ export default function TeacherProfile() {
                         aria-hidden="true"
                         s
                       />
-                    </Menu.Button>
+                    </Menu.Button> */}
                   </div>
                   <Transition
                     as={Fragment}
@@ -212,40 +212,7 @@ export default function TeacherProfile() {
                     leave="transition ease-in duration-75"
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="origin-top-right right-0 absolute max-w-fit  mt-2  rounded-md shadow-lg py-1 bg-red-300 ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            <div className="flex capitalize flex-col w-full font-bold text-lg justify-between gap-5">
-                              <div className="flex justify-between gap-24 w-full">
-                                <span> NAME:</span>
-                                {/* <span> {student?.donar?.fullName}</span> */}
-                              </div>
-                              <div className="flex justify-between gap-24 w-full">
-                                <span> AMOUNT:</span>
-                                {/* <span> {student?.payment}AF </span> */}
-                              </div>
-                            </div>
-                          </a>
-                        )}
-                      </Menu.Item>
-
-                      <Menu.Item>
-                        {({ active }) => (
-                          <span className="text-center bg-slate-800 text-white  p-1 cursor-pointer w-full mx-auto flex justify-center">
-                            Who Donate You
-                          </span>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
+                  ></Transition>
                 </Menu>
                 <Menu as="div" className="ml-3 relative">
                   <div className="flex gap-10 justify-center items-center">
