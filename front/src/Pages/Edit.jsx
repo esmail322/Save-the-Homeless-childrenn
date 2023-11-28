@@ -45,50 +45,49 @@ const Edit = () => {
     }
   };
   return (
-    <div className="mx-auto relative flex justify-center   mt-48">
-      <h1 className="absolute bottom-44 text-4xl font-semibold pr-32 ">
-        Edit Form
-      </h1>
-      <form action="" className=" w-96 bg-backgorund">
-        <input
-          type="text"
-          className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
-          name="fullName"
-          placeholder="Full Name"
-          value={donarField.fullName}
-          onChange={(e) => changedonarFieldhandler(e)}
-        />
-        <input
-          type="email"
-          className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
-          name="email"
-          placeholder="Email"
-          value={donarField.email}
-          onChange={(e) => changedonarFieldhandler(e)}
-        />
-        <input
-          type="password"
-          className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
-          name="password"
-          placeholder="Password"
-          value={donarField.password}
-          onChange={(e) => changedonarFieldhandler}
-        />
+    <div className="flex justify-center items-center h-screen">
+      <div className="w-96 shadow-2xl  p-10 rounded-md border-2">
+        <h1 className="text-3xl font-semibold mb-8 text-center">
+          Edit A Donar
+        </h1>
+        <form action="">
+          <input
+            type="text"
+            className="block border bg-gray-100 border-black w-full p-3 rounded mb-4"
+            name="fullName"
+            placeholder="Full Name"
+            value={donarField.fullName}
+            onChange={(e) => changedonarFieldhandler(e)}
+          />
+          <input
+            type="email"
+            className="block border bg-gray-100 border-black w-full p-3 rounded mb-4"
+            name="email"
+            placeholder="Email"
+            value={donarField.email}
+            onChange={(e) => changedonarFieldhandler(e)}
+          />
+          <input
+            type="password"
+            className="block border bg-gray-100 border-black w-full p-3 rounded mb-4"
+            name="password"
+            placeholder="Password"
+            value={donarField.password}
+            onChange={(e) => changedonarFieldhandler(e)}
+          />
+          <button
+            type="submit"
+            className="block border bg-gray-100 border-black w-[50%] mx-auto hover:bg-black hover:text-white p-3 rounded mb-4"
+            onClick={(e) => onSubmitchange(e)}
+          >
+            Update
+          </button>
+        </form>
         <button
-          type="submit"
-          className="mb-14 w-40  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1 absolute right-120 mr-[331px] bg-teal-950"
-          onClick={(e) => onSubmitchange(e)}
-        >
-          Update
-        </button>
-      </form>
-
-      <div>
-        <button
-          className=" mb-14 w-40  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1 absolute right-160 mr-[331px] bg-teal-950"
+          className="btn-secondary hover:border-b-2 hover:border-blue-600 mx-auto flex mt-4"
           onClick={clicktobackhandler}
         >
-          back to home
+          Back to Home
         </button>
       </div>
     </div>

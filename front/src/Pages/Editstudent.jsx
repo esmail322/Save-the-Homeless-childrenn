@@ -46,22 +46,23 @@ const Editstudent = () => {
     }
   };
   return (
-    <div className="flex justify-center mt-32 ">
-      <h1 className="absolute  text-4xl font-semibold bottom-96 mb-32 pr-32 ">
-        Edit Form
-      </h1>
-      <form action="" className=" bg-backgorund w-96">
+    <div className="flex justify-center items-center flex-col mt-10 ">
+      <h1 className="  text-4xl font-semibold  my-10">Edit A Student</h1>
+      <form
+        action=""
+        className="flex flex-col gap-1 p-10 shadow-2xl rounded-md border"
+      >
         <input
           type="text"
           // {...register("firstName")}
           className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
-          name="fullname"
+          name="fullName"
           value={studentField.fullName}
           placeholder={`${t("fullname")}`}
           onChange={(event) =>
             setstudentField({
               ...studentField,
-              fullname: event.target.value,
+              fullName: event.target.value,
             })
           }
         />
@@ -107,7 +108,7 @@ const Editstudent = () => {
         <input
           type="password"
           // {...register("confirmPassword")}
-          className="block border  border-black bg-backgorund w-full p-3  rounded mb-8"
+          className="block border  border-black bg-backgorund w-full p-3  rounded "
           name="confirm_password"
           placeholder={`${t("password12")}`}
         />
@@ -182,7 +183,7 @@ const Editstudent = () => {
             }
           />
         </div>{" "}
-        <div className="flex flex-row mb-1 ">
+        <div className="flex justify-center flex-row mb-1 ">
           <select
             className=" bg-secondary w-96 h-12 p-3 block rounded border border-black"
             name="Country"
@@ -201,7 +202,7 @@ const Editstudent = () => {
             <option value="Pakistan">{t("pakistan")}</option>
           </select>
         </div>
-        <div className="flex flex-row mb-8 ">
+        <div className="flex justify-center flex-row mb-4 ">
           <select
             className=" bg-backgorund p-3  w-96 h-12 block rounded border border-black"
             name="typeOfassist"
@@ -219,24 +220,21 @@ const Editstudent = () => {
             <option value="Help">{t("help")}</option>
           </select>
         </div>
-        <Link to="">
-          {" "}
-          <button
-            type="submit"
-            onClick={handleStudentFormSubmit}
-            className="  mb-14 w-96  h-10 text-white hover:bg-sky-700 rounded-sm bg-teal-950  "
-          >
-            {t("update")}
-          </button>
-        </Link>
+        <button
+          type="submit"
+          onClick={handleStudentFormSubmit}
+          className="  w-1/2 p-3 flex text-center justify-center mx-auto text-white hover:bg-sky-700 rounded-sm bg-teal-950  "
+        >
+          {t("update")}
+        </button>
       </form>
-      <div className="container d-flex justify-content-center">
-        <div>
-          <button className="mb-14 w-52  h-10 text-white hover:bg-sky-700 rounded top-40 mt-1  absolute right-[379px] mr-28 bg-teal-950" onClick={clickTobackhandler}>
-            back to home
-          </button>
-        </div>
-      </div>
+
+      <button
+        className="  my-3 hover:border-b-2  hover:border-sky-700 rounded  "
+        onClick={clickTobackhandler}
+      >
+        back to home
+      </button>
     </div>
   );
 };

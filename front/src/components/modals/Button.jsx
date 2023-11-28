@@ -9,7 +9,7 @@ const Button = ({ text, color, disabled, onClick, isTrue }) => {
         isTrue ? "cursor-pointer" : ""
       } px-4 rounded`}
       onClick={onClick}
-      isTrue={isTrue}
+      // isTrue={isTrue}
     >
       {text}
     </button>

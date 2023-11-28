@@ -194,7 +194,7 @@ function Login() {
           {page == 1 && (
             <form onSubmit={handleSubmit} className=" w-96 bg-backgorund">
               <input
-                type="string"
+                type="email"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-3"
                 name="email"
                 placeholder={`${t("email1")}`}
@@ -207,7 +207,7 @@ function Login() {
                 <span className="text-red-600">{formerrors.email}</span>
               )}
               <input
-                type="string"
+                type="password"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
                 name="password"
                 value={Donar.password}
@@ -219,12 +219,12 @@ function Login() {
               {formerrors.password && (
                 <span className="text-red-600">{formerrors.password}</span>
               )}
-              <button
+              {/* <button
                 type="submit"
                 className="w-full text-left font-semibold pt-2 pb-6 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1"
               >
                 {`${t("password2")}`}
-              </button>
+              </button> */}
 
               <button
                 type="submit"
@@ -238,7 +238,7 @@ function Login() {
           {page == 2 && (
             <div action="" className=" w-96 bg-backgorund">
               <input
-                type="text"
+                type="email"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-3"
                 name="email"
                 value={Student.email}
@@ -251,7 +251,7 @@ function Login() {
                 <span className="text-red-600">{formerrors.email}</span>
               )}
               <input
-                type="text"
+                type="password"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
                 name="password"
                 value={Student.password}
@@ -263,12 +263,12 @@ function Login() {
               {formerrors.password && (
                 <span className="text-red-600">{formerrors.password}</span>
               )}
-              <button
+              {/* <button
                 type="submit"
                 className="w-full text-left font-semibold pt-2 pb-6 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1"
               >
                 {`${t("password2")}`}
-              </button>
+              </button> */}
 
               <button
                 type="submit"
@@ -283,7 +283,7 @@ function Login() {
           {page == 3 && (
             <div action="" className=" w-96 bg-backgorund">
               <input
-                type="text"
+                type="email"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-3"
                 name="email"
                 value={Teacher.email}
@@ -296,7 +296,7 @@ function Login() {
                 <span className="text-red-600">{formerrors.email}</span>
               )}
               <input
-                type="text"
+                type="password"
                 className="block border bg-backgorund border-black w-full p-3 rounded mb-1"
                 name="password"
                 value={Teacher.password}
@@ -308,12 +308,12 @@ function Login() {
               {formerrors.password && (
                 <span className="text-red-600">{formerrors.password}</span>
               )}
-              <button
+              {/* <button
                 type="submit"
                 className="w-full text-left font-semibold pt-2 pb-6 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1"
               >
                 {`${t("password2")}`}
-              </button>
+              </button> */}
 
               <button
                 type="submit"

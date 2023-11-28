@@ -4,8 +4,8 @@ export const NotificationContext = createContext();
 
 const NotificationProvider = ({ children }) => {
   // const donar = localStorage.getItem("donar");
-  let storedDonar = JSON.parse(localStorage.getItem("donar"));
-  let donarValue = storedDonar?.donar;
+  let storedDonar = JSON.parse(localStorage.getItem("donarNotify"));
+  let donarValue = storedDonar?.donarNotify;
 
   // const student = localStorage.getItem("student");
   let storedStudent = JSON.parse(localStorage.getItem("student"));
@@ -22,7 +22,10 @@ const NotificationProvider = ({ children }) => {
   const handelNDonar = () => {
     const updatedNDonar = Number(NDonar) + 1;
     setNDonar(updatedNDonar);
-    localStorage.setItem("donar", JSON.stringify({ donar: updatedNDonar }));
+    localStorage.setItem(
+      "donarNotify",
+      JSON.stringify({ donarNotify: updatedNDonar })
+    );
   };
   const handelNStudent = () => {
     const updatedNStudent = Number(NStudent) + 1;
@@ -46,7 +49,7 @@ const NotificationProvider = ({ children }) => {
   );
   const handelRemoveNotification = () => {
     console.log("hello");
-    localStorage.removeItem("donar");
+    localStorage.removeItem("donarNotify");
     localStorage.removeItem("teacher");
     localStorage.removeItem("student");
     setNDonar(0);

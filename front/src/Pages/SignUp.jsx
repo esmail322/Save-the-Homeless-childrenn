@@ -577,7 +577,7 @@ function SignUp() {
                 <select
                   className=" bg-secondary w-96 h-12 p-3 block rounded border border-black"
                   name="Country"
-                  id=""
+                  id="country"
                   required
                   value={studentField.Country}
                   onChange={(event) =>

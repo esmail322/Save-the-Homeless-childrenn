@@ -159,6 +159,7 @@ export default function Dashboard() {
     NNotification,
   } = useContext(NotificationContext);
 
+  console.log(NDonar);
   //student
 
   return (

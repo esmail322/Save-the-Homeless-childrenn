@@ -65,6 +65,8 @@ function Alcourse() {
     const updatedCourses = [...courses];
     updatedCourses[index].status = "pending";
     setCourses(updatedCourses);
+
+    console.log(updatedCourses[index].status);
   };
   console.log({ courses });
   return (
@@ -107,16 +109,17 @@ function Alcourse() {
               //       <button
               //         type="button"
               //         className={`${
-              //           (courseData?.student ===
-              //             localStorage.getItem("studentID") &&
-              //             courseData?.status === "pending") ||
-              //           (course?.student?._id ===
+              //           // (courseData?.student ===
+              //           //   localStorage.getItem("studentID") &&
+              //           //   courseData?.status === "pending") ||
+              //           course?.student?._id ===
               //             localStorage.getItem("studentID") &&
               //           course?.status === "pending"
               //             ? "cursor-not-allowed bg-blue-500 hover:bg-blue-700"
-              //             : "bg-orange-500 hover:bg-orange-700")
+              //             : "bg-orange-500 hover:bg-orange-700"
               //         } text-white font-bold py-2 px-4 rounded`}
               //         onClick={() => {
+              //           handleStatusChange(course?._id);
               //           requestHandler(course);
               //         }}
               //       >
@@ -125,67 +128,72 @@ function Alcourse() {
               //     </>
               //   ) : (
               //     <div className="px-6 py-4">
-              //       {courseData?.student ===
-              //         localStorage.getItem("studentID") ||
-              //       // &&
-              //       // courseData?.status === "approved"
-              //       course?.student?._id ===
-              //         localStorage.getItem("studentID") ? (
+              //       {
+              //         // courseData?.student ===
+              //         //   localStorage.getItem("studentID") ||
               //         // &&
-              //         // course?.status === "approved"
-              //         <a
-              //           href={
-              //             (courseData?.student ===
-              //               localStorage.getItem("studentID") &&
-              //               courseData?.status === "approved") ||
-              //             (course?.student?._id ===
-              //               localStorage.getItem("studentID") &&
+              //         // courseData?.status === "approved"
+              //         course?.student?._id ===
+              //         localStorage.getItem("studentID") ? (
+              //           // &&
+              //           // course?.status === "approved"
+              //           <a
+              //             href={
+              //               // (courseData?.student ===
+              //               //   localStorage.getItem("studentID") &&
+              //               //   courseData?.status === "approved") ||
+              //               course?.student?._id ===
+              //                 localStorage.getItem("studentID") &&
               //               course?.status === "approved" &&
-              //               course?.url)
-              //           }
-              //           target="_blank"
-              //         >
-              //           <button
-              //             disabled={
-              //               (courseData?.student ===
-              //                 localStorage.getItem("studentID") &&
-              //                 courseData?.status === "pending") ||
-              //               (course?.student?._id ===
-              //                 localStorage.getItem("studentID") &&
-              //                 course?.status === "pending")
+              //               course?.url
               //             }
-              //             className={`${
-              //               (courseData?.student ===
-              //                 localStorage.getItem("studentID") &&
-              //                 courseData?.status === "pending") ||
-              //               (course?.student?._id ===
-              //                 localStorage.getItem("studentID") &&
-              //               course?.status === "pending"
-              //                 ? "cursor-not-allowed bg-blue-500 hover:bg-blue-700"
-              //                 : "bg-green-500 hover:bg-green-700")
-              //             } text-white font-bold py-2 px-4 rounded`}
+              //             target="_blank"
               //           >
-              //             {(courseData?.student ===
-              //               localStorage.getItem("studentID") &&
-              //               courseData?.status === "approved") ||
-              //             (course?.student?._id ===
-              //               localStorage.getItem("studentID") &&
-              //               course?.status === "approved")
-              //               ? "Go to Course"
-              //               : "Pending to Accept"}
+              //             <button
+              //               disabled={
+              //                 // (courseData?.student ===
+              //                 //   localStorage.getItem("studentID") &&
+              //                 //   courseData?.status === "pending") ||
+              //                 course?.student?._id ===
+              //                   localStorage.getItem("studentID") &&
+              //                 course?.status === "pending"
+              //               }
+              //               className={`${
+              //                 // (courseData?.student ===
+              //                 //   localStorage.getItem("studentID") &&
+              //                 //   courseData?.status === "pending") ||
+              //                 course?.student?._id ===
+              //                   localStorage.getItem("studentID") &&
+              //                 course?.status === "pending"
+              //                   ? "cursor-not-allowed bg-blue-500 hover:bg-blue-700"
+              //                   : "bg-green-500 hover:bg-green-700"
+              //               } text-white font-bold py-2 px-4 rounded`}
+              //             >
+              //               {
+              //                 // (courseData?.student ===
+              //                 //   localStorage.getItem("studentID") &&
+              //                 //   courseData?.status === "approved") ||
+              //                 course?.student?._id ===
+              //                   localStorage.getItem("studentID") &&
+              //                 course?.status === "approved"
+              //                   ? "Go to Course"
+              //                   : "Pending to Accept"
+              //               }
+              //             </button>
+              //           </a>
+              //         ) : (
+              //           <button
+              //             type="button"
+              //             className="bg-blue-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+              //             onClick={() => {
+              //               handleStatusChange(course?._id);
+              //               requestHandler(course);
+              //             }}
+              //           >
+              //             Join Course
               //           </button>
-              //         </a>
-              //       ) : (
-              //         <button
-              //           type="button"
-              //           className="bg-blue-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
-              //           onClick={() => {
-              //             requestHandler(course);
-              //           }}
-              //         >
-              //           Join Course
-              //         </button>
-              //       )}
+              //         )
+              //       }
               //     </div>
               //   )}
               // </div>
