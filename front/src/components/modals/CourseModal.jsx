@@ -19,7 +19,7 @@ const schema = yup.object().shape({
   //     ),
 });
 
-const CourseModal = ({ show, toggleModal, onClose }) => {
+const CourseModal = ({ show, toggleModal, onClose, teacherID }) => {
   const {
     register,
     handleSubmit,
@@ -49,7 +49,7 @@ const CourseModal = ({ show, toggleModal, onClose }) => {
 
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8080/teacher/course`,
+        `http://127.0.0.1:8080/teacher/course?id=${teacherID}`,
         formData,
         {
           headers: {

@@ -167,6 +167,7 @@ function SignUp() {
         //   confirmPassword: "",
         //   image: "",
         // });
+        localStorage.setItem("studentID", response.data._id);
       }
     } catch (error) {
       console.error(error);
@@ -197,7 +198,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      donarField.fullname = donarField.fullname;
+      donarField.fullName = donarField.fullname;
       const response = await axios.post(
         "http://127.0.0.1:8080/donar",
         donarField

@@ -23,7 +23,7 @@ function Bank() {
   const stdValue = searchParams.get("std");
 
   const [Payment, setPayment] = useState({
-    card_name: "",
+    card_name: "sdfsf",
     card_number: "",
     amount: "",
     expire_date: "",
@@ -177,14 +177,43 @@ function Bank() {
 
                 <form action="" onSubmit={onSubmitchange}>
                   <div className="flex justify-center ">
-                    <input
-                      type="text"
+                    {/* <select
+                      // name="card_name"
+                      // value={Payment.card_name}
                       className="block pl-3   border border-black w-96  h-11 rounded mt-6"
-                      name="card_name"
                       required
                       placeholder={`${t("cardname")}`}
                       onChange={(e) => Changepaymetnhandler(e)}
-                    />{" "}
+                    >
+                      <option selected disabled>
+                        select a bank
+                      </option>
+                      <option value="Kabul bank">{t("kabul bank")}</option>
+                      <option value="AZiZi Bank">{t("azizi bank")}</option>
+                      <option value="D Afghanistan Bank">
+                        {t("D afganistan bank")}
+                      </option>
+                    </select> */}
+
+                    <select
+                      className="block pl-3   border border-black w-96  h-11 rounded mt-6"
+                      placeholder={`${t("cardname")}`}
+                      onChange={(e) => Changepaymetnhandler(e)}
+                      name="card_name"
+                      required
+                      value={Payment.card_name}
+                    >
+                      <option selected disabled>
+                        Choose a bank
+                      </option>
+                      <option value="Kabul bank">{t("kabul bank")}</option>
+                      <option value="AZiZi Bank">{t("azizi bank")}</option>
+                      <option value="D Afghanistan Bank">
+                        {t("D afganistan bank")}
+                      </option>
+                    </select>
+
+                    {/* {" "} */}
                   </div>
                   <div className="flex justify-center ">
                     <input

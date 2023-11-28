@@ -7,6 +7,7 @@ const {
   deleteCourse,
   getSingleCourse,
   updateCourse,
+  updateCourseStatus,
 } = require("../controller/course.controller");
 
 const router = express.Router();
@@ -32,5 +33,7 @@ router
   .delete(deleteCourse)
   .get(getSingleCourse)
   .put(upload.single("image"), updateCourse);
+
+router.route("/status/course").put(updateCourseStatus);
 
 module.exports = router;

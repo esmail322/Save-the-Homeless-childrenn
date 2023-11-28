@@ -61,6 +61,7 @@ function Login() {
         navigate(`/studentProfile/${response.data.user._id}`);
       }
       console.log(response);
+      localStorage.setItem("studentID", response.data.user._id);
     } catch (error) {
       toast.error(error.response.data.message);
 

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getHostname, limitString } from "../../utils";
+import { limitString } from "../../utils";
 import axios from "axios";
-import CourseDetails from "./CourseDetails";
 import { toast } from "react-toastify";
-import UpdateModal from "./UpdateModal";
+import { FaCircleCheck } from "react-icons/fa6";
+import { IoCloseCircle } from "react-icons/io5";
 
-const CourseList = ({ show, onClose, teacherID }) => {
+const StudentList = ({ show, onClose, teacherID }) => {
   const [courses, setCourses] = useState([]);
   const [isCourseUpdate, setIsCourseUpdate] = useState(false);
 
-  const toggleUpdateCourse = (course) => {
+  const handleReject = (course) => {
     setCourseUpdate(course);
     setIsCourseUpdate(!isCourseUpdate);
   };
@@ -17,7 +17,7 @@ const CourseList = ({ show, onClose, teacherID }) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await getCourses();
+        const response = await getStudents();
         setCourses(response);
       } catch (error) {
         console.error(error);
@@ -27,11 +27,12 @@ const CourseList = ({ show, onClose, teacherID }) => {
     fetchData();
   }, []);
 
-  async function getCourses() {
+  async function getStudents() {
     try {
       const response = await axios.get(
         `http://127.0.0.1:8080/teacher/course?id=${teacherID}`
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -48,11 +49,22 @@ const CourseList = ({ show, onClose, teacherID }) => {
     setIsEye(!isEye);
   };
 
-  const deleteHandler = async (id) => {
+  const statusHandler = async (id, status) => {
     try {
-      await axios.delete(`http://127.0.0.1:8080/teacher/course/${id}`);
+      await axios.put(
+        `http://127.0.0.1:8080/teacher/status/course?courseId=${id}`,
+        { status }
+      );
       onClose();
-      toast.success("Course Deleted Successfully!");
+      toast.success(
+        `Student has been Successfully ${
+          status === "pending"
+            ? "Pending"
+            : status === "approved"
+            ? "Approved"
+            : "Rejected"
+        }!`
+      );
     } catch (error) {
       console.error(error);
     }
@@ -73,9 +85,10 @@ const CourseList = ({ show, onClose, teacherID }) => {
             <thead>
               <tr>
                 <th className="px-4 py-2">#</th>
-                <th className="px-4 py-2">Image</th>
-                <th className="px-4 py-2">Title</th>
-                <th className="px-4 py-2">Description</th>
+                <th className="px-4 py-2">Student NAME</th>
+                <th className="px-4 py-2">Course Name</th>
+                <th className="px-4 py-2">Course URL</th>
+                <th className="px-4 py-2">status</th>
                 <th className="px-4 py-2">Action</th>
               </tr>
             </thead>
@@ -84,37 +97,49 @@ const CourseList = ({ show, onClose, teacherID }) => {
                 <tr>
                   <td className="border px-4 py-2">{index + 1}</td>
                   <td className="border px-4 py-2">
-                    <img
-                      src={getHostname(course?.image)}
-                      alt="Placeholder"
-                      className="w-24 h-20"
-                    />
+                    {course?.student?.fullName}
                   </td>
                   <td className="border px-4 py-2">{course?.title}</td>
                   <td className="border px-4 py-2">
-                    <a href={course?.url} target="_blank">
+                    <a
+                      href={course?.url}
+                      target="_blank"
+                      className="text-blue-500 underline"
+                    >
                       {limitString(course?.url, 10)}
                     </a>
                   </td>
                   <td className="border px-4 py-2">
-                    {limitString(course?.description, 30)}
+                    {course?.status === "approved" ? (
+                      <FaCircleCheck color="green" />
+                    ) : course?.status === "pending" ? (
+                      "Pending"
+                    ) : (
+                      <IoCloseCircle color="red" />
+                    )}
                   </td>
                   <td className="border px-4 py-2">
                     <div className="flex gap-3">
-                      <button type="button" onClick={() => toggleEye(course)}>
-                        Show
+                      {/* <button
+                        type="button"
+                        className="border border-green-500 text-green-500 px-1 rounded-md"
+                        onClick={() => statusHandler(course._id, "pending")}
+                      >
+                        Pending
+                      </button> */}
+                      <button
+                        type="button"
+                        className="border border-green-500 text-green-500 px-1 rounded-md"
+                        onClick={() => statusHandler(course._id, "approved")}
+                      >
+                        Accept
                       </button>
                       <button
                         type="button"
-                        onClick={() => deleteHandler(course._id)}
+                        className="border border-red-500 text-red-500 px-1 rounded-md"
+                        onClick={() => statusHandler(course._id, "rejected")}
                       >
-                        Delete
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => toggleUpdateCourse(course)}
-                      >
-                        Update
+                        Reject
                       </button>
                     </div>
                   </td>
@@ -131,26 +156,8 @@ const CourseList = ({ show, onClose, teacherID }) => {
           </button>
         </div>
       </div>
-
-      {isEye && (
-        <CourseDetails
-          show={isEye}
-          onClose={() => setIsEye(false)}
-          details={course}
-        />
-      )}
-
-      {isCourseUpdate && (
-        <UpdateModal
-          show={isCourseUpdate}
-          toggleModal={toggleUpdateCourse}
-          onClose={() => setIsCourseUpdate(false)}
-          course={courseUpdate}
-          closeTable={onClose}
-        />
-      )}
     </>
   );
 };
 
-export default CourseList;
+export default StudentList;

@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 import { getHostname, limitString } from "../utils";
 import axios from "axios";
 import CourseDetails from "../components/modals/CourseDetails";
+import CourseListItem from "../components/modals/CourseListItem";
 
 function Alcourse() {
   const [courses, setCourses] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [courseContent, setCourseDetails] = useState("");
+  const [courseData, setCourseData] = useState("");
+  const [courseId, setCourseId] = useState("");
 
   const toggleModal = (course) => {
     setCourseDetails(course);
@@ -39,6 +42,31 @@ function Alcourse() {
     }
   }
 
+  const isAllowed =
+    (courseData?.student === localStorage.getItem("studentID") &&
+      courseData?.status === "pending") ||
+    (courses?.student?._id === localStorage.getItem("studentID") &&
+      courses?.status === "pending");
+
+  const requestHandler = async (course) => {
+    try {
+      const studentId = localStorage.getItem("studentID");
+      const response = await axios.put(
+        `http://127.0.0.1:8080/student/change-status-student?courseId=${course?._id}&studentId=${studentId}`
+      );
+      setCourseData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleStatusChange = (id) => {
+    const index = courses.findIndex((course) => course._id === id);
+    const updatedCourses = [...courses];
+    updatedCourses[index].status = "pending";
+    setCourses(updatedCourses);
+  };
+  console.log({ courses });
   return (
     <div className=" bg-backgorund  ">
       <Header />
@@ -56,31 +84,120 @@ function Alcourse() {
         <section>
           <div className="grid grid-cols-1  mx-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4  gap-10  ">
             {courses?.map((course) => (
-              <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
-                <img
-                  className="w-full h-56"
-                  src={getHostname(course?.image)}
-                  alt="Math"
-                />
-                <div className="px-6 py-4">
-                  <div className="font-bold text-xl mb-2">{course.title}</div>
-                  <div className="flex gap-3">
-                    <p className="text-gray-700 text-base">
-                      {limitString(course?.description, 60)}
-                    </p>
-                    <button type="button" onClick={() => toggleModal(course)}>
-                      read more
-                    </button>
-                  </div>
-                </div>
-                <div className="px-6 py-4">
-                  <Link to="https://classroom.google.com/c/NjQxODQ5NzEwMTky?cjc=aj2g7gd">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                      Go to Course
-                    </button>
-                  </Link>
-                </div>
-              </div>
+              // <div className="max-w-xs border border-slate-800 mx-auto rounded-xl overflow-hidden shadow-lg">
+              //   <img
+              //     className="w-full h-56"
+              //     src={getHostname(course?.image)}
+              //     alt="Math"
+              //   />
+              //   <div className="px-6 py-4">
+              //     <div className="font-bold text-xl mb-2">{course.title}</div>
+              //     <div className="flex gap-3">
+              //       <p className="text-gray-700 text-base">
+              //         {limitString(course?.description, 60)}
+              //       </p>
+              //       <button type="button" onClick={() => toggleModal(course)}>
+              //         read more
+              //       </button>
+              //     </div>
+              //   </div>
+              //   {course?.status === "rejected" ? (
+              //     <>
+              //       <p className="font-bold py-2 px-4"></p>
+              //       <button
+              //         type="button"
+              //         className={`${
+              //           (courseData?.student ===
+              //             localStorage.getItem("studentID") &&
+              //             courseData?.status === "pending") ||
+              //           (course?.student?._id ===
+              //             localStorage.getItem("studentID") &&
+              //           course?.status === "pending"
+              //             ? "cursor-not-allowed bg-blue-500 hover:bg-blue-700"
+              //             : "bg-orange-500 hover:bg-orange-700")
+              //         } text-white font-bold py-2 px-4 rounded`}
+              //         onClick={() => {
+              //           requestHandler(course);
+              //         }}
+              //       >
+              //         Join Course
+              //       </button>
+              //     </>
+              //   ) : (
+              //     <div className="px-6 py-4">
+              //       {courseData?.student ===
+              //         localStorage.getItem("studentID") ||
+              //       // &&
+              //       // courseData?.status === "approved"
+              //       course?.student?._id ===
+              //         localStorage.getItem("studentID") ? (
+              //         // &&
+              //         // course?.status === "approved"
+              //         <a
+              //           href={
+              //             (courseData?.student ===
+              //               localStorage.getItem("studentID") &&
+              //               courseData?.status === "approved") ||
+              //             (course?.student?._id ===
+              //               localStorage.getItem("studentID") &&
+              //               course?.status === "approved" &&
+              //               course?.url)
+              //           }
+              //           target="_blank"
+              //         >
+              //           <button
+              //             disabled={
+              //               (courseData?.student ===
+              //                 localStorage.getItem("studentID") &&
+              //                 courseData?.status === "pending") ||
+              //               (course?.student?._id ===
+              //                 localStorage.getItem("studentID") &&
+              //                 course?.status === "pending")
+              //             }
+              //             className={`${
+              //               (courseData?.student ===
+              //                 localStorage.getItem("studentID") &&
+              //                 courseData?.status === "pending") ||
+              //               (course?.student?._id ===
+              //                 localStorage.getItem("studentID") &&
+              //               course?.status === "pending"
+              //                 ? "cursor-not-allowed bg-blue-500 hover:bg-blue-700"
+              //                 : "bg-green-500 hover:bg-green-700")
+              //             } text-white font-bold py-2 px-4 rounded`}
+              //           >
+              //             {(courseData?.student ===
+              //               localStorage.getItem("studentID") &&
+              //               courseData?.status === "approved") ||
+              //             (course?.student?._id ===
+              //               localStorage.getItem("studentID") &&
+              //               course?.status === "approved")
+              //               ? "Go to Course"
+              //               : "Pending to Accept"}
+              //           </button>
+              //         </a>
+              //       ) : (
+              //         <button
+              //           type="button"
+              //           className="bg-blue-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+              //           onClick={() => {
+              //             requestHandler(course);
+              //           }}
+              //         >
+              //           Join Course
+              //         </button>
+              //       )}
+              //     </div>
+              //   )}
+              // </div>
+
+              <CourseListItem
+                key={course._id}
+                course={course}
+                courseData={courseData}
+                toggleModal={toggleModal}
+                requestHandler={requestHandler}
+                handleStatusChange={handleStatusChange}
+              />
             ))}
           </div>
         </section>

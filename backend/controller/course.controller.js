@@ -2,11 +2,12 @@ const Course = require("../models/course.modal");
 
 // Create a new course
 const createCourse = async (req, res) => {
-  const { body, file } = req;
+  const { body, file, query } = req;
 
   try {
     body.image = file?.path;
-    console.log(body);
+    body.teacher = query.id;
+
     const course = await Course.create(body);
 
     res.status(201).json(course);
@@ -18,7 +19,8 @@ const createCourse = async (req, res) => {
 // Get all courses
 const getCourses = async (req, res) => {
   try {
-    const courses = await Course.find();
+    const query = req.query.id ? { teacher: req.query.id } : {};
+    const courses = await Course.find(query).populate("student", "fullName");
     res.status(200).json(courses);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -60,6 +62,28 @@ const updateCourse = async (req, res) => {
   }
 };
 
+const updateCourseStatus = async (req, res) => {
+  try {
+    const { query, body } = req;
+
+    const course = await Course.findByIdAndUpdate(
+      query.courseId,
+      { status: body.status },
+      {
+        new: true,
+      }
+    );
+
+    if (!course) {
+      return res.status(404).json({ message: "course not found" });
+    }
+
+    res.status(200).json(course);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 // Delete a course by ID
 const deleteCourse = async (req, res) => {
   try {
@@ -74,10 +98,35 @@ const deleteCourse = async (req, res) => {
   }
 };
 
+const changeStatusStudent = async (req, res) => {
+  try {
+    const { query } = req;
+
+    const { courseId, studentId } = query;
+
+    const course = await Course.findByIdAndUpdate(
+      courseId,
+      { status: "pending", student: studentId },
+      {
+        new: true,
+      }
+    );
+    if (!course) {
+      return res.status(404).json({ message: "course not found" });
+    }
+
+    res.status(200).json(course);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createCourse,
   getCourses,
   getSingleCourse,
   updateCourse,
+  changeStatusStudent,
+  updateCourseStatus,
   deleteCourse,
 };

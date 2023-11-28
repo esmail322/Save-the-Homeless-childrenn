@@ -40,7 +40,8 @@ const saveStudent = async (req, res) => {
 };
 
 const getStudents = async (req, res) => {
-  const students = await Student.find().populate("donar", "fullName");
+  const students = await Student.find({}).populate("donar");
+
   return res.send(students);
 };
 

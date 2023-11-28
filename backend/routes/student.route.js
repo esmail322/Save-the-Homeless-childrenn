@@ -1,6 +1,7 @@
 const express = require("express");
 const StudentController = require("../controller/student.controller");
 const upload = require("../middlewares/imageUploader");
+const { changeStatusStudent } = require("../controller/course.controller");
 
 const router = express.Router();
 
@@ -14,5 +15,7 @@ router
   .delete(StudentController.deleteStudent)
   .get(StudentController.getStudent)
   .patch(StudentController.editStudent);
+
+router.route("/change-status-student").put(changeStatusStudent);
 
 module.exports = router;

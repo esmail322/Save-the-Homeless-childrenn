@@ -92,7 +92,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get("http://127.0.0.1:8080/student");
-
+      console.log({ data });
       setData(data);
     };
     fetchData();
@@ -378,7 +378,7 @@ export default function Dashboard() {
                                 {id + 1}
                               </td>
                               <td>
-                                {data?.donar?.fullName ? (
+                                {data?.donar?._id ? (
                                   <FaCircleCheck
                                     color="green"
                                     cursor="pointer"

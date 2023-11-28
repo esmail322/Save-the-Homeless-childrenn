@@ -26,6 +26,7 @@ import { NotificationContext } from "../context/NotificationContext";
 import { getHostname } from "../utils";
 import CourseList from "../components/modals/CourseList";
 import UpdateModal from "../components/modals/UpdateModal";
+import StudentList from "../components/modals/StudentList";
 // import { getTeacher } from "../../../backend/controller/teacher.controller";
 
 function classNames(...classes) {
@@ -33,6 +34,8 @@ function classNames(...classes) {
 }
 export default function TeacherProfile() {
   const [loading, setLoading] = useState(true);
+  const { id: teacherID } = useParams();
+
   const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("token");
@@ -84,6 +87,7 @@ export default function TeacherProfile() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCourseList, setCourseList] = useState(false);
+  const [isStudentList, setStudentList] = useState(false);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -91,6 +95,10 @@ export default function TeacherProfile() {
 
   const toggleCourse = () => {
     setCourseList(!isCourseList);
+  };
+
+  const toggleStudent = () => {
+    setStudentList(!isStudentList);
   };
 
   return (
@@ -296,6 +304,42 @@ export default function TeacherProfile() {
                     </Menu.Items>
                   </Transition>
                 </Menu>
+
+                <Menu as="div" className="ml-3 relative">
+                  <div className="flex gap-10 justify-center items-center">
+                    <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
+                      <div className="relative p-3 font-bold text-xl">
+                        Students
+                      </div>
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="origin-top-right right-0 absolute max-w-fit  mt-2  rounded-md shadow-lg py-1 bg-red-300 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        <a
+                          href="#"
+                          className={classNames(
+                            "bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+                          )}
+                        >
+                          <div className="flex capitalize flex-col w-full font-bold text-lg justify-between gap-5">
+                            <button type="button" onClick={toggleStudent}>
+                              Lists
+                            </button>
+                          </div>
+                        </a>
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
               </div>
             </div>
           </div>
@@ -306,6 +350,7 @@ export default function TeacherProfile() {
                 show={isModalOpen}
                 toggleModal={toggleModal}
                 onClose={() => setIsModalOpen(false)}
+                teacherID={teacherID}
               />
             )}
 
@@ -314,6 +359,16 @@ export default function TeacherProfile() {
                 show={isCourseList}
                 toggleModal={toggleCourse}
                 onClose={() => setCourseList(false)}
+                teacherID={teacherID}
+              />
+            )}
+
+            {isStudentList && (
+              <StudentList
+                show={isStudentList}
+                toggleModal={toggleStudent}
+                onClose={() => setStudentList(false)}
+                teacherID={teacherID}
               />
             )}
 
