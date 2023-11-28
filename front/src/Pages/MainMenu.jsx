@@ -67,7 +67,7 @@ function MainMenu() {
         </section>
       </div>
       <h1 className="lg:flex justify-center md:text-center lg:mx-auto text-2xl lg:mt-6 font-bold">
-        Trust Get Noticed
+        {t("trust")}
       </h1>
       <div className=" lg:flex lg:flex-row lg:justify-center lg:items-center md:flex md:flex-row md:ml-12 lg:mx-16 my-10 gap-16 mb-3 overflow-hidden  ">
         <img
@@ -357,25 +357,7 @@ function MainMenu() {
         </div>
       </div> */}
       <Accordion />
-      <div className="lg:w-full lg:h-44 relative md:h-44 bg-accent-2">
-        <h1 className="text-2xl lg:absolute  left-[60px] md:pl-10 md:pt-12  font-bold">
-          Get Every Week Update
-        </h1>
 
-        <p className="lg:w-72 lg:absolute lg:top-20 md:w-60 md:pl-10 lg:left-[60px] lg:font-semibold ">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
-        </p>
-        <div className="absolute lg:ml-[430px] lg:top-16 md:ml-80 bottom-12  lg:left-96">
-          <input
-            placeholder="Email"
-            type="email"
-            className="lg:h-12 lg:pl-4 md:h-8 rounded-sm border border-black w-80 bg-white"
-          />
-          <button className="bg-accent-3 md:w-24 md:h-8  lg:w-36 lg:rounded-sm hover:bg-accent-2 hover:text-black hover:border-spacing-2 lg:h-12 ml-2 text-white">
-            Subscribe Me
-          </button>
-        </div>
-      </div>
       <Footer />
     </div>
   );
